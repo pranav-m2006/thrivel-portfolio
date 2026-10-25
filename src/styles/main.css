@@ -2516,14 +2516,47 @@
 }
 
 .page-hero-lead-box {
-  max-width: 820px;
+  max-width: 860px;
   margin-bottom: 24px;
 }
 
-.page-hero-lead-text {
+/* Page Top Description: Black in default state -> Completely Red on Cursor Hover */
+.page-hero-lead-text,
+.page-interactive-description,
+.contact-hero-lead,
+.achieve-hero-lead,
+.home-hero-bio {
   font-size: clamp(1.08rem, 1.8vw, 1.35rem);
-  color: var(--color-muted-brown);
-  line-height: 1.68;
+  color: #111111 !important; /* Pure black in default state */
+  line-height: 1.72;
+  cursor: pointer;
+  transition: color 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s ease;
+  user-select: text;
+}
+
+.page-hero-lead-text *,
+.page-interactive-description *,
+.contact-hero-lead *,
+.achieve-hero-lead *,
+.home-hero-bio * {
+  color: inherit !important;
+  transition: color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.page-hero-lead-text:hover,
+.page-interactive-description:hover,
+.contact-hero-lead:hover,
+.achieve-hero-lead:hover,
+.home-hero-bio:hover {
+  color: #C63D2F !important; /* Vivid Crimson Red transition */
+}
+
+.page-hero-lead-text:hover *,
+.page-interactive-description:hover *,
+.contact-hero-lead:hover *,
+.achieve-hero-lead:hover *,
+.home-hero-bio:hover * {
+  color: #C63D2F !important; /* Every single child, word, and strong tag turns completely red */
 }
 
 .page-hero-tags-row {
@@ -3114,4 +3147,474 @@
   .luxury-marquee-track {
     animation: none;
   }
+}
+
+/* ==========================================================================
+   GLOBAL PAGE SECTION & ALIGNMENT ARCHITECTURE
+   ========================================================================== */
+
+.page-section {
+  position: relative;
+  width: 100%;
+  padding: clamp(64px, 7vw, 100px) 0;
+}
+
+.page-section.bg-ivory {
+  background-color: var(--color-ivory);
+}
+
+.page-section.bg-cream {
+  background-color: var(--color-cream);
+}
+
+.page-section.bg-espresso {
+  background-color: var(--color-espresso);
+  color: var(--color-warm-ivory);
+}
+
+.page-section.bg-clay {
+  background-color: var(--color-warm-brown);
+  color: var(--color-warm-ivory);
+}
+
+/* ==========================================================================
+   CERTIFICATIONS SECTION: Anti-Overlap & Defined Typographic Hierarchy
+   ========================================================================== */
+
+.cert-section-container {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(72px, 8vw, 110px) 0 clamp(88px, 10vw, 140px);
+}
+
+.cert-grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 24px;
+}
+
+.cert-grid-item {
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 24px 22px;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.3s ease;
+}
+
+.cert-grid-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(48, 37, 31, 0.09);
+  border-color: #C63D2F;
+}
+
+.cert-org-badge {
+  font-family: var(--font-mono);
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: #C63D2F;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.cert-card-title {
+  font-size: 1.25rem;
+  line-height: 1.35;
+  margin: 10px 0 8px;
+  color: var(--color-espresso);
+  font-weight: 750;
+  letter-spacing: -0.015em;
+}
+
+.cert-card-desc {
+  font-size: 0.885rem;
+  color: var(--color-warm-grey);
+  line-height: 1.62;
+  margin-bottom: 16px;
+}
+
+.cert-watermark-contained {
+  position: absolute;
+  right: clamp(1rem, 4vw, 3rem);
+  bottom: clamp(1rem, 3vw, 2.5rem);
+  font-family: var(--font-heading);
+  font-size: clamp(120px, 18vw, 240px);
+  font-weight: 850;
+  line-height: 0.8;
+  color: currentColor;
+  opacity: 0.045;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+/* ==========================================================================
+   UNIQUE ENGINEERING VELOCITY GRAPH UI
+   Interactive Milestone Scrub, Radar Beacon, Live Terminal Metric Switcher
+   ========================================================================== */
+
+.velocity-terminal-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: clamp(22px, 3.5vw, 34px);
+  box-shadow: 0 16px 40px rgba(48, 37, 31, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.velocity-terminal-card:hover {
+  box-shadow: 0 20px 48px rgba(48, 37, 31, 0.11);
+}
+
+.velocity-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.velocity-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background: rgba(198, 61, 47, 0.08);
+  color: #C63D2F;
+  font-family: var(--font-mono);
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.velocity-metric-tabs {
+  display: flex;
+  background: var(--color-cream);
+  padding: 4px;
+  border-radius: 8px;
+  gap: 4px;
+}
+
+.velocity-tab-btn {
+  padding: 6px 12px;
+  font-family: var(--font-mono);
+  font-size: 0.725rem;
+  font-weight: 600;
+  border-radius: 6px;
+  color: var(--color-espresso);
+  background: transparent;
+  transition: all 0.25s ease;
+}
+
+.velocity-tab-btn.is-active {
+  background: #FFFFFF;
+  color: #C63D2F;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.velocity-graph-viewport {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  background: #FAF7F2;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: crosshair;
+}
+
+.velocity-graph-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.velocity-tooltip-card {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(26, 19, 16, 0.94);
+  backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  z-index: 5;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.radar-ping {
+  animation: radarPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  transform-origin: center;
+}
+
+@keyframes radarPing {
+  0% {
+    r: 4.5;
+    opacity: 1;
+  }
+  75%, 100% {
+    r: 16;
+    opacity: 0;
+  }
+}
+
+.velocity-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+}
+
+.velocity-stat-pill {
+  background: var(--color-ivory);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.velocity-stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--color-warm-grey);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.velocity-stat-value {
+  font-size: 1.15rem;
+  font-weight: 750;
+  color: var(--color-espresso);
+  font-family: var(--font-heading);
+}
+
+/* ==========================================================================
+   HERO INTERACTIVE 3D MODEL & VISUAL ENHANCEMENT
+   ========================================================================== */
+
+.hero-visual-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.hero-view-switch-bar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-bottom: -4px;
+}
+
+.hero-switch-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  color: var(--color-espresso);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.hero-switch-btn:hover {
+  border-color: #C63D2F;
+  color: #C63D2F;
+}
+
+.hero-switch-btn.is-active {
+  background: #C63D2F;
+  border-color: #C63D2F;
+  color: #FFFFFF;
+}
+
+.hero-floating-badge {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--color-border);
+  border-radius: 9999px;
+  padding: 6px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 10px 24px rgba(48, 37, 31, 0.1);
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--color-espresso);
+  z-index: 4;
+  transition: transform 0.3s ease;
+}
+
+.hero-floating-badge:hover {
+  transform: scale(1.05);
+  border-color: #C63D2F;
+}
+
+.hero-badge-1 {
+  top: 14px;
+  left: -20px;
+}
+
+.hero-badge-2 {
+  bottom: 24px;
+  right: -16px;
+}
+
+@media (max-width: 768px) {
+  .hero-floating-badge {
+    position: static;
+    margin-top: 8px;
+  }
+}
+
+/* ==========================================================================
+   NAVBAR QUICK ACCESS & PROMINENT LINKS (Resume, LinkedIn, GitHub)
+   ========================================================================== */
+
+.nav-quick-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 16px;
+}
+
+.nav-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  color: var(--color-espresso);
+  transition: all 0.25s ease;
+}
+
+.nav-icon-link:hover {
+  background: #C63D2F;
+  border-color: #C63D2F;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.nav-resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  background: #1A1310;
+  color: #FFFFFF !important;
+  font-family: var(--font-mono);
+  font-size: 0.775rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(26, 19, 16, 0.15);
+}
+
+.nav-resume-btn:hover {
+  background: #C63D2F;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(198, 61, 47, 0.25);
+}
+
+/* ==========================================================================
+   PROJECTS: What I Actually Did & Dual Action Buttons (Repo + Live Demo)
+   ========================================================================== */
+
+.project-contributions-box {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-left: 4px solid #C63D2F;
+  border-radius: 8px;
+  padding: 20px 22px;
+  margin-top: 24px;
+}
+
+.project-contributions-title {
+  font-size: 0.95rem;
+  font-weight: 750;
+  color: var(--color-espresso);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
+.project-contributions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project-contributions-list li {
+  font-size: 0.885rem;
+  color: var(--color-warm-grey);
+  line-height: 1.6;
+  position: relative;
+  padding-left: 18px;
+}
+
+.project-contributions-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: #C63D2F;
+  font-weight: bold;
+}
+
+.project-dual-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-live-demo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 9999px;
+  background: #C63D2F;
+  color: #FFFFFF !important;
+  font-size: 0.825rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(198, 61, 47, 0.2);
+}
+
+.btn-live-demo:hover {
+  background: #E62429;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(198, 61, 47, 0.3);
 }

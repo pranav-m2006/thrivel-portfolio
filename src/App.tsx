@@ -15,6 +15,7 @@ import Experience from './pages/Experience';
 import Achievements from './pages/Achievements';
 import Certifications from './pages/Certifications';
 import Contact from './pages/Contact';
+import Resume from './pages/Resume';
 import StyleGuide from './pages/StyleGuide';
 
 export default function App() {
@@ -43,6 +44,7 @@ export default function App() {
           <Route path="/achievements" element={<Achievements />} />
           <Route path="/certifications" element={<Certifications />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/resume" element={<Resume />} />
           {/* Phase 2 Design System Spec */}
           <Route path="/style-guide" element={<StyleGuide />} />
         </Routes>

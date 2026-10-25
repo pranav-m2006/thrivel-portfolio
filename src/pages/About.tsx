@@ -49,9 +49,9 @@ export default function About() {
         arrowHref="#biography"
         leadParagraph={
           <>
-            I am a <strong style={{ color: '#1A1310' }}>Computer Science &amp; Technology undergraduate</strong> at{' '}
-            <strong style={{ color: '#C63D2F' }}>SNS College of Engineering</strong> in Coimbatore, dedicated to
-            building calm frontend interfaces and exploring <strong style={{ color: '#C63D2F' }}>applied artificial intelligence</strong>{' '}
+            I am a <strong>Computer Science &amp; Technology undergraduate</strong> at{' '}
+            <strong>SNS College of Engineering</strong> in Coimbatore, dedicated to
+            building calm frontend interfaces and exploring <strong>applied artificial intelligence</strong>{' '}
             with zero superficial claims.
           </>
         }

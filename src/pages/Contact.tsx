@@ -1,7 +1,7 @@
 import React, { useState, useLayoutEffect, useRef } from 'react';
 import { Mail, Phone, MapPin, Github, Linkedin, Copy, Check, ArrowUpRight } from 'lucide-react';
 import gsap from 'gsap';
-import { StorytellingHeading, StorytellingWords } from '../components/StorytellingText';
+import PageHeroHeadline from '../components/PageHeroHeadline';
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
@@ -9,30 +9,13 @@ export default function Contact() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.to('.contact-hero-title .line-reveal', {
-        y: 0,
-        opacity: 1,
-        duration: 0.9,
-        stagger: 0.15,
-        ease: 'power3.out',
-      });
-
-      gsap.to('.contact-hero-lead .word-reveal', {
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        stagger: 0.02,
-        ease: 'power2.out',
-        delay: 0.3,
-      });
-
       gsap.from('.contact-reveal-item', {
         y: 30,
         opacity: 0,
         duration: 0.8,
         stagger: 0.12,
         ease: 'power2.out',
-        delay: 0.4,
+        delay: 0.25,
       });
     }, containerRef);
 
@@ -47,26 +30,30 @@ export default function Contact() {
 
   return (
     <div ref={containerRef} className="page-wrapper">
-      {/* 1. HERO */}
-      <section className="page-hero bg-ivory">
-        <div className="container">
-          <div className="editorial-eyebrow">Connect</div>
-          <StorytellingHeading
-            lines={['Have an idea', 'worth building?']}
-            className="editorial-h1 contact-hero-title"
-            tag="h1"
-          />
-          <div className="contact-hero-lead">
-            <StorytellingWords
-              text="I'm always interested in connecting with people who enjoy building useful software, exploring technology, and solving practical problems."
-              accentWords={['useful', 'software,', 'exploring', 'technology,', 'practical', 'problems']}
-            />
-          </div>
-        </div>
-      </section>
+      {/* 1. HERO: Big Bold Black-to-Red Interactive Transition Heading */}
+      <PageHeroHeadline
+        eyebrow="08 / CONNECT & COLLABORATE"
+        blackText="Have an idea"
+        accentText="worth building?"
+        arrowHref="#direct-channels"
+        leadParagraph={
+          <>
+            I am always interested in connecting with people who enjoy building{' '}
+            <strong>useful software</strong>, exploring <strong>technology</strong>, and solving{' '}
+            <strong>practical problems</strong>. Whether you have an internship role, collaborative project, or engineering question, my inbox is open.
+          </>
+        }
+        tags={[
+          'pranav.m.cst.2024@snsce.ac.in',
+          'GitHub: pranav-m2006',
+          'LinkedIn: pranav-m-23153a32b',
+          'SNSCE · Coimbatore',
+          'Open for Internships',
+        ]}
+      />
 
       {/* 2. DIRECT CONTACT METHODS */}
-      <section className="page-section bg-ivory">
+      <section id="direct-channels" className="page-section bg-ivory">
         <div className="container-narrow">
           
           <div className="contact-reveal-item editorial-card" style={{ marginBottom: '40px', background: 'var(--color-beach-cream)' }}>

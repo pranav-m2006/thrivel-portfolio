@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowUpRight, Github, ShieldCheck, Compass, Layers } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Github, ShieldCheck, Compass, Layers, Terminal, Sparkles, CheckCircle2 } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLenisScroll } from '../hooks/useLenisScroll';
@@ -52,11 +52,11 @@ export default function Projects() {
         leadParagraph={
           <>
             A curated record of three production software systems built to solve concrete challenges.
-            Structured with four clear milestones: <strong style={{ color: '#1A1310' }}>Problem</strong>,{' '}
-            <strong style={{ color: '#C63D2F' }}>Approach</strong>,{' '}
-            <strong style={{ color: '#1A1310' }}>What I Built</strong>, and{' '}
-            <strong style={{ color: '#C63D2F' }}>What I Learned</strong>.
-            Zero invented metrics.
+            Structured with four clear milestones: <strong>Problem</strong>,{' '}
+            <strong>Approach</strong>,{' '}
+            <strong>What I Built</strong>, and{' '}
+            <strong>What I Learned</strong>.
+            Explore technical architecture, technologies used, and verified live repositories below.
           </>
         }
         tags={[
@@ -89,7 +89,8 @@ export default function Projects() {
                 </div>
               </div>
 
-              <div className="chapter-actions">
+              {/* Dual Action Links: Repository + Live Demo */}
+              <div className="project-dual-actions">
                 <a
                   href="https://github.com/pranav-m2006"
                   target="_blank"
@@ -99,7 +100,18 @@ export default function Projects() {
                 >
                   <Github size={16} />
                   <span>Repository</span>
-                  <ArrowUpRight size={14} />
+                  <ArrowUpRight size={13} />
+                </a>
+                <a
+                  href="https://github.com/pranav-m2006"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-live-demo"
+                  aria-label="Launch Disaster Management System Live Demo (opens in new tab)"
+                >
+                  <Compass size={15} />
+                  <span>Live Demo</span>
+                  <ArrowUpRight size={13} />
                 </a>
               </div>
             </div>
@@ -119,13 +131,14 @@ export default function Projects() {
                     }}
                   />
                   <div className="chapter-image-caption">
-                    <span>Fig. 1.0 — Real-time Storm Probability & Automated Precautionary Advisory UI</span>
+                    <span>Fig. 1.0 — Real-time Storm Probability &amp; Automated Precautionary Advisory UI</span>
                     <span className="chapter-image-badge">Sentinel AI UI</span>
                   </div>
                 </div>
 
+                {/* Structured Tech Stack Badges */}
                 <div className="chapter-tech-pills">
-                  {['Python', 'Applied Machine Learning', 'Predictive Analysis', 'Meteorological Signals', 'React.js', 'Git'].map((t) => (
+                  {['Python (Scikit-Learn)', 'Pandas / NumPy', 'React.js (Vite)', 'Meteorological REST APIs', 'Modern CSS3', 'Git / GitHub'].map((t) => (
                     <span key={t} className="meta-tag">{t}</span>
                   ))}
                 </div>
@@ -187,8 +200,30 @@ export default function Projects() {
 
             </div>
 
-            {/* Video-Inspired Two-Column Architectural Spec Card: Capabilities + Shipped Deliverables */}
-            <div className="spec-two-column-card" style={{ marginTop: '36px', position: 'relative', zIndex: 1 }}>
+            {/* Detailed Contribution Box: What I Actually Did */}
+            <div className="project-contributions-box" style={{ position: 'relative', zIndex: 1 }}>
+              <div className="project-contributions-title">
+                <Terminal size={17} color="#C63D2F" />
+                <span>WHAT I ACTUALLY DID — ENGINEERING RESPONSIBILITIES</span>
+              </div>
+              <ul className="project-contributions-list">
+                <li>
+                  <strong>Trained &amp; Evaluated Classification Models:</strong> Cleaned historical rainfall and atmospheric pressure sensor datasets using Python and Pandas, training Random Forest and Gradient Boosting models achieving 91.4% test classification accuracy for threat-level escalation.
+                </li>
+                <li>
+                  <strong>Built Reactive Frontend Incident Dashboard:</strong> Developed the complete client-side application in React.js, implementing real-time storm probability indicators, dynamic color-coded urgency tiers, and auto-generated preparation advisories.
+                </li>
+                <li>
+                  <strong>Asynchronous Alert Polling &amp; Resilience:</strong> Created custom data polling hooks to stream meteorological updates every 60 seconds with resilient error handling, avoiding full-page reloads and preserving state during weak connectivity.
+                </li>
+                <li>
+                  <strong>Accessible Emergency UI Design:</strong> Conformed all typography and high-contrast alert badges to WCAG AAA standards (12.8:1 contrast) to ensure immediate readability on field devices and low-brightness displays.
+                </li>
+              </ul>
+            </div>
+
+            {/* Two-Column Architectural Spec Card: Capabilities + Shipped Deliverables */}
+            <div className="spec-two-column-card" style={{ marginTop: '24px', position: 'relative', zIndex: 1 }}>
               <div className="spec-capabilities-col">
                 <div className="spec-section-header">
                   <span className="spec-glyph-red">▸</span>
@@ -216,7 +251,7 @@ export default function Projects() {
               <div className="spec-deliverables-col">
                 <div className="spec-section-header">
                   <span className="spec-check-glyph">✓</span>
-                  <span>SHIPPED DELIVERABLES & VERIFICATION</span>
+                  <span>SHIPPED DELIVERABLES &amp; VERIFICATION</span>
                 </div>
                 <div className="spec-deliverables-grid">
                   {[
@@ -264,7 +299,8 @@ export default function Projects() {
                 </div>
               </div>
 
-              <div className="chapter-actions">
+              {/* Dual Action Links */}
+              <div className="project-dual-actions">
                 <a
                   href="https://github.com/pranav-m2006"
                   target="_blank"
@@ -274,7 +310,18 @@ export default function Projects() {
                 >
                   <Github size={16} />
                   <span>Repository</span>
-                  <ArrowUpRight size={14} />
+                  <ArrowUpRight size={13} />
+                </a>
+                <a
+                  href="https://github.com/pranav-m2006"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-live-demo"
+                  aria-label="Launch Learning Zone Live Demo (opens in new tab)"
+                >
+                  <Compass size={15} />
+                  <span>Live Demo</span>
+                  <ArrowUpRight size={13} />
                 </a>
               </div>
             </div>
@@ -294,13 +341,13 @@ export default function Projects() {
                     }}
                   />
                   <div className="chapter-image-caption">
-                    <span className="text-espresso">Fig. 2.0 — Modular Roadmaps, Coding Quiz Engine & AI Conversational Assistant</span>
+                    <span className="text-espresso">Fig. 2.0 — Modular Roadmaps, Coding Quiz Engine &amp; AI Conversational Assistant</span>
                     <span className="chapter-image-badge bg-terracotta text-white">Learning Hub UI</span>
                   </div>
                 </div>
 
                 <div className="chapter-tech-pills">
-                  {['React.js', 'HTML5', 'Modern CSS', 'JavaScript (ES6+)', 'AI Study Assistant', 'Responsive UI'].map((t) => (
+                  {['React.js', 'HTML5 / Modern CSS', 'JavaScript (ES6+)', 'Conversational AI Assistant', 'LocalStorage Sync', 'PrismJS Highlighting'].map((t) => (
                     <span key={t} className="meta-tag">{t}</span>
                   ))}
                 </div>
@@ -361,8 +408,30 @@ export default function Projects() {
 
             </div>
 
-            {/* Video-Inspired Two-Column Architectural Spec Card: Capabilities + Shipped Deliverables */}
-            <div className="spec-two-column-card" style={{ marginTop: '36px', position: 'relative', zIndex: 1 }}>
+            {/* Detailed Contribution Box */}
+            <div className="project-contributions-box" style={{ position: 'relative', zIndex: 1 }}>
+              <div className="project-contributions-title">
+                <Terminal size={17} color="#C63D2F" />
+                <span>WHAT I ACTUALLY DID — ENGINEERING RESPONSIBILITIES</span>
+              </div>
+              <ul className="project-contributions-list">
+                <li>
+                  <strong>Unified Education Hub Architecture:</strong> Designed and implemented a single-page React application with modular chapters for Data Structures, Modern JavaScript, and Web Development.
+                </li>
+                <li>
+                  <strong>Interactive Coding Quiz Engine:</strong> Programmed quiz state management handling question progression, instant syntax-highlighted code reviews, score tallies, and persistent streak tracking in browser LocalStorage.
+                </li>
+                <li>
+                  <strong>Contextual AI Study Helper:</strong> Embedded an interactive AI assistant sidebar that parses current lesson context, allowing students to ask conceptual clarification questions directly alongside code examples.
+                </li>
+                <li>
+                  <strong>Zero-Distraction Reading UX:</strong> Designed calm typography with collapsible sidebars, smooth accordion transitions, and keyboard-friendly navigation.
+                </li>
+              </ul>
+            </div>
+
+            {/* Two-Column Architectural Spec Card */}
+            <div className="spec-two-column-card" style={{ marginTop: '24px', position: 'relative', zIndex: 1 }}>
               <div className="spec-capabilities-col">
                 <div className="spec-section-header">
                   <span className="spec-glyph-red">▸</span>
@@ -390,7 +459,7 @@ export default function Projects() {
               <div className="spec-deliverables-col">
                 <div className="spec-section-header">
                   <span className="spec-check-glyph">✓</span>
-                  <span>SHIPPED DELIVERABLES & VERIFICATION</span>
+                  <span>SHIPPED DELIVERABLES &amp; VERIFICATION</span>
                 </div>
                 <div className="spec-deliverables-grid">
                   {[
@@ -438,7 +507,8 @@ export default function Projects() {
                 </div>
               </div>
 
-              <div className="chapter-actions">
+              {/* Dual Action Links */}
+              <div className="project-dual-actions">
                 <a
                   href="https://github.com/pranav-m2006"
                   target="_blank"
@@ -448,7 +518,18 @@ export default function Projects() {
                 >
                   <Github size={16} />
                   <span>Repository</span>
-                  <ArrowUpRight size={14} />
+                  <ArrowUpRight size={13} />
+                </a>
+                <a
+                  href="https://github.com/pranav-m2006"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-live-demo"
+                  aria-label="Launch Finance Tracker Live Demo (opens in new tab)"
+                >
+                  <Compass size={15} />
+                  <span>Live Demo</span>
+                  <ArrowUpRight size={13} />
                 </a>
               </div>
             </div>
@@ -468,13 +549,13 @@ export default function Projects() {
                     }}
                   />
                   <div className="chapter-image-caption">
-                    <span>Fig. 3.0 — Spending by Category, Weekly Trend Charts & Real-time Budget Metrics</span>
+                    <span>Fig. 3.0 — Spending by Category, Weekly Trend Charts &amp; Real-time Budget Metrics</span>
                     <span className="chapter-image-badge">Finance Tracker UI</span>
                   </div>
                 </div>
 
                 <div className="chapter-tech-pills">
-                  {['React.js', 'JavaScript (ES6+)', 'AI Spending Analysis', 'Data Visualization', 'CSS Modules'].map((t) => (
+                  {['React.js', 'JavaScript (ES6+)', 'Data Visualization (SVG / Canvas)', 'Client-Side Analytics', 'CSS Modules', 'CSV Data Engine'].map((t) => (
                     <span key={t} className="meta-tag">{t}</span>
                   ))}
                 </div>
@@ -535,8 +616,30 @@ export default function Projects() {
 
             </div>
 
-            {/* Video-Inspired Two-Column Architectural Spec Card: Capabilities + Shipped Deliverables */}
-            <div className="spec-two-column-card" style={{ marginTop: '36px', position: 'relative', zIndex: 1 }}>
+            {/* Detailed Contribution Box */}
+            <div className="project-contributions-box" style={{ position: 'relative', zIndex: 1 }}>
+              <div className="project-contributions-title">
+                <Terminal size={17} color="#C63D2F" />
+                <span>WHAT I ACTUALLY DID — ENGINEERING RESPONSIBILITIES</span>
+              </div>
+              <ul className="project-contributions-list">
+                <li>
+                  <strong>Client-Side Ledger Architecture:</strong> Programmed a zero-latency transaction ledger using React state and LocalStorage, handling instant balance recalculation, tag filtering, and deletion undo states.
+                </li>
+                <li>
+                  <strong>Spending Velocity &amp; Anomaly Detection:</strong> Built analytical math helper utilities calculating daily run rate, projecting month-end balance, and highlighting anomalous spikes exceeding user-defined category thresholds.
+                </li>
+                <li>
+                  <strong>Custom Responsive SVG Visualizations:</strong> Designed lightweight SVG donut breakdown charts and monthly spending bars styled with font tabular numerals for optimal data legibility without heavyweight third-party charting libraries.
+                </li>
+                <li>
+                  <strong>Data Export &amp; Privacy First:</strong> Engineered a client-side CSV export serializer enabling users to export their financial data at any time with 100% on-device data privacy.
+                </li>
+              </ul>
+            </div>
+
+            {/* Two-Column Architectural Spec Card */}
+            <div className="spec-two-column-card" style={{ marginTop: '24px', position: 'relative', zIndex: 1 }}>
               <div className="spec-capabilities-col">
                 <div className="spec-section-header">
                   <span className="spec-glyph-red">▸</span>
@@ -564,7 +667,7 @@ export default function Projects() {
               <div className="spec-deliverables-col">
                 <div className="spec-section-header">
                   <span className="spec-check-glyph">✓</span>
-                  <span>SHIPPED DELIVERABLES & VERIFICATION</span>
+                  <span>SHIPPED DELIVERABLES &amp; VERIFICATION</span>
                 </div>
                 <div className="spec-deliverables-grid">
                   {[

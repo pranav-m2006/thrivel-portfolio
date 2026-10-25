@@ -29,6 +29,12 @@ export default function Footer() {
               >
                 <Linkedin size={16} /> LinkedIn
               </a>
+              <Link
+                to="/resume"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.875rem', color: '#C63D2F', fontWeight: 700 }}
+              >
+                Resume
+              </Link>
               <a
                 href="mailto:pranav.m.cst.2024@snsce.ac.in"
                 style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.875rem', color: 'var(--color-espresso)' }}

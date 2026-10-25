@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Github, Linkedin, FileText, ArrowUpRight } from 'lucide-react';
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -30,6 +30,7 @@ export default function Navbar() {
     { path: '/skills', label: 'Skills' },
     { path: '/journey', label: 'Journey' },
     { path: '/milestones', label: 'Milestones' },
+    { path: '/certifications', label: 'Certifications' },
     { path: '/contact', label: 'Contact' },
   ];
 
@@ -55,14 +56,38 @@ export default function Navbar() {
                 {item.label}
               </NavLink>
             ))}
-            
-            <NavLink
-              to="/style-guide"
-              className={({ isActive }) => `nav-link style-guide-tag ${isActive ? 'active' : ''}`}
-              title="Design System & Token Inspector"
-            >
-              Style Guide
-            </NavLink>
+
+            {/* Prominent Quick Actions: GitHub, LinkedIn & Resume */}
+            <div className="nav-quick-actions">
+              <a
+                href="https://github.com/pranav-m2006"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-icon-link"
+                title="GitHub Profile"
+                aria-label="GitHub Profile (opens in new tab)"
+              >
+                <Github size={16} />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/pranav-m-23153a32b/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-icon-link"
+                title="LinkedIn Profile"
+                aria-label="LinkedIn Profile (opens in new tab)"
+              >
+                <Linkedin size={16} />
+              </a>
+              <Link
+                to="/resume"
+                className="nav-resume-btn"
+                title="View Pranav's Resume"
+              >
+                <FileText size={13} />
+                <span>Resume</span>
+              </Link>
+            </div>
           </nav>
 
           {/* Mobile Drawer Toggle */}
@@ -88,7 +113,7 @@ export default function Navbar() {
         <div className="mobile-drawer-inner">
           <div className="mobile-drawer-header">
             <span className="mobile-drawer-title">Navigation</span>
-            <span className="meta-tag">Coastal Studio</span>
+            <span className="meta-tag">SNSCE · CST</span>
           </div>
 
           <nav className="mobile-drawer-links" aria-label="Mobile Navigation">
@@ -105,6 +130,42 @@ export default function Navbar() {
             ))}
 
             <div className="mobile-drawer-divider" />
+
+            {/* Mobile Quick Action Buttons: Resume, GitHub, LinkedIn */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', margin: '14px 0' }}>
+              <Link
+                to="/resume"
+                className="btn-primary"
+                onClick={() => setMobileOpen(false)}
+                style={{ justifyContent: 'center' }}
+              >
+                <FileText size={16} />
+                <span>View Full Resume</span>
+              </Link>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                <a
+                  href="https://github.com/pranav-m2006"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary"
+                  style={{ justifyContent: 'center', fontSize: '0.8rem' }}
+                >
+                  <Github size={15} />
+                  <span>GitHub</span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/pranav-m-23153a32b/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary"
+                  style={{ justifyContent: 'center', fontSize: '0.8rem' }}
+                >
+                  <Linkedin size={15} />
+                  <span>LinkedIn</span>
+                </a>
+              </div>
+            </div>
 
             <NavLink
               to="/style-guide"

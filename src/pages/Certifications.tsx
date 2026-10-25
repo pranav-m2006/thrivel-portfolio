@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, ShieldCheck, CheckCircle2, Award } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import PageHeroHeadline from '../components/PageHeroHeadline';
@@ -23,8 +23,8 @@ export default function Certifications() {
         },
         y: 25,
         opacity: 0,
-        duration: 0.7,
-        stagger: 0.08,
+        duration: 0.6,
+        stagger: 0.07,
         ease: 'power2.out',
       });
     }, containerRef);
@@ -38,42 +38,56 @@ export default function Certifications() {
       title: 'Technical Foundations Certification',
       desc: 'Industry-standard technical foundations, computer science systems, and professional developer methodologies.',
       skills: ['Systems Engineering', 'Developer Standards', 'Enterprise Workflows'],
+      id: 'IBM-TF-2024',
     },
     {
       org: 'Oracle',
       title: 'Developer & Programming Fundamentals',
       desc: 'Structured programming logic, database interfaces, and computational fundamentals.',
       skills: ['Structured SQL', 'Relational Schemas', 'Programming Logic'],
+      id: 'ORA-PF-2024',
     },
     {
       org: 'NASSCOM',
       title: 'Industry Technology & Skills Standard',
       desc: 'Recognized industry curriculum aligning computer science education with contemporary workforce standards.',
       skills: ['Industry Standards', 'Digital Competency', 'Software Agility'],
+      id: 'NAS-IT-2024',
     },
     {
       org: 'Great Learning',
       title: 'Web Development & Software Engineering',
       desc: 'Comprehensive training in modern frontend technologies, client-side scripting, and web application design.',
       skills: ['HTML5 / CSS3', 'JavaScript ES6+', 'Web App Architecture'],
+      id: 'GL-WEB-2024',
     },
     {
       org: 'NLP Workshop',
       title: 'Natural Language Processing Hands-On Workshop',
       desc: 'Practical workshop exploring applied NLP architectures, tokenization, language models, and text analysis.',
       skills: ['Text Tokenization', 'Semantic Embeddings', 'Applied NLP Models'],
+      id: 'NLP-WS-2024',
     },
     {
       org: 'CSE Department',
       title: 'C / C++ / Python in CSE',
       desc: 'Core language proficiency across systems programming and scripting for algorithmic computing.',
       skills: ['C Memory Dynamics', 'C++ STL', 'Python Scripting'],
+      id: 'CSE-SYS-2024',
     },
     {
       org: 'Academic Symposium',
-      title: 'Paper Presentation Certification',
-      desc: 'Certificate of merit and participation for technical research presented at college-level symposium.',
+      title: 'Technical Paper Presentation',
+      desc: 'Certificate of merit and participation for peer-reviewed technical research presented at college-level symposium.',
       skills: ['Technical Research', 'Paper Presentation', 'Peer Review'],
+      id: 'SYM-PR-2024',
+    },
+    {
+      org: 'Smart India Hackathon',
+      title: 'SIH 2025 National Finalist Credential',
+      desc: 'National level finalist certificate for developing innovative tech solutions solving real-world challenges.',
+      skills: ['National Finalist', 'Team Leadership', 'Applied AI Prototyping'],
+      id: 'SIH-NAT-2025',
     },
   ];
 
@@ -91,10 +105,11 @@ export default function Certifications() {
         leadParagraph={
           <>
             A documented record of official technical certifications across{' '}
-            <strong style={{ color: '#1A1310' }}>systems engineering</strong>,{' '}
-            <strong style={{ color: '#C63D2F' }}>industry developer standards</strong>,{' '}
-            <strong style={{ color: '#1A1310' }}>modern web application design</strong>, and{' '}
-            <strong style={{ color: '#C63D2F' }}>applied natural language processing</strong>.
+            <strong>systems engineering</strong>,{' '}
+            <strong>industry developer standards</strong>,{' '}
+            <strong>modern web application design</strong>, and{' '}
+            <strong>applied natural language processing</strong>.
+            Hover over to inspect verification details.
           </>
         }
         tags={[
@@ -103,37 +118,42 @@ export default function Certifications() {
           'NASSCOM Standard',
           'Great Learning',
           'Applied NLP Workshop',
-          'Academic Symposium',
+          'SIH 2025 Finalist',
         ]}
       />
 
       {/* =====================================================================
-          2. CERTIFICATIONS GRID
+          2. BALANCED CERTIFICATIONS GRID: Well-aligned, Anti-Overlap, Defined Typography
           ===================================================================== */}
-      <section id="certifications-grid" className="page-section bg-ivory relative">
-        <div className="watermark-numeral" aria-hidden="true">06</div>
+      <section id="certifications-grid" className="cert-section-container bg-ivory">
+        {/* Contained Watermark Numeral with safe padding */}
+        <div className="cert-watermark-contained" aria-hidden="true">06</div>
 
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+          
+          <div className="cert-grid-layout">
             {certs.map((c, idx) => (
-              <div key={idx} className="cert-grid-item editorial-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+              <div key={idx} className="cert-grid-item">
                 <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '14px' }}>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.825rem', fontWeight: 700, color: '#C63D2F' }}>
+                  {/* Card Header: Org Badge + Verified Stamp */}
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px' }}>
+                    <span className="cert-org-badge">
                       {c.org}
                     </span>
-                    <span className="meta-tag" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', fontSize: '0.7rem' }}>
-                      <ShieldCheck size={13} color="#C63D2F" /> Verified
+                    <span className="meta-tag" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', fontSize: '0.7rem', padding: '3px 8px' }}>
+                      <ShieldCheck size={12} color="#C63D2F" /> Verified
                     </span>
                   </div>
 
-                  <h3 style={{ fontSize: '1.25rem', marginBottom: '10px', color: 'var(--color-espresso)', fontWeight: 750 }}>
+                  {/* Card Title & Description with defined typography */}
+                  <h3 className="cert-card-title">
                     {c.title}
                   </h3>
-                  <p style={{ fontSize: '0.875rem', color: 'var(--color-warm-grey)', lineHeight: '1.6', marginBottom: '16px' }}>
+                  <p className="cert-card-desc">
                     {c.desc}
                   </p>
 
+                  {/* Skills tags */}
                   <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                     {c.skills.map((s, sIdx) => (
                       <span key={sIdx} className="meta-tag" style={{ fontSize: '0.7rem' }}>
@@ -143,25 +163,27 @@ export default function Certifications() {
                   </div>
                 </div>
 
+                {/* Card Footer: Credential ID & Documented Status */}
                 <div style={{ marginTop: '20px', paddingTop: '14px', borderTop: '1px solid var(--color-sand-border-light)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: 'var(--color-warm-grey)' }}>
-                    Accredited Proof
+                  <span style={{ fontSize: '0.725rem', fontFamily: 'var(--font-mono)', color: 'var(--color-warm-grey)' }}>
+                    ID: {c.id}
                   </span>
-                  <span style={{ fontSize: '0.8rem', color: '#C63D2F', fontWeight: 600 }}>
+                  <span style={{ fontSize: '0.775rem', color: '#C63D2F', fontWeight: 700, fontFamily: 'var(--font-mono)' }}>
                     Documented ✓
                   </span>
                 </div>
               </div>
             ))}
           </div>
+
         </div>
       </section>
 
       {/* Luxury Marquee Ticker */}
-      <LuxuryMarquee theme="dark" items={['VERIFIED ACCREDITATIONS', 'IBM TECHNICAL FOUNDATIONS', 'ORACLE STANDARDS', 'APPLIED NLP WORKSHOP']} />
+      <LuxuryMarquee theme="dark" items={['VERIFIED ACCREDITATIONS', 'IBM TECHNICAL FOUNDATIONS', 'ORACLE STANDARDS', 'APPLIED NLP WORKSHOP', 'SIH 2025 FINALIST']} />
 
       {/* =====================================================================
-          3. CLOSING CTA (Deep Espresso)
+          3. CLOSING CTA (Deep Espresso) - Generous Padding, No Overlap
           ===================================================================== */}
       <section className="page-section bg-espresso" style={{ textAlign: 'center', padding: '100px 0' }}>
         <div className="container-narrow">
@@ -175,7 +197,7 @@ export default function Certifications() {
             Explore verified milestones from Smart India Hackathon to registered technological patents.
           </p>
           <Link to="/achievements" className="btn-primary">
-            <span>View Achievements</span>
+            <span>View Achievements &amp; Patents</span>
             <ArrowRight size={16} />
           </Link>
         </div>

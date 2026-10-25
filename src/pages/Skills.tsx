@@ -410,9 +410,9 @@ export default function Skills() {
         leadParagraph={
           <>
             A focused grouping of{' '}
-            <strong style={{ color: '#1A1310' }}>core languages</strong>,{' '}
-            <strong style={{ color: '#C63D2F' }}>frontend engineering systems</strong>, and{' '}
-            <strong style={{ color: '#C63D2F' }}>applied machine learning pipelines</strong>{' '}
+            <strong>core languages</strong>,{' '}
+            <strong>frontend engineering systems</strong>, and{' '}
+            <strong>applied machine learning pipelines</strong>{' '}
             — verified through academic coursework, national hackathons, and real software internship systems.
           </>
         }

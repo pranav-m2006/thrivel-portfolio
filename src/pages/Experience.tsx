@@ -47,9 +47,9 @@ export default function Experience() {
         leadParagraph={
           <>
             Hands-on internship experience in web development applying{' '}
-            <strong style={{ color: '#1A1310' }}>foundational frontend technologies</strong>,{' '}
-            <strong style={{ color: '#C63D2F' }}>component architecture</strong>, and{' '}
-            <strong style={{ color: '#C63D2F' }}>collaborative Git code reviews</strong> to real project tasks and usability refinements.
+            <strong>foundational frontend technologies</strong>,{' '}
+            <strong>component architecture</strong>, and{' '}
+            <strong>collaborative Git code reviews</strong> to real project tasks and usability refinements.
           </>
         }
         tags={[

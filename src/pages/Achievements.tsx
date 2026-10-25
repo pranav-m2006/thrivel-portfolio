@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Trophy, Award, Flame, FileText, Zap } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { StorytellingHeading, StorytellingWords } from '../components/StorytellingText';
+import PageHeroHeadline from '../components/PageHeroHeadline';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,23 +12,6 @@ export default function Achievements() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.to('.achieve-hero-title .line-reveal', {
-        y: 0,
-        opacity: 1,
-        duration: 0.9,
-        stagger: 0.15,
-        ease: 'power3.out',
-      });
-
-      gsap.to('.achieve-hero-lead .word-reveal', {
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        stagger: 0.02,
-        ease: 'power2.out',
-        delay: 0.3,
-      });
-
       gsap.utils.toArray<HTMLElement>('.achieve-card-item').forEach((card) => {
         gsap.from(card, {
           scrollTrigger: {
@@ -48,26 +31,32 @@ export default function Achievements() {
 
   return (
     <div ref={containerRef} className="page-wrapper">
-      {/* 1. HERO */}
-      <section className="page-hero bg-ivory">
-        <div className="container">
-          <div className="editorial-eyebrow">Milestones & Validation</div>
-          <StorytellingHeading
-            lines={['Progress is built', 'one step at a time.']}
-            className="editorial-h1 achieve-hero-title"
-            tag="h1"
-          />
-          <div className="achieve-hero-lead">
-            <StorytellingWords
-              text="A factual record of national hackathon participation, certified product patents, competitive programming consistency, and technical paper research."
-              accentWords={['national', 'hackathon', 'certified', 'product', 'patents,', 'consistency,', 'research']}
-            />
-          </div>
-        </div>
-      </section>
+      {/* 1. HERO: Big Bold Black-to-Red Interactive Transition Heading */}
+      <PageHeroHeadline
+        eyebrow="07 / MILESTONES & VALIDATION"
+        blackText="Progress is built"
+        accentText="one step at a time."
+        arrowHref="#achievements-list"
+        leadParagraph={
+          <>
+            A documented record of national hackathon participation as a{' '}
+            <strong>Smart India Hackathon 2025 finalist</strong>,{' '}
+            <strong>2 certified product patents</strong> officially registered,{' '}
+            <strong>150+ LeetCode problems</strong> with an active 100-day streak, and{' '}
+            <strong>academic symposium research presentation</strong>.
+          </>
+        }
+        tags={[
+          'SIH 2025 Finalist',
+          '2 Certified Patents',
+          '150+ LeetCode (100-Day Streak)',
+          'Academic Symposium Paper',
+          'SNSCE · Coimbatore',
+        ]}
+      />
 
       {/* 2. ACHIEVEMENTS LIST */}
-      <section className="page-section bg-ivory">
+      <section id="achievements-list" className="page-section bg-ivory">
         <div className="container-narrow">
           
           <div style={{ marginBottom: '48px' }}>
