@@ -175,10 +175,6 @@ export default function Navbar() {
               <span>Design System Spec (/style-guide)</span>
             </NavLink>
           </nav>
-
-          <div className="mobile-drawer-footer">
-            <p className="mobile-drawer-copy">© {new Date().getFullYear()} Pranav M. Thoughtful Engineering.</p>
-          </div>
         </div>
       </div>
     </>
