@@ -68,6 +68,28 @@ export default function Projects() {
         ]}
       />
 
+      {/* Prominent Direct Access Bar: Explore Git Source Code */}
+      <section className="bg-ivory" style={{ padding: '0 0 32px' }}>
+        <div className="container">
+          <div className="projects-hero-git-banner">
+            <a
+              href="https://github.com/pranav-m2006"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-explore-git-primary"
+              aria-label="Explore All Git Source Code on GitHub (opens in new tab)"
+            >
+              <Github size={18} />
+              <span>Explore All Git Source Code on GitHub</span>
+              <ArrowUpRight size={16} />
+            </a>
+            <span className="projects-hero-git-hint">
+              3 Production Systems · Verified Public Repositories · Clean Commit History
+            </span>
+          </div>
+        </div>
+      </section>
+
       {/* =====================================================================
           2. CHAPTER 01 — DISASTER MANAGEMENT SYSTEM
           ===================================================================== */}
@@ -89,18 +111,18 @@ export default function Projects() {
                 </div>
               </div>
 
-              {/* Dual Action Links: Repository + Live Demo */}
+              {/* Dual Action Links: Explore Git Source Code + Live Demo */}
               <div className="project-dual-actions">
                 <a
                   href="https://github.com/pranav-m2006"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-secondary"
-                  aria-label="View Disaster Management System on GitHub (opens in new tab)"
+                  className="btn-git-source"
+                  aria-label="Explore Git Source Code for Disaster Management System (opens in new tab)"
                 >
                   <Github size={16} />
-                  <span>Repository</span>
-                  <ArrowUpRight size={13} />
+                  <span>Explore Git Source Code</span>
+                  <ArrowUpRight size={14} />
                 </a>
                 <a
                   href="https://github.com/pranav-m2006"
@@ -305,12 +327,12 @@ export default function Projects() {
                   href="https://github.com/pranav-m2006"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-secondary"
-                  aria-label="View Learning Zone on GitHub (opens in new tab)"
+                  className="btn-git-source"
+                  aria-label="Explore Git Source Code for Learning Zone (opens in new tab)"
                 >
                   <Github size={16} />
-                  <span>Repository</span>
-                  <ArrowUpRight size={13} />
+                  <span>Explore Git Source Code</span>
+                  <ArrowUpRight size={14} />
                 </a>
                 <a
                   href="https://github.com/pranav-m2006"
@@ -513,12 +535,12 @@ export default function Projects() {
                   href="https://github.com/pranav-m2006"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-secondary"
-                  aria-label="View Finance Tracker on GitHub (opens in new tab)"
+                  className="btn-git-source"
+                  aria-label="Explore Git Source Code for Finance Tracker (opens in new tab)"
                 >
                   <Github size={16} />
-                  <span>Repository</span>
-                  <ArrowUpRight size={13} />
+                  <span>Explore Git Source Code</span>
+                  <ArrowUpRight size={14} />
                 </a>
                 <a
                   href="https://github.com/pranav-m2006"
@@ -711,12 +733,12 @@ export default function Projects() {
                 href="https://github.com/pranav-m2006" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="btn-primary" 
-                style={{ backgroundColor: '#FBF7F0', color: '#5A2A20' }}
+                className="btn-deep-github-cta"
+                aria-label="Explore Source Code on GitHub"
               >
-                <Github size={16} />
+                <Github size={18} />
                 <span>Explore Source Code on GitHub</span>
-                <ArrowUpRight size={14} />
+                <ArrowUpRight size={16} />
               </a>
               <Link to="/skills" className="btn-secondary" style={{ backgroundColor: 'rgba(251, 247, 240, 0.15)', color: '#FFFFFF', borderColor: 'rgba(251, 247, 240, 0.3)' }}>
                 <span>Inspect Technical Skills</span>

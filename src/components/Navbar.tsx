@@ -177,8 +177,7 @@ export default function Navbar() {
           </nav>
 
           <div className="mobile-drawer-footer">
-            <p className="mobile-contact-line">pranav.m.cst.2024@snsce.ac.in</p>
-            <p className="mobile-loc-line">Coimbatore, Tamil Nadu</p>
+            <p className="mobile-drawer-copy">© {new Date().getFullYear()} Pranav M. Thoughtful Engineering.</p>
           </div>
         </div>
       </div>

@@ -29,9 +29,39 @@ export default function Home() {
     if (!scene || isReduced) return;
 
     const ctx = gsap.context(() => {
+      // 1. ScrollTrigger for Hero Profile Portrait & Narrative Description
+      const heroTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.home-hero-section',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 0.8,
+        },
+      });
+
+      // Profile Portrait: smooth cinematic parallax descent & depth scale
+      heroTl.to('.home-hero-portrait-col', {
+        y: 65,
+        scale: 0.96,
+        opacity: 0.88,
+        ease: 'none',
+      }, 0);
+
+      // Description & Bio: responsive upward lift reacting to scroll
+      heroTl.to('.home-hero-bio', {
+        y: -30,
+        opacity: 0.88,
+        ease: 'none',
+      }, 0);
+
+      heroTl.to('.home-hero-actions', {
+        y: -18,
+        ease: 'none',
+      }, 0);
+
       const stepPanels = gsap.utils.toArray<HTMLElement>('.story-step-card');
 
-      // Pinned Multi-Step Scroll Timeline
+      // 2. Pinned Multi-Step Scroll Timeline
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: scene,
@@ -90,7 +120,7 @@ export default function Home() {
     <div ref={containerRef} className="page-wrapper home-page-container">
       
       {/* =====================================================================
-          1. HERO SECTION (Name, Role, Catchy Line, Authentic Portrait)
+          1. HERO SECTION (Interactive Black-to-Red Heading, Authentic Portrait, ScrollTrigger)
           ===================================================================== */}
       <section className="home-hero-section bg-ivory">
         <div className="container">
@@ -98,23 +128,42 @@ export default function Home() {
             
             {/* Left Column: Typographic Narrative */}
             <div className="home-hero-narrative">
-              <h1 className="editorial-h1" style={{ maxWidth: '640px' }}>
-                <SplitReveal>Calm interfaces.</SplitReveal>
-                <SplitReveal delay={0.15}>Intelligent ideas.</SplitReveal>
-              </h1>
-
-              <div className="home-hero-subline" style={{ maxWidth: '580px' }}>
-                <SplitReveal as="p" delay={0.25} className="editorial-lead">
-                  I build the part of the web you actually touch.
-                </SplitReveal>
+              
+              {/* Interactive Status Pill */}
+              <div className="hero-status-pill">
+                <span className="status-indicator-dot" />
+                <span>Frontend Engineering × Applied AI · SNSCE</span>
               </div>
 
-              <p className="home-hero-bio">
-                Pranav M — Frontend Developer and AI/ML practitioner based in Coimbatore, Tamil Nadu.
-                Undergraduate in Computer Science &amp; Technology at SNS College of Engineering (2024–2028).
-                Crafting calm, responsive interfaces with HTML, CSS, JavaScript, and React.js,
-                introducing practical machine learning where it genuinely serves a purpose.
-              </p>
+              {/* Big Bold Black-to-Red Interactive Headline */}
+              <div className="page-hero-heading-track">
+                <a
+                  href="#story-pin"
+                  className="page-hero-interactive-heading"
+                  title="Scroll to explore: Calm interfaces. Intelligent ideas."
+                >
+                  <span className="page-hero-word-black">Calm interfaces.</span>
+                  {' '}
+                  <span className="page-hero-word-accent">Intelligent ideas.</span>
+                  <span className="page-hero-arrow" aria-hidden="true">→</span>
+                </a>
+              </div>
+
+              <div className="home-hero-subline" style={{ maxWidth: '580px' }}>
+                <p className="editorial-lead" style={{ margin: 0, fontStyle: 'italic' }}>
+                  “I build the part of the web you actually touch.”
+                </p>
+              </div>
+
+              {/* Interactive Description: Black in default state -> Completely Red on Cursor Hover */}
+              <div className="page-hero-lead-box">
+                <p className="page-hero-lead-text home-hero-bio">
+                  Pranav M — Frontend Developer and AI/ML practitioner.
+                  Undergraduate in Computer Science &amp; Technology at SNS College of Engineering (2024–2028).
+                  Crafting calm, responsive interfaces with HTML, CSS, JavaScript, and React.js,
+                  introducing practical machine learning where it genuinely serves a purpose.
+                </p>
+              </div>
 
               {/* Action Links & Verified Profiles */}
               <div className="home-hero-actions">
@@ -153,15 +202,25 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right Column: Architectural Arch Portrait Frame */}
+            {/* Right Column: Architectural Arch Portrait Frame with Floating Badges */}
             <div className="home-hero-portrait-col">
-              <ArchFrame
-                imageSrc="/images/pranav.jpg"
-                altText="Pranav M — Frontend Developer and AI/ML Practitioner sitting with laptop"
-                caption="Pranav M — Student & Developer"
-                badgeText="SNSCE · Coimbatore"
-                enableParallax={true}
-              />
+              <div className="hero-portrait-interactive-wrap">
+                <div className="hero-floating-badge hero-badge-1">
+                  <span>🔥</span>
+                  <span>100-Day Streak · 150+ LeetCode</span>
+                </div>
+                <div className="hero-floating-badge hero-badge-2">
+                  <span>🏆</span>
+                  <span>SIH '25 Finalist · 2 Patents</span>
+                </div>
+                <ArchFrame
+                  imageSrc="/images/pranav.jpg"
+                  altText="Pranav M — Frontend Developer and AI/ML Practitioner sitting with laptop"
+                  caption="Pranav M — Student & Developer"
+                  badgeText="Frontend × AI/ML"
+                  enableParallax={true}
+                />
+              </div>
             </div>
 
           </div>

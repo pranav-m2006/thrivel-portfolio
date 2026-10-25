@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 
 export interface PageHeroHeadlineProps {
-  eyebrow: string;
+  eyebrow?: string;
   blackText: string;
   accentText?: string;
   arrowHref?: string;
@@ -27,13 +27,6 @@ export default function PageHeroHeadline({
     if (mediaQuery.matches) return;
 
     const ctx = gsap.context(() => {
-      gsap.from('.page-hero-eyebrow-stamp', {
-        opacity: 0,
-        y: 12,
-        duration: 0.5,
-        ease: 'power2.out',
-      });
-
       gsap.from('.page-hero-interactive-heading', {
         opacity: 0,
         y: 28,
@@ -68,11 +61,6 @@ export default function PageHeroHeadline({
   return (
     <section className="page-hero bg-ivory" ref={containerRef} id={id}>
       <div className="container">
-        
-        {/* Editorial Eyebrow Stamp */}
-        <div className="page-hero-eyebrow-stamp">
-          <span className="editorial-stamp">{eyebrow}</span>
-        </div>
 
         {/* Big Bold Black-to-Red Interactive Heading */}
         <div className="page-hero-heading-track">

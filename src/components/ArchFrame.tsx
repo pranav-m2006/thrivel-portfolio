@@ -82,7 +82,7 @@ export default function ArchFrame({
             <div className="arch-fallback-silhouette">
               <div className="arch-monogram">PM</div>
               <p className="arch-fallback-name">Pranav M</p>
-              <span className="arch-fallback-sub">Coimbatore, Tamil Nadu</span>
+              <span className="arch-fallback-sub">Frontend Developer &amp; AI/ML</span>
             </div>
           )}
         </div>
