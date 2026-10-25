@@ -5,7 +5,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLenisScroll } from '../hooks/useLenisScroll';
 import ArchFrame from '../components/ArchFrame';
-import Architectural3DModel from '../components/Architectural3DModel';
 import StepCounter from '../components/StepCounter';
 import SplitReveal from '../components/SplitReveal';
 import MagneticButton from '../components/MagneticButton';
@@ -20,7 +19,6 @@ export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
   const storySceneRef = useRef<HTMLDivElement>(null);
   const [currentStep, setCurrentStep] = useState(1);
-  const [heroVisualMode, setHeroVisualMode] = useState<'3d' | 'portrait'>('3d');
 
   useEffect(() => {
     // Respect reduced motion
@@ -100,39 +98,23 @@ export default function Home() {
             
             {/* Left Column: Typographic Narrative */}
             <div className="home-hero-narrative">
-              <div className="page-hero-eyebrow-stamp">
-                <span className="editorial-stamp">01 / FRONTEND CRAFT &amp; APPLIED AI</span>
+              <h1 className="editorial-h1" style={{ maxWidth: '640px' }}>
+                <SplitReveal>Calm interfaces.</SplitReveal>
+                <SplitReveal delay={0.15}>Intelligent ideas.</SplitReveal>
+              </h1>
+
+              <div className="home-hero-subline" style={{ maxWidth: '580px' }}>
+                <SplitReveal as="p" delay={0.25} className="editorial-lead">
+                  I build the part of the web you actually touch.
+                </SplitReveal>
               </div>
 
-              {/* Big Bold Black-to-Red Interactive Combo Heading */}
-              <div className="page-hero-heading-track">
-                <a
-                  href="#story-pin"
-                  className="page-hero-interactive-heading"
-                  title="Scroll to explore: Calm interfaces. Intelligent ideas."
-                >
-                  <span className="page-hero-word-black">Calm interfaces.</span>
-                  {' '}
-                  <span className="page-hero-word-accent">Intelligent ideas.</span>
-                  <span className="page-hero-arrow" aria-hidden="true">→</span>
-                </a>
-              </div>
-
-              <div className="home-hero-subline" style={{ maxWidth: '620px', marginBottom: '14px' }}>
-                <p style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', color: '#1A1310', fontStyle: 'italic', margin: 0 }}>
-                  “I build the part of the web you actually touch.”
-                </p>
-              </div>
-
-              {/* Page Top Description: Black in default -> Completely Red on Cursor Hover */}
-              <div className="page-hero-lead-box">
-                <p className="page-hero-lead-text home-hero-bio">
-                  Pranav M — Frontend Developer and AI/ML practitioner based in Coimbatore, Tamil Nadu.
-                  Undergraduate in Computer Science &amp; Technology at <strong>SNS College of Engineering</strong> (2024–2028).
-                  Crafting calm, responsive interfaces with HTML, CSS, JavaScript, and React.js,
-                  introducing practical machine learning where it genuinely serves a purpose.
-                </p>
-              </div>
+              <p className="home-hero-bio">
+                Pranav M — Frontend Developer and AI/ML practitioner based in Coimbatore, Tamil Nadu.
+                Undergraduate in Computer Science &amp; Technology at SNS College of Engineering (2024–2028).
+                Crafting calm, responsive interfaces with HTML, CSS, JavaScript, and React.js,
+                introducing practical machine learning where it genuinely serves a purpose.
+              </p>
 
               {/* Action Links & Verified Profiles */}
               <div className="home-hero-actions">
@@ -143,7 +125,6 @@ export default function Home() {
 
                 <MagneticButton as="a" href="/resume" className="btn-secondary">
                   <span>View Resume</span>
-                  <ArrowUpRight size={14} />
                 </MagneticButton>
               </div>
 
@@ -172,55 +153,15 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right Column: Interactive 3D Model / Authentic Portrait Switcher */}
+            {/* Right Column: Architectural Arch Portrait Frame */}
             <div className="home-hero-portrait-col">
-              <div className="hero-visual-card">
-                {/* Visual View Switcher */}
-                <div className="hero-view-switch-bar">
-                  <button
-                    type="button"
-                    className={`hero-switch-btn ${heroVisualMode === '3d' ? 'is-active' : ''}`}
-                    onClick={() => setHeroVisualMode('3d')}
-                    title="Interactive Three.js / GSAP 3D Architectural Pavilion"
-                  >
-                    <span>🏛️ 3D Model</span>
-                  </button>
-                  <button
-                    type="button"
-                    className={`hero-switch-btn ${heroVisualMode === 'portrait' ? 'is-active' : ''}`}
-                    onClick={() => setHeroVisualMode('portrait')}
-                    title="Authentic Personal Portrait"
-                  >
-                    <span>👤 Portrait</span>
-                  </button>
-                </div>
-
-                {/* Floating GSAP Telemetry Badges */}
-                <div className="hero-floating-badge hero-badge-1">
-                  <span style={{ color: '#C63D2F' }}>🔥</span>
-                  <span>100-Day Streak · 150+ LeetCode</span>
-                </div>
-
-                <div className="hero-floating-badge hero-badge-2">
-                  <span style={{ color: '#C63D2F' }}>🏆</span>
-                  <span>SIH '25 Finalist · 2 Patents</span>
-                </div>
-
-                {/* Conditional Rendering between 3D Model and ArchFrame */}
-                {heroVisualMode === '3d' ? (
-                  <div style={{ height: '480px', width: '100%', position: 'relative' }}>
-                    <Architectural3DModel scrollProgress={0.1} />
-                  </div>
-                ) : (
-                  <ArchFrame
-                    imageSrc="/images/pranav.jpg"
-                    altText="Pranav M — Frontend Developer and AI/ML Practitioner sitting with laptop"
-                    caption="Pranav M — Student & Developer"
-                    badgeText="SNSCE · Coimbatore"
-                    enableParallax={true}
-                  />
-                )}
-              </div>
+              <ArchFrame
+                imageSrc="/images/pranav.jpg"
+                altText="Pranav M — Frontend Developer and AI/ML Practitioner sitting with laptop"
+                caption="Pranav M — Student & Developer"
+                badgeText="SNSCE · Coimbatore"
+                enableParallax={true}
+              />
             </div>
 
           </div>
