@@ -1,9 +1,11 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Trophy, Award, Flame, FileText, Zap } from 'lucide-react';
+import { ArrowRight, Trophy, Award, Flame, FileText, Zap, Check, X } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import PageHeroHeadline from '../components/PageHeroHeadline';
+import LuxuryMarquee from '../components/LuxuryMarquee';
+import DarkExplanationSection from '../components/DarkExplanationSection';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -53,6 +55,80 @@ export default function Achievements() {
           'Academic Symposium Paper',
           'SNSCE · Coimbatore',
         ]}
+      />
+
+      {/* Continuous Moving Horizontal Bar */}
+      <LuxuryMarquee
+        theme="dark"
+        items={[
+          'SMART INDIA HACKATHON FINALIST',
+          '2 REGISTERED PRODUCT PATENTS',
+          '150+ LEETCODE PROBLEMS',
+          '100-DAY ACTIVE STREAK',
+          'ACADEMIC SYMPOSIUM RESEARCH',
+          'VERIFIED CREDENTIALS',
+        ]}
+      />
+
+      {/* Dark Theme Explanation Section: Milestone Validation & Independent Proof */}
+      <DarkExplanationSection
+        badge="VALIDATION & INTEGRITY"
+        title="Proof Over Claims."
+        quote="“Real milestones are measured by independent national juries, government patent registries, and public algorithmic platforms.”"
+        leftColumn={{
+          title: 'WHAT DOES NOT COUNT AS PROOF',
+          pillText: 'REJECTED',
+          variant: 'blocked',
+          items: [
+            {
+              title: 'Self-appointed vanity titles',
+              desc: 'Reject grand labels like "Founder" or "Lead Architect" without demonstrable real users or production systems.',
+              icon: <X size={15} strokeWidth={2.8} />,
+            },
+            {
+              title: 'Invented traffic or revenue metrics',
+              desc: 'Refuse claiming millions in client impact or hypothetical stats with zero independent audit trails.',
+              icon: <X size={15} strokeWidth={2.8} />,
+            },
+            {
+              title: 'Superficial participation certificates',
+              desc: 'Reject low-effort online quizzes that issue completion badges without evaluating real engineering depth.',
+              icon: <X size={15} strokeWidth={2.8} />,
+            },
+            {
+              title: 'Sporadic bursts & ghost activity',
+              desc: 'Reject one-off coding sprints followed by months of silence; prioritize daily steady showing up.',
+              icon: <X size={15} strokeWidth={2.8} />,
+            },
+          ],
+        }}
+        rightColumn={{
+          title: 'VERIFIED MILESTONE DELIVERABLES',
+          pillText: 'VERIFIED',
+          variant: 'verified',
+          items: [
+            {
+              title: 'Smart India Hackathon 2025 Finalist',
+              desc: 'Selected as national finalist in India’s premier government-sponsored technology hackathon.',
+              icon: <Check size={15} strokeWidth={2.8} />,
+            },
+            {
+              title: '2 Registered Product Patents',
+              desc: 'Official intellectual property registration as co-inventor for hardware-software solutions.',
+              icon: <Check size={15} strokeWidth={2.8} />,
+            },
+            {
+              title: '150+ LeetCode with 100-Day Streak',
+              desc: 'Public algorithmic verification with unbroken consecutive daily discipline in Java and C++.',
+              icon: <Check size={15} strokeWidth={2.8} />,
+            },
+            {
+              title: 'Symposium Technical Paper Presentation',
+              desc: 'Peer-reviewed academic research presented before university evaluation panels in Coimbatore.',
+              icon: <Check size={15} strokeWidth={2.8} />,
+            },
+          ],
+        }}
       />
 
       {/* 2. ACHIEVEMENTS LIST */}

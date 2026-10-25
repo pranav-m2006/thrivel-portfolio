@@ -1,10 +1,11 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Briefcase, GraduationCap, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Briefcase, GraduationCap, CheckCircle2, Check, X } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import PageHeroHeadline from '../components/PageHeroHeadline';
 import LuxuryMarquee from '../components/LuxuryMarquee';
+import DarkExplanationSection from '../components/DarkExplanationSection';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -59,6 +60,81 @@ export default function Experience() {
           'HTML5 / CSS3 / JavaScript',
           'Component Debugging',
         ]}
+      />
+
+      {/* Continuous Moving Horizontal Bar */}
+      <LuxuryMarquee
+        theme="dark"
+        items={[
+          'INDUSTRY INTERNSHIPS',
+          'FRONTEND ARCHITECTURE',
+          'GIT & GITHUB COLLABORATION',
+          'CODE REVIEW DISCIPLINE',
+          'USABILITY REFINEMENT',
+          'CONTINUOUS EXECUTION',
+          'SNS COLLEGE OF ENGINEERING',
+        ]}
+      />
+
+      {/* Dark Theme Explanation Section: Workplace Standards & Collaboration Integrity */}
+      <DarkExplanationSection
+        badge="WORKPLACE STANDARDS & INTEGRITY"
+        title="What I Bring to Engineering Teams."
+        quote="“Showing up with curiosity, taking full responsibility for assigned tickets, and communicating clearly across pull requests.”"
+        leftColumn={{
+          title: 'TEAMWORK & COLLABORATIVE BOUNDARIES',
+          pillText: 'DISCIPLINE',
+          variant: 'blocked',
+          items: [
+            {
+              title: 'Silent assumptions & scope creep',
+              desc: 'Refuse guessing requirements silently; ask clarifying questions early to prevent wasted sprint cycles.',
+              icon: <X size={15} strokeWidth={2.8} />,
+            },
+            {
+              title: 'Monolithic messy pull requests',
+              desc: 'Refuse multi-thousand-line PRs; structure commits with atomic, bisectable, and documented intent.',
+              icon: <X size={15} strokeWidth={2.8} />,
+            },
+            {
+              title: 'Skipping cross-browser checks',
+              desc: 'Refuse testing on only one viewport; verify across Chrome, Firefox, Safari, and mobile breakpoints.',
+              icon: <X size={15} strokeWidth={2.8} />,
+            },
+            {
+              title: 'Defensiveness during review',
+              desc: 'Welcome peer feedback, code reviews, and critiques as the fastest mechanism for engineering growth.',
+              icon: <X size={15} strokeWidth={2.8} />,
+            },
+          ],
+        }}
+        rightColumn={{
+          title: 'VERIFIED INTERNSHIP DELIVERABLES',
+          pillText: 'VERIFIED',
+          variant: 'verified',
+          items: [
+            {
+              title: 'CodSoft Web Development Internship',
+              desc: 'Engineered responsive layouts, resolved cross-device bugs, and honed vanilla CSS & JavaScript craft.',
+              icon: <Check size={15} strokeWidth={2.8} />,
+            },
+            {
+              title: 'InternPe Software Engineering Internship',
+              desc: 'Delivered frontend features under agile sprints and maintained collaborative Git version control.',
+              icon: <Check size={15} strokeWidth={2.8} />,
+            },
+            {
+              title: 'Clean Pull Request Hygiene',
+              desc: 'Practiced daily branching, clear PR descriptions, descriptive commit logs, and clean squash-merge workflows.',
+              icon: <Check size={15} strokeWidth={2.8} />,
+            },
+            {
+              title: 'Academic Research Collaboration',
+              desc: 'Co-authored research presented at technical symposium with university faculty peer reviews.',
+              icon: <Check size={15} strokeWidth={2.8} />,
+            },
+          ],
+        }}
       />
 
       {/* =====================================================================

@@ -1,11 +1,12 @@
 import React, { useLayoutEffect, useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowLeft, Code, Layout, Cpu, Database, GitBranch, Layers, Sparkles, CheckCircle2, ShieldCheck, Terminal, Compass, Zap } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Code, Layout, Cpu, Database, GitBranch, Layers, Sparkles, CheckCircle2, ShieldCheck, Terminal, Compass, Zap, Check, X } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import PageHeroHeadline from '../components/PageHeroHeadline';
 import LuxuryMarquee from '../components/LuxuryMarquee';
 import ProcessLifecycle from '../components/ProcessLifecycle';
+import DarkExplanationSection from '../components/DarkExplanationSection';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -423,6 +424,81 @@ export default function Skills() {
           'SIH 2025 National Finalist',
           'React.js & Vanilla CSS Craft',
         ]}
+      />
+
+      {/* Continuous Moving Horizontal Bar */}
+      <LuxuryMarquee
+        theme="dark"
+        items={[
+          'COMPUTATIONAL RIGOR',
+          'OBJECT-ORIENTED ARCHITECTURE',
+          'FRONTEND FIDELITY',
+          'DATA STRUCTURES & ALGORITHMS',
+          'ASYNCHRONOUS EVENT LOOP',
+          'MACHINE LEARNING PIPELINES',
+          '150+ LEETCODE SOLVED',
+        ]}
+      />
+
+      {/* Dark Theme Explanation Section: Technical Methodology & Computational Rigor */}
+      <DarkExplanationSection
+        badge="TECHNICAL METHODOLOGY & RIGOR"
+        title="How I Master Technical Systems."
+        quote="“Languages and frameworks change rapidly. Algorithmic fundamentals, memory awareness, and architectural discipline remain constant.”"
+        leftColumn={{
+          title: 'CORE TECHNICAL BOUNDARIES',
+          pillText: 'DISCIPLINE',
+          variant: 'blocked',
+          items: [
+            {
+              title: 'Memory awareness & pointers',
+              desc: 'Refuse treating compute resources as infinite; understand stack vs heap allocation in C and C++.',
+              icon: <X size={15} strokeWidth={2.8} />,
+            },
+            {
+              title: 'Asynchronous event loop comprehension',
+              desc: 'Refuse copying async/await snippets without deep awareness of macro-tasks, micro-tasks, and call stacks.',
+              icon: <X size={15} strokeWidth={2.8} />,
+            },
+            {
+              title: 'Typed data boundaries',
+              desc: 'Enforce clean interfaces and robust type boundaries to eliminate runtime undefined errors.',
+              icon: <X size={15} strokeWidth={2.8} />,
+            },
+            {
+              title: 'Algorithmic optimization O(N log N)',
+              desc: 'Analyze time and space complexity before committing any sorting, searching, or recursion routines.',
+              icon: <X size={15} strokeWidth={2.8} />,
+            },
+          ],
+        }}
+        rightColumn={{
+          title: 'DEMONSTRABLE PROOF & EXECUTION',
+          pillText: 'VERIFIED',
+          variant: 'verified',
+          items: [
+            {
+              title: '150+ LeetCode Solutions',
+              desc: '100-day active streak solving algorithmic challenges across Java, C++, and Python.',
+              icon: <Check size={15} strokeWidth={2.8} />,
+            },
+            {
+              title: '2 Registered Product Patents',
+              desc: 'Co-invented hardware-software integrated systems with certified intellectual property documentation.',
+              icon: <Check size={15} strokeWidth={2.8} />,
+            },
+            {
+              title: 'Smart India Hackathon Finalist',
+              desc: 'Competed in SIH 2025 at the national level developing predictive meteorological solutions.',
+              icon: <Check size={15} strokeWidth={2.8} />,
+            },
+            {
+              title: 'Production Internship Systems',
+              desc: 'Shipped modular components and responsive features during internships at CodSoft and InternPe.',
+              icon: <Check size={15} strokeWidth={2.8} />,
+            },
+          ],
+        }}
       />
 
       {/* =====================================================================

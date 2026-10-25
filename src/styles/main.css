@@ -2465,6 +2465,12 @@
    Signature interactive heading replicated across all portfolio pages
    ========================================================================== */
 
+.page-hero {
+  padding: clamp(64px, 8vw, 84px) 0 clamp(40px, 5vw, 54px);
+  position: relative;
+  width: 100%;
+}
+
 .page-hero-eyebrow-stamp {
   display: none !important;
 }

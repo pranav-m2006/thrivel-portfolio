@@ -1,7 +1,9 @@
 import React, { useState, useLayoutEffect, useRef } from 'react';
-import { Mail, Phone, MapPin, Github, Linkedin, Copy, Check, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, Copy, Check, ArrowUpRight, X } from 'lucide-react';
 import gsap from 'gsap';
 import PageHeroHeadline from '../components/PageHeroHeadline';
+import LuxuryMarquee from '../components/LuxuryMarquee';
+import DarkExplanationSection from '../components/DarkExplanationSection';
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
@@ -52,7 +54,72 @@ export default function Contact() {
         ]}
       />
 
-      {/* 2. DIRECT CONTACT METHODS */}
+      {/* 2. CONTINUOUS LUXURY MARQUEE */}
+      <LuxuryMarquee
+        theme="dark"
+        items={[
+          'OPEN FOR INTERNSHIPS',
+          'COIMBATORE TAMIL NADU',
+          'FRONTEND ENGINEERING',
+          'APPLIED AI COLLABORATION',
+          'VERIFIED GITHUB',
+          'ACTIVE LINKEDIN',
+          'DIRECT INQUIRIES WELCOME',
+        ]}
+      />
+
+      {/* 3. DARK THEME EXPLANATION SECTION */}
+      <DarkExplanationSection
+        badge="COMMUNICATION PROTOCOL & RIGOR"
+        title="Direct, Candid & High-Signal Communication."
+        quote="“Clear expectations, prompt turnaround, and high-integrity collaboration without unnecessary meetings or bureaucracy.”"
+        leftColumn={{
+          title: 'COMMUNICATION BOUNDARIES',
+          pillText: 'UNSUITABLE',
+          variant: 'blocked',
+          items: [
+            {
+              title: 'Unstructured Mass Inquiries',
+              desc: 'Generic solicitations, marketing blasts, or automated recruiter spam without relevant context.',
+              icon: <X size={15} color="#e05244" />,
+            },
+            {
+              title: 'Uncompensated Speculative Work',
+              desc: 'Requests for free proprietary architecture, unpaid test projects, or unaligned design sprints.',
+              icon: <X size={15} color="#e05244" />,
+            },
+            {
+              title: 'Vague Briefs & Ghosting',
+              desc: 'Projects lacking defined scope, decision-maker presence, or transparent accountability.',
+              icon: <X size={15} color="#e05244" />,
+            },
+          ],
+        }}
+        rightColumn={{
+          title: 'COLLABORATIONS I WELCOME',
+          pillText: 'PRIORITY',
+          variant: 'verified',
+          items: [
+            {
+              title: 'Engineering Internships & Roles',
+              desc: 'Frontend development, React/TypeScript architecture, web performance, and applied AI systems.',
+              icon: <Check size={15} color="#4ade80" />,
+            },
+            {
+              title: 'Applied Research & Open-Source',
+              desc: 'Collaborative systems, real-time analytics, and open-source contributions with clear milestones.',
+              icon: <Check size={15} color="#4ade80" />,
+            },
+            {
+              title: 'Direct Technical Discussions',
+              desc: 'Deep dives on distributed systems, modern web ergonomics, and questions on published repos.',
+              icon: <Check size={15} color="#4ade80" />,
+            },
+          ],
+        }}
+      />
+
+      {/* 4. DIRECT CONTACT METHODS */}
       <section id="direct-channels" className="page-section bg-ivory">
         <div className="container-narrow">
           

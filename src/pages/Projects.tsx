@@ -1,11 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowUpRight, Github, ShieldCheck, Compass, Layers, Terminal, Sparkles, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Github, ShieldCheck, Compass, Layers, Terminal, Sparkles, CheckCircle2, Check, X } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLenisScroll } from '../hooks/useLenisScroll';
 import PageHeroHeadline from '../components/PageHeroHeadline';
 import LuxuryMarquee from '../components/LuxuryMarquee';
+import DarkExplanationSection from '../components/DarkExplanationSection';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -89,6 +90,81 @@ export default function Projects() {
           </div>
         </div>
       </section>
+
+      {/* Continuous Moving Horizontal Bar */}
+      <LuxuryMarquee
+        theme="dark"
+        items={[
+          'DISASTER MITIGATION AI',
+          'STUDENT VERIFICATION PORTAL',
+          'PERSONAL FINANCE TRACKER',
+          'CLIENT-SIDE CSV PRIVACY',
+          'METEOROLOGICAL PREDICTION',
+          'REACT ARCHITECTURE',
+          'VERIFIED GITHUB COMMITS',
+        ]}
+      />
+
+      {/* Dark Theme Explanation Section: Systems Architecture & Production Standards */}
+      <DarkExplanationSection
+        badge="SYSTEMS ARCHITECTURE & CRAFT"
+        title="How I Build Production Software."
+        quote="“Software is not finished when it compiles on localhost. It is finished when it handles edge cases, protects user privacy, and stays fast under pressure.”"
+        leftColumn={{
+          title: 'CORE ARCHITECTURAL BOUNDARIES',
+          pillText: 'REFUSE TO SHIP',
+          variant: 'blocked',
+          items: [
+            {
+              title: 'Slow interfaces & layout shifts',
+              desc: 'Refuse unoptimized asset payloads and bloated script chains exceeding sub-second LCP budgets.',
+              icon: <X size={15} strokeWidth={2.8} />,
+            },
+            {
+              title: 'Fragile monolithic state',
+              desc: 'Reject spaghetti state mutations; enforce deterministic component isolation and strict typing.',
+              icon: <X size={15} strokeWidth={2.8} />,
+            },
+            {
+              title: 'Superficial AI buzzwords',
+              desc: 'Reject superficial wrapper gimmicks lacking genuine predictive, assistive, or domain value.',
+              icon: <X size={15} strokeWidth={2.8} />,
+            },
+            {
+              title: 'Data leakage & invasive tracking',
+              desc: 'Enforce 100% client-side data processing for sensitive financial ledgers and personal telemetry.',
+              icon: <X size={15} strokeWidth={2.8} />,
+            },
+          ],
+        }}
+        rightColumn={{
+          title: 'VERIFIED PRODUCTION DELIVERABLES',
+          pillText: 'GUARANTEED SHIPPED',
+          variant: 'verified',
+          items: [
+            {
+              title: 'Disaster Management Advisory UI',
+              desc: 'Integrated Random Forest weather prediction algorithms with real-time alert dispatch.',
+              icon: <Check size={15} strokeWidth={2.8} />,
+            },
+            {
+              title: 'Student Certification Portal',
+              desc: 'High-throughput credential validation architecture with verified institutional audit trails.',
+              icon: <Check size={15} strokeWidth={2.8} />,
+            },
+            {
+              title: 'Personal Finance Tracker',
+              desc: 'Engineered client-side CSV export serializer with private on-device financial privacy.',
+              icon: <Check size={15} strokeWidth={2.8} />,
+            },
+            {
+              title: 'Public Version Control Transparency',
+              desc: 'Clean atomic Git commit history with verified GitHub repositories for all three deployed systems.',
+              icon: <Check size={15} strokeWidth={2.8} />,
+            },
+          ],
+        }}
+      />
 
       {/* =====================================================================
           2. CHAPTER 01 — DISASTER MANAGEMENT SYSTEM
