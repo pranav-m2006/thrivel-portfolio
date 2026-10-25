@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLenisScroll } from '../hooks/useLenisScroll';
 import ArchFrame from '../components/ArchFrame';
+import Hero3DCharacter from '../components/Hero3DCharacter';
 import StepCounter from '../components/StepCounter';
 import SplitReveal from '../components/SplitReveal';
 import MagneticButton from '../components/MagneticButton';
@@ -213,12 +214,9 @@ export default function Home() {
                   <span>🏆</span>
                   <span>SIH '25 Finalist · 2 Patents</span>
                 </div>
-                <ArchFrame
-                  imageSrc="/images/pranav.jpg"
-                  altText="Pranav M — Frontend Developer and AI/ML Practitioner sitting with laptop"
-                  caption="Pranav M — Student & Developer"
-                  badgeText="Frontend × AI/ML"
-                  enableParallax={true}
+                <Hero3DCharacter
+                  fallbackImage="/images/pranav.jpg"
+                  enableScrollParallax={true}
                 />
               </div>
             </div>
