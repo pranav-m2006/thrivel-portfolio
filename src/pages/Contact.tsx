@@ -153,7 +153,7 @@ export default function Contact() {
           {/* Social Profiles */}
           <div className="contact-reveal-item" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px' }}>
             <a
-              href="https://linkedin.com/in/pranav-m"
+              href="https://www.linkedin.com/in/pranav-m-23153a32b/"
               target="_blank"
               rel="noopener noreferrer"
               className="editorial-card"
@@ -163,7 +163,7 @@ export default function Contact() {
                 <Linkedin size={22} color="var(--color-terracotta)" />
                 <div>
                   <h4 style={{ fontSize: '1.05rem', color: 'var(--color-espresso)', marginBottom: '2px' }}>LinkedIn</h4>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--color-warm-grey)' }}>linkedin.com/in/pranav-m</span>
+                  <span style={{ fontSize: '0.8rem', color: 'var(--color-warm-grey)' }}>linkedin.com/in/pranav-m-23153a32b</span>
                 </div>
               </div>
               <ArrowUpRight size={18} color="var(--color-warm-grey)" />

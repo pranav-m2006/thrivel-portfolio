@@ -141,14 +141,14 @@ export default function Home() {
                 </a>
 
                 <a
-                  href="https://linkedin.com/in/pranav-m"
+                  href="https://www.linkedin.com/in/pranav-m-23153a32b/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="social-link-item"
                   aria-label="LinkedIn Profile (opens in new tab)"
                 >
                   <Linkedin size={16} aria-hidden="true" />
-                  <span>linkedin.com/in/pranav-m</span>
+                  <span>linkedin.com/in/pranav-m-23153a32b</span>
                 </a>
               </div>
             </div>
@@ -390,7 +390,7 @@ export default function Home() {
                   <span>pranav.m.cst.2024@snsce.ac.in</span>
                 </MagneticButton>
 
-                <MagneticButton as="a" href="https://linkedin.com/in/pranav-m" target="_blank" rel="noopener noreferrer" className="btn-secondary">
+                <MagneticButton as="a" href="https://www.linkedin.com/in/pranav-m-23153a32b/" target="_blank" rel="noopener noreferrer" className="btn-secondary">
                   <Linkedin size={16} />
                   <span>LinkedIn Profile</span>
                 </MagneticButton>
