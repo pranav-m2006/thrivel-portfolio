@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowUpRight, Github, ShieldCheck, Compass, Layers, Terminal, Sparkles, CheckCircle2, Check, X } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Github, Compass, Terminal, Check, X } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLenisScroll } from '../hooks/useLenisScroll';

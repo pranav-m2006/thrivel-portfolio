@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect, useRef } from 'react';
+import { useState, useLayoutEffect, useRef } from 'react';
 import { Mail, Phone, MapPin, Github, Linkedin, Copy, Check, ArrowUpRight, X } from 'lucide-react';
 import gsap from 'gsap';
 import PageHeroHeadline from '../components/PageHeroHeadline';

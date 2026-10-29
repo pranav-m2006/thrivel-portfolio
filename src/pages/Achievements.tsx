@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Trophy, Award, Flame, FileText, Zap, Check, X } from 'lucide-react';
 import gsap from 'gsap';

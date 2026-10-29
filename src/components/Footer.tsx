@@ -1,6 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -68,7 +67,29 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <span>© 2026 Pranav M. Coastal Editorial × Modern Developer Portfolio.</span>
-          <span style={{ fontFamily: 'var(--font-mono)' }}>Coimbatore, Tamil Nadu, India</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
+            <button
+              type="button"
+              onClick={() => {
+                sessionStorage.removeItem('pranav_portfolio_intro_seen');
+                window.location.reload();
+              }}
+              style={{
+                background: 'none',
+                border: 'none',
+                color: 'var(--color-rusty-orange, #C66A3D)',
+                fontFamily: 'var(--font-mono, monospace)',
+                fontSize: '0.75rem',
+                cursor: 'pointer',
+                textDecoration: 'underline',
+                textUnderlineOffset: '3px',
+              }}
+              title="Re-run the cinematic intro animation"
+            >
+              Replay Intro ↺
+            </button>
+            <span style={{ fontFamily: 'var(--font-mono)' }}>Coimbatore, Tamil Nadu, India</span>
+          </div>
         </div>
       </div>
     </footer>

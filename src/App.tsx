@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useCallback } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -6,6 +6,8 @@ import ScrollToTop from './components/ScrollToTop';
 import PaperGrain from './components/PaperGrain';
 import CursorDot from './components/CursorDot';
 import RouteTransition from './components/RouteTransition';
+import CinematicPreloader from './components/CinematicPreloader';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -19,8 +21,21 @@ import Resume from './pages/Resume';
 import StyleGuide from './pages/StyleGuide';
 
 export default function App() {
+  const [isPreloaderActive, setIsPreloaderActive] = useState(true);
+
+  const handleLoadingComplete = useCallback(() => {
+    setIsPreloaderActive(false);
+    // Refresh ScrollTrigger so all landing page pin coordinates are pixel-perfect
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 120);
+  }, []);
+
   return (
     <div className="site-wrapper">
+      {/* Premium Cinematic Editorial Preloader */}
+      <CinematicPreloader onLoadingComplete={handleLoadingComplete} />
+
       {/* 0.6s Sand Curtain Page Wipe Transition */}
       <RouteTransition />
 
@@ -33,7 +48,7 @@ export default function App() {
 
       <main className="main-content">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home isPreloaderActive={isPreloaderActive} />} />
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/skills" element={<Skills />} />

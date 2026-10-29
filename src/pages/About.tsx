@@ -1,10 +1,9 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, GraduationCap, Code2, BrainCircuit, Sparkles } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import PersonalPortrait from '../components/PersonalPortrait';
-import PageHeroHeadline from '../components/PageHeroHeadline';
+import ArchFrame from '../components/ArchFrame';
 import DisciplineOrigin from '../components/DisciplineOrigin';
 import CraftPrinciples from '../components/CraftPrinciples';
 import LuxuryMarquee from '../components/LuxuryMarquee';
@@ -19,6 +18,23 @@ export default function About() {
     if (mediaQuery.matches) return;
 
     const ctx = gsap.context(() => {
+      // 1. Smooth entrance animation for About hero photograph & text
+      gsap.from('.about-hero-photo-col', {
+        x: -35,
+        opacity: 0,
+        duration: 0.9,
+        ease: 'power3.out',
+      });
+
+      gsap.from('.about-hero-text-col', {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        delay: 0.15,
+        ease: 'power3.out',
+      });
+
+      // 2. ScrollTrigger reveals for timeline blocks
       gsap.utils.toArray<HTMLElement>('.timeline-block').forEach((block) => {
         gsap.from(block, {
           scrollTrigger: {
@@ -40,65 +56,69 @@ export default function About() {
     <div ref={containerRef} className="page-wrapper">
       
       {/* =====================================================================
-          1. HERO: Big Bold Black-to-Red Interactive Transition Heading
+          1. PROFESSIONAL ABOUT HERO LAYOUT WITH PROFILE PHOTOGRAPH
+          Exclusively featured here on the About page.
           ===================================================================== */}
-      <PageHeroHeadline
-        eyebrow="02 / ORIGIN & PHILOSOPHY"
-        blackText="Curiosity is where"
-        accentText="engineering begins."
-        arrowHref="#biography"
-        leadParagraph={
-          <>
-            I am a <strong>Computer Science &amp; Technology undergraduate</strong> at{' '}
-            <strong>SNS College of Engineering</strong> in Coimbatore, dedicated to
-            building calm frontend interfaces and exploring <strong>applied artificial intelligence</strong>{' '}
-            with zero superficial claims.
-          </>
-        }
-        tags={[
-          'SNSCE · Coimbatore (2024–2028)',
-          'B.E. Computer Science',
-          'CGPA 8.00 / 10',
-          'Frontend & Applied AI',
-          '2 Registered Patents',
-        ]}
-      />
-
-      {/* =====================================================================
-          2. PROMINENT PORTRAIT & BIOGRAPHY (Section 6)
-          ===================================================================== */}
-      <section id="biography" className="page-section bg-ivory" style={{ padding: '80px 0' }}>
+      <section className="about-hero-section bg-ivory" style={{ padding: '60px 0 80px 0', borderBottom: '1px solid var(--color-border)' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '56px', alignItems: 'center' }}>
             
-            {/* Prominent Personal Portrait Frame */}
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <PersonalPortrait
-                size="large"
-                caption="Pranav M — Software Engineer (Coimbatore, India)"
-              />
+            {/* Left Column: Authentic Profile Photograph in Architectural Arch Frame */}
+            <div className="about-hero-photo-col" style={{ display: 'flex', justifyContent: 'center' }}>
+              <div style={{ position: 'relative', width: '100%', maxWidth: '420px' }}>
+                <div style={{ position: 'absolute', top: '-14px', right: '-10px', zIndex: 10, background: '#FFFFFF', border: '1px solid var(--color-border)', borderRadius: '999px', padding: '6px 14px', boxShadow: '0 4px 16px rgba(48, 37, 31, 0.08)', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.78rem', fontWeight: 600, color: 'var(--color-espresso)' }}>
+                  <span>🔥</span>
+                  <span>100-Day Streak · 150+ LeetCode</span>
+                </div>
+                <div style={{ position: 'absolute', bottom: '50px', left: '-12px', zIndex: 10, background: '#FFFFFF', border: '1px solid var(--color-border)', borderRadius: '999px', padding: '6px 14px', boxShadow: '0 4px 16px rgba(48, 37, 31, 0.08)', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.78rem', fontWeight: 600, color: 'var(--color-espresso)' }}>
+                  <span>🏆</span>
+                  <span>SIH '25 Finalist · 2 Patents</span>
+                </div>
+                <ArchFrame
+                  imageSrc="/images/pranav.jpg"
+                  altText="Pranav M — Frontend Developer & AI/ML Practitioner sitting with laptop"
+                  caption="Pranav M — Student & Developer"
+                  badgeText="SNSCE · Coimbatore"
+                  enableParallax={true}
+                />
+              </div>
             </div>
 
-            {/* Editorial Biography */}
-            <div>
-              <div className="editorial-eyebrow">Academic &amp; Technical Context</div>
-              <h2 className="editorial-h2">Build. Understand. Improve.</h2>
-              <p style={{ color: 'var(--color-warm-grey)', lineHeight: '1.8', marginBottom: '20px', fontSize: '1.025rem' }}>
-                Currently in my undergraduate studies at <strong>SNS College of Engineering</strong> in Coimbatore (Sept 2024 – 2028), I maintain a <strong>8.00 / 10 CGPA</strong> while directing extra-curricular hours toward competitive programming, hackathons, and software internships.
-              </p>
-              <p style={{ color: 'var(--color-warm-grey)', lineHeight: '1.8', marginBottom: '20px', fontSize: '1.025rem' }}>
-                My education began at Presentation Convent Matriculation Hr. Sec. School (HSC 73%, SSLC 81.6%), where a curiosity for mathematical logic evolved into hands-on development with Java, C++, JavaScript, and React.
-              </p>
-              <p style={{ color: 'var(--color-warm-grey)', lineHeight: '1.8', fontSize: '1.025rem' }}>
-                I believe that frontend architecture is the sensory interface of modern computing: it is where complex backend pipelines and predictive models become actionable tools for human beings.
+            {/* Right Column: Editorial Biography, Education & Background */}
+            <div className="about-hero-text-col">
+              <div className="editorial-eyebrow" style={{ color: 'var(--color-terracotta)' }}>
+                02 / ABOUT PRANAV M · B.E. COMPUTER SCIENCE &amp; TECHNOLOGY
+              </div>
+
+              <h1 className="editorial-h1" style={{ fontSize: 'clamp(2.2rem, 4.2vw, 3.4rem)', lineHeight: 1.15, marginBottom: '20px' }}>
+                Curious by habit, <br />
+                <span style={{ color: 'var(--color-terracotta)' }}>careful by craft.</span>
+              </h1>
+
+              <p style={{ color: 'var(--color-espresso)', fontSize: '1.08rem', lineHeight: '1.8', marginBottom: '18px', fontWeight: 500 }}>
+                I am an undergraduate in Computer Science &amp; Technology at <strong>SNS College of Engineering</strong> in Coimbatore (2024–2028),
+                maintaining a <strong>8.00 / 10 CGPA</strong>. I pair clean frontend architecture with practical machine learning where it genuinely serves a purpose.
               </p>
 
-              <div style={{ display: 'flex', gap: '14px', marginTop: '32px', flexWrap: 'wrap' }}>
-                <Link to="/experience" className="btn-secondary">
-                  <span>View Internships</span>
+              <p style={{ color: 'var(--color-warm-grey)', lineHeight: '1.75', marginBottom: '24px', fontSize: '0.98rem' }}>
+                My education began at Presentation Convent Matriculation Hr. Sec. School (SSLC 81.6%, HSC 73%), where a love for algorithmic logic evolved into hands-on development with HTML5, CSS3, JavaScript, React.js, Java, and Python.
+              </p>
+
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '32px' }}>
+                <span className="meta-tag">SNSCE (2024–2028)</span>
+                <span className="meta-tag">CGPA 8.00 / 10</span>
+                <span className="meta-tag">CodSoft &amp; InternPe Intern</span>
+                <span className="meta-tag">SIH 2025 National Finalist</span>
+                <span className="meta-tag">2 Registered Patents</span>
+              </div>
+
+              <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
+                <Link to="/experience" className="btn-primary">
+                  <span>View Internships &amp; Journey</span>
+                  <ArrowRight size={15} />
                 </Link>
-                <Link to="/achievements" className="btn-primary">
-                  <span>View Patents &amp; SIH '25</span>
+                <Link to="/projects" className="btn-secondary">
+                  <span>Inspect Selected Works</span>
                 </Link>
               </div>
             </div>
@@ -108,8 +128,29 @@ export default function About() {
       </section>
 
       {/* =====================================================================
+          2. DETAILED ACADEMIC & ENGINEERING BIOGRAPHY
+          ===================================================================== */}
+      <section id="biography" className="page-section bg-cream" style={{ padding: '80px 0' }}>
+        <div className="container">
+          <div style={{ maxWidth: '840px', margin: '0 auto' }}>
+            <div className="editorial-eyebrow">Academic &amp; Technical Context</div>
+            <h2 className="editorial-h2" style={{ marginBottom: '24px' }}>Build. Understand. Improve.</h2>
+            
+            <p style={{ color: 'var(--color-warm-grey)', lineHeight: '1.8', marginBottom: '20px', fontSize: '1.025rem' }}>
+              Currently in my undergraduate studies at <strong>SNS College of Engineering</strong> in Coimbatore (Sept 2024 – 2028), I direct extra-curricular hours toward competitive programming, hackathons, and software internships.
+            </p>
+            <p style={{ color: 'var(--color-warm-grey)', lineHeight: '1.8', marginBottom: '20px', fontSize: '1.025rem' }}>
+              I believe that frontend architecture is the sensory interface of modern computing: it is where complex backend pipelines and predictive models become actionable tools for human beings.
+            </p>
+            <p style={{ color: 'var(--color-warm-grey)', lineHeight: '1.8', fontSize: '1.025rem' }}>
+              Whether fine-tuning component lifecycles in React, configuring zero-bloat modern CSS tokens, or training predictive neural models for disaster response, I prioritize restraint, clarity, and dependable performance.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* =====================================================================
           3. DISCIPLINE & ORIGIN (Athletics / Software / Responsibility)
-          Inspired by the reference video's signature section
           ===================================================================== */}
       <DisciplineOrigin />
 
@@ -120,7 +161,6 @@ export default function About() {
 
       {/* =====================================================================
           5. CODE OF CRAFT: THINGS I REFUSE TO SHIP VS GUARANTEED SHIPPED
-          Directly inspired by the reference video's high-contrast comparison
           ===================================================================== */}
       <CraftPrinciples />
 

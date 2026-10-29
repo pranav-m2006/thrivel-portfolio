@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 interface ArchFrameProps {
   imageSrc?: string;
@@ -53,6 +53,7 @@ export default function ArchFrame({
       <div 
         className="arch-frame-container"
         style={{ 
+          maxHeight,
           transform: `translateY(${offsetY}px)`,
           transition: 'transform 0.15s ease-out'
         }}

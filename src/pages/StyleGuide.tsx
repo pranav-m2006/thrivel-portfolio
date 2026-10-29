@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ArchFrame from '../components/ArchFrame';
 import StepCounter from '../components/StepCounter';
 import MagneticButton from '../components/MagneticButton';
-import { ArrowRight, CheckCircle2, AlertTriangle, ShieldCheck, Sparkles, Layers, Sliders } from 'lucide-react';
+import { ArrowRight, CheckCircle2, AlertTriangle, ShieldCheck, Sparkles, Layers } from 'lucide-react';
 
 export default function StyleGuide() {
   const [activeStep, setActiveStep] = useState(2);

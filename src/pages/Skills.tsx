@@ -1,6 +1,6 @@
-import React, { useLayoutEffect, useRef, useState, useEffect } from 'react';
+import { useLayoutEffect, useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowLeft, Code, Layout, Cpu, Database, GitBranch, Layers, Sparkles, CheckCircle2, ShieldCheck, Terminal, Compass, Zap, Check, X } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Code, Layout, Cpu, Database, GitBranch, Sparkles, CheckCircle2, Check, X } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import PageHeroHeadline from '../components/PageHeroHeadline';
@@ -34,7 +34,6 @@ export default function Skills() {
   const containerRef = useRef<HTMLDivElement>(null);
   const showcaseRef = useRef<HTMLDivElement>(null);
   const [activeStageIndex, setActiveStageIndex] = useState(0);
-  const [isSentenceRed, setIsSentenceRed] = useState(false);
 
   const skillStages: SkillStage[] = [
     {

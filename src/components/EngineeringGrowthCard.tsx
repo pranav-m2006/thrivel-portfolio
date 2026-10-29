@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { TrendingUp, Flame, ShieldCheck, ArrowUpRight, Sparkles, Terminal, Activity, GitCommit, CheckCircle2 } from 'lucide-react';
+import { useState } from 'react';
+import { Flame, ShieldCheck, ArrowUpRight } from 'lucide-react';
 
 interface MetricPoint {
   day: string;

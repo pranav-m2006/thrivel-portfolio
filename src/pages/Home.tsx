@@ -1,24 +1,35 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowUpRight, Github, Linkedin, Award, FileCode, CheckCircle2, ShieldCheck, Terminal, Compass, Sparkles, Mail } from 'lucide-react';
+import { ArrowRight, Linkedin, Mail } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLenisScroll } from '../hooks/useLenisScroll';
-import ArchFrame from '../components/ArchFrame';
 import StepCounter from '../components/StepCounter';
-import SplitReveal from '../components/SplitReveal';
+
 import MagneticButton from '../components/MagneticButton';
 import EngineeringGrowthCard from '../components/EngineeringGrowthCard';
+import GsapHeroSequence from '../components/GsapHeroSequence';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Home() {
+interface HomeProps {
+  isPreloaderActive?: boolean;
+}
+
+export default function Home({ isPreloaderActive = false }: HomeProps) {
   // Initialize Lenis smooth scroll synced to ScrollTrigger
   useLenisScroll();
 
   const containerRef = useRef<HTMLDivElement>(null);
   const storySceneRef = useRef<HTMLDivElement>(null);
   const [currentStep, setCurrentStep] = useState(1);
+
+  // Synchronize ScrollTrigger calculations as soon as preloader finishes upward reveal
+  useEffect(() => {
+    if (!isPreloaderActive) {
+      ScrollTrigger.refresh();
+    }
+  }, [isPreloaderActive]);
 
   useEffect(() => {
     // Respect reduced motion
@@ -29,39 +40,9 @@ export default function Home() {
     if (!scene || isReduced) return;
 
     const ctx = gsap.context(() => {
-      // 1. ScrollTrigger for Hero Profile Portrait & Narrative Description
-      const heroTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: '.home-hero-section',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 0.8,
-        },
-      });
-
-      // Profile Portrait: smooth cinematic parallax descent & depth scale
-      heroTl.to('.home-hero-portrait-col', {
-        y: 65,
-        scale: 0.96,
-        opacity: 0.88,
-        ease: 'none',
-      }, 0);
-
-      // Description & Bio: responsive upward lift reacting to scroll
-      heroTl.to('.home-hero-bio', {
-        y: -30,
-        opacity: 0.88,
-        ease: 'none',
-      }, 0);
-
-      heroTl.to('.home-hero-actions', {
-        y: -18,
-        ease: 'none',
-      }, 0);
-
       const stepPanels = gsap.utils.toArray<HTMLElement>('.story-step-card');
 
-      // 2. Pinned Multi-Step Scroll Timeline
+      // Pinned Multi-Step Scroll Timeline for the Storytelling Scene
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: scene,
@@ -93,23 +74,23 @@ export default function Home() {
         ease: 'power3.in',
         duration: 0.4,
       })
-      .fromTo(stepPanels[1],
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, ease: 'power3.out', duration: 0.5 },
-        '-=0.1'
-      )
-      // Step 2 -> Step 3 transition
-      .to(stepPanels[1], {
-        opacity: 0,
-        y: -40,
-        ease: 'power3.in',
-        duration: 0.4,
-      }, '+=0.3')
-      .fromTo(stepPanels[2],
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, ease: 'power3.out', duration: 0.5 },
-        '-=0.1'
-      );
+        .fromTo(stepPanels[1],
+          { opacity: 0, y: 50 },
+          { opacity: 1, y: 0, ease: 'power3.out', duration: 0.5 },
+          '-=0.1'
+        )
+        // Step 2 -> Step 3 transition
+        .to(stepPanels[1], {
+          opacity: 0,
+          y: -40,
+          ease: 'power3.in',
+          duration: 0.4,
+        }, '+=0.3')
+        .fromTo(stepPanels[2],
+          { opacity: 0, y: 50 },
+          { opacity: 1, y: 0, ease: 'power3.out', duration: 0.5 },
+          '-=0.1'
+        );
 
     }, containerRef);
 
@@ -118,132 +99,32 @@ export default function Home() {
 
   return (
     <div ref={containerRef} className="page-wrapper home-page-container">
-      
+
       {/* =====================================================================
-          1. HERO SECTION (Interactive Black-to-Red Heading, Authentic Portrait, ScrollTrigger)
+          1. GSAP CINEMATIC HERO (Interactive 3D Google Flow JPG Sequence)
+          Immediately after loading, with synchronized text reveals.
+          Focused on technology, development, coding, and AI.
+          No profile photograph on this hero page.
           ===================================================================== */}
-      <section className="home-hero-section bg-ivory">
-        <div className="container">
-          <div className="home-hero-grid">
-            
-            {/* Left Column: Typographic Narrative */}
-            <div className="home-hero-narrative">
-              
-              {/* Interactive Status Pill */}
-              <div className="hero-status-pill">
-                <span className="status-indicator-dot" />
-                <span>Frontend Engineering × Applied AI · SNSCE</span>
-              </div>
-
-              {/* Big Bold Black-to-Red Interactive Headline */}
-              <div className="page-hero-heading-track">
-                <a
-                  href="#story-pin"
-                  className="page-hero-interactive-heading"
-                  title="Scroll to explore: Calm interfaces. Intelligent ideas."
-                >
-                  <span className="page-hero-word-black">Calm interfaces.</span>
-                  {' '}
-                  <span className="page-hero-word-accent">Intelligent ideas.</span>
-                  <span className="page-hero-arrow" aria-hidden="true">→</span>
-                </a>
-              </div>
-
-              <div className="home-hero-subline" style={{ maxWidth: '580px' }}>
-                <p className="editorial-lead" style={{ margin: 0, fontStyle: 'italic' }}>
-                  “I build the part of the web you actually touch.”
-                </p>
-              </div>
-
-              {/* Interactive Description: Black in default state -> Completely Red on Cursor Hover */}
-              <div className="page-hero-lead-box">
-                <p className="page-hero-lead-text home-hero-bio">
-                  Pranav M — Frontend Developer and AI/ML practitioner.
-                  Undergraduate in Computer Science &amp; Technology at SNS College of Engineering (2024–2028).
-                  Crafting calm, responsive interfaces with HTML, CSS, JavaScript, and React.js,
-                  introducing practical machine learning where it genuinely serves a purpose.
-                </p>
-              </div>
-
-              {/* Action Links & Verified Profiles */}
-              <div className="home-hero-actions">
-                <MagneticButton as="a" href="#story-pin" className="btn-primary">
-                  <span>Explore Storytelling</span>
-                  <ArrowRight size={16} aria-hidden="true" />
-                </MagneticButton>
-
-                <MagneticButton as="a" href="/resume" className="btn-secondary">
-                  <span>View Resume</span>
-                </MagneticButton>
-              </div>
-
-              <div className="home-hero-socials">
-                <a
-                  href="https://github.com/pranav-m2006"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-link-item"
-                  aria-label="GitHub Profile (opens in new tab)"
-                >
-                  <Github size={16} aria-hidden="true" />
-                  <span>github.com/pranav-m2006</span>
-                </a>
-
-                <a
-                  href="https://www.linkedin.com/in/pranav-m-23153a32b/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-link-item"
-                  aria-label="LinkedIn Profile (opens in new tab)"
-                >
-                  <Linkedin size={16} aria-hidden="true" />
-                  <span>linkedin.com/in/pranav-m-23153a32b</span>
-                </a>
-              </div>
-            </div>
-
-            {/* Right Column: Architectural Arch Portrait Frame with Floating Badges */}
-            <div className="home-hero-portrait-col">
-              <div className="hero-portrait-interactive-wrap">
-                <div className="hero-floating-badge hero-badge-1">
-                  <span>🔥</span>
-                  <span>100-Day Streak · 150+ LeetCode</span>
-                </div>
-                <div className="hero-floating-badge hero-badge-2">
-                  <span>🏆</span>
-                  <span>SIH '25 Finalist · 2 Patents</span>
-                </div>
-                <ArchFrame
-                  imageSrc="/images/pranav.jpg"
-                  altText="Pranav M — Frontend Developer and AI/ML Practitioner sitting with laptop"
-                  caption="Pranav M — Student & Developer"
-                  badgeText="Frontend × AI/ML"
-                  enableParallax={true}
-                />
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
+      <GsapHeroSequence />
 
       {/* =====================================================================
           2. PINNED SCROLL STORYTELLING SCENE (3 Core Steps)
-          Replaced previous 3D model with professional Engineering Growth Dashboard
+          Engineering Growth Dashboard & Development Narrative
           ===================================================================== */}
-      <section 
-        id="story-pin" 
-        ref={storySceneRef} 
+      <section
+        id="story-pin"
+        ref={storySceneRef}
         className="home-pinned-story bg-cream"
         aria-label="Interactive Portfolio Storytelling Sequence"
       >
         <div className="container pinned-story-container">
-          
+
           <div className="pinned-story-grid">
-            
+
             {/* Left: Dynamic Step Content Container */}
             <div className="pinned-story-stage">
-              
+
               {/* Step 1: What I build */}
               <div className={`story-step-card ${currentStep === 1 ? 'is-active' : ''}`}>
                 <div className="story-step-header">
@@ -329,7 +210,7 @@ export default function Home() {
 
             </div>
 
-            {/* Right: Engineering Growth & Consistency Dashboard (Replaces previous 3D model) */}
+            {/* Right: Engineering Growth & Consistency Dashboard */}
             <div className="pinned-story-visual">
               <EngineeringGrowthCard />
             </div>
@@ -352,7 +233,7 @@ export default function Home() {
           </div>
 
           <div className="facts-grid">
-            
+
             <div className="fact-card">
               <span className="fact-card-num">2025</span>
               <h4 className="fact-card-title">Smart India Hackathon</h4>
@@ -378,7 +259,7 @@ export default function Home() {
               <span className="fact-card-num">03</span>
               <h4 className="fact-card-title">Deployed Systems</h4>
               <p className="fact-card-desc">Disaster Management, Learning Zone, and Finance Tracker.</p>
-              <span className="fact-badge">AI & Web Solutions</span>
+              <span className="fact-badge">AI &amp; Web Solutions</span>
             </div>
 
           </div>
@@ -386,7 +267,7 @@ export default function Home() {
       </section>
 
       {/* =====================================================================
-          4. DEEP CONTRAST PANEL (Section 6 Requirement: ONE per route)
+          4. DEEP CONTRAST PANEL
           ===================================================================== */}
       <section className="home-deep-section">
         <div className="container">
@@ -415,17 +296,16 @@ export default function Home() {
 
       {/* =====================================================================
           5. MASSIVE INTERACTIVE CLOSING STATEMENT: "Come, let's connect."
-          Turns from Black to Red combo on hover as explicitly requested
           ===================================================================== */}
       <section className="closing-connect-section bg-ivory">
         <div className="container">
           <div className="closing-connect-box">
             <span className="editorial-stamp" style={{ marginBottom: '18px' }}>Direct Inquiry</span>
 
-            {/* Horizontal Headline: "Come, let's connect. →" */}
+            {/* Horizontal Headline */}
             <div className="connect-heading-horizontal-track">
-              <a 
-                href="mailto:pranav.m.cst.2024@snsce.ac.in" 
+              <a
+                href="mailto:pranav.m.cst.2024@snsce.ac.in"
                 className="connect-interactive-heading"
                 title="Click to email pranav.m.cst.2024@snsce.ac.in"
               >
@@ -460,7 +340,7 @@ export default function Home() {
       </section>
 
       {/* =====================================================================
-          6. ROUTE CONTINUATION BANNER (Section 3 Requirement)
+          6. ROUTE CONTINUATION BANNER
           ===================================================================== */}
       <section className="next-route-section bg-cream">
         <div className="container next-route-container">

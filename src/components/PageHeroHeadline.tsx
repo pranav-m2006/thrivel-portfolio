@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef, type ReactNode } from 'react';
 import gsap from 'gsap';
 
 export interface PageHeroHeadlineProps {
@@ -6,7 +6,7 @@ export interface PageHeroHeadlineProps {
   blackText: string;
   accentText?: string;
   arrowHref?: string;
-  leadParagraph: React.ReactNode;
+  leadParagraph: ReactNode;
   tags?: string[];
   id?: string;
 }
@@ -61,6 +61,11 @@ export default function PageHeroHeadline({
   return (
     <section className="page-hero bg-ivory" ref={containerRef} id={id}>
       <div className="container">
+        {eyebrow && (
+          <div className="page-hero-eyebrow font-mono text-xs uppercase mb-3">
+            {eyebrow}
+          </div>
+        )}
 
         {/* Big Bold Black-to-Red Interactive Heading */}
         <div className="page-hero-heading-track">

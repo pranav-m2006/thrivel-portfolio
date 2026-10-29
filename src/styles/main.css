@@ -1,4 +1,7 @@
 @import './tokens.css';
+@import './preloader.css';
+@import './sequence.css';
+@import './hero-sequence.css';
 
 /* ==========================================================================
    LAYOUT UTILITIES & ALTERNATING RHYTHM SECTIONS
@@ -59,6 +62,7 @@
 .bg-clay .editorial-eyebrow {
   color: var(--color-sunlit-sand);
 }
+
 .bg-clay .editorial-eyebrow::before {
   background-color: var(--color-sunlit-sand);
 }
@@ -80,6 +84,7 @@
 .bg-espresso .editorial-eyebrow {
   color: var(--color-rusty-orange);
 }
+
 .bg-espresso .editorial-eyebrow::before {
   background-color: var(--color-rusty-orange);
 }
@@ -94,7 +99,7 @@
   left: 0;
   right: 0;
   height: var(--nav-height);
-  z-index: 1000;
+  z-index: 10000;
   background: rgba(251, 247, 240, 0.92);
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
@@ -249,12 +254,29 @@
   will-change: transform, opacity;
 }
 
-.text-espresso { color: var(--color-espresso); }
-.text-terracotta { color: var(--color-terracotta); }
-.text-rusty { color: var(--color-rusty-orange); }
-.text-grey { color: var(--color-warm-grey); }
-.text-sand { color: var(--color-sunlit-sand); }
-.text-ivory { color: var(--color-warm-ivory); }
+.text-espresso {
+  color: var(--color-espresso);
+}
+
+.text-terracotta {
+  color: var(--color-terracotta);
+}
+
+.text-rusty {
+  color: var(--color-rusty-orange);
+}
+
+.text-grey {
+  color: var(--color-warm-grey);
+}
+
+.text-sand {
+  color: var(--color-sunlit-sand);
+}
+
+.text-ivory {
+  color: var(--color-warm-ivory);
+}
 
 /* ==========================================================================
    BUTTONS & ACTIONS
@@ -522,15 +544,19 @@
   .hero-3d-layout {
     grid-template-columns: 1fr;
   }
+
   .threejs-canvas-wrapper {
     height: 420px;
   }
+
   .nav-menu {
     display: none;
   }
+
   .mobile-menu-toggle {
     display: block;
   }
+
   .nav-menu.mobile-open {
     display: flex;
     flex-direction: column;
@@ -542,16 +568,18 @@
     border-bottom: 1px solid var(--color-sand-border);
     padding: 24px 32px;
     gap: 14px;
-    box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .line-reveal,
   .word-reveal {
     transform: none !important;
     opacity: 1 !important;
   }
+
   * {
     animation-duration: 0.001s !important;
     transition-duration: 0.001s !important;
@@ -1262,6 +1290,7 @@
 }
 
 @media (max-width: 960px) {
+
   .sg-arch-demo-grid,
   .sg-controls-demo-grid,
   .sg-deep-panels-grid {
@@ -1496,10 +1525,12 @@
 }
 
 @media (max-width: 960px) {
+
   .home-hero-grid,
   .pinned-story-grid {
     grid-template-columns: 1fr;
   }
+
   .story-step-card {
     position: relative;
     opacity: 1 !important;
@@ -1715,7 +1746,8 @@
   font-weight: 850;
   line-height: 1.02;
   letter-spacing: -0.04em;
-  color: #111111 !important; /* 100% Solid Black initially */
+  color: #111111 !important;
+  /* 100% Solid Black initially */
   cursor: pointer;
   text-decoration: none;
   transition: color 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1744,7 +1776,8 @@
 .connect-interactive-heading:hover *,
 .connect-interactive-heading:hover .connect-text-word,
 .connect-interactive-heading:hover .connect-arrow-hover {
-  color: #C63D2F !important; /* Turn Vivid Red on hover */
+  color: #C63D2F !important;
+  /* Turn Vivid Red on hover */
 }
 
 .connect-interactive-heading:hover {
@@ -1962,6 +1995,7 @@
   .chapter-grid {
     grid-template-columns: 1fr;
   }
+
   .project-chapter-card {
     padding: 32px 20px;
   }
@@ -2243,7 +2277,8 @@
   font-size: clamp(3.2rem, 6vw, 4.8rem);
   font-weight: 800;
   line-height: 0.9;
-  color: #C63D2F; /* Stage highlighted in vivid red */
+  color: #C63D2F;
+  /* Stage highlighted in vivid red */
   text-shadow: 0 0 24px rgba(198, 61, 47, 0.45);
 }
 
@@ -2451,9 +2486,11 @@
   .skills-showcase-stage-screen {
     padding: 32px 20px;
   }
+
   .bridge-card-wrapper {
     padding: 28px 20px;
   }
+
   .skills-showcase-controls-bar {
     flex-direction: column;
     align-items: stretch;
@@ -2495,7 +2532,8 @@
   font-weight: 850;
   line-height: 1.05;
   letter-spacing: -0.04em;
-  color: #111111 !important; /* 100% Solid Full Black initially */
+  color: #111111 !important;
+  /* 100% Solid Full Black initially */
   cursor: pointer;
   text-decoration: none;
   transition: color 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -2503,7 +2541,8 @@
 }
 
 .page-hero-interactive-heading * {
-  color: #111111 !important; /* All words & children full black initially (never combining red & black initially) */
+  color: #111111 !important;
+  /* All words & children full black initially (never combining red & black initially) */
   transition: color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -2528,7 +2567,8 @@
 .page-hero-interactive-heading:hover .page-hero-word-black,
 .page-hero-interactive-heading:hover .page-hero-word-accent,
 .page-hero-interactive-heading:hover .page-hero-arrow {
-  color: #C63D2F !important; /* Turn Vivid Red on hover */
+  color: #C63D2F !important;
+  /* Turn Vivid Red on hover */
 }
 
 .page-hero-interactive-heading:hover {
@@ -2551,7 +2591,8 @@
 .achieve-hero-lead,
 .home-hero-bio {
   font-size: clamp(1.08rem, 1.8vw, 1.35rem);
-  color: #111111 !important; /* Pure black in default state */
+  color: #111111 !important;
+  /* Pure black in default state */
   line-height: 1.72;
   cursor: pointer;
   transition: color 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s ease;
@@ -2573,7 +2614,8 @@
 .contact-hero-lead:hover,
 .achieve-hero-lead:hover,
 .home-hero-bio:hover {
-  color: #C63D2F !important; /* Vivid Crimson Red transition */
+  color: #C63D2F !important;
+  /* Vivid Crimson Red transition */
 }
 
 .page-hero-lead-text:hover *,
@@ -2581,7 +2623,8 @@
 .contact-hero-lead:hover *,
 .achieve-hero-lead:hover *,
 .home-hero-bio:hover * {
-  color: #C63D2F !important; /* Every single child, word, and strong tag turns completely red */
+  color: #C63D2F !important;
+  /* Every single child, word, and strong tag turns completely red */
 }
 
 .page-hero-tags-row {
@@ -2717,7 +2760,8 @@
 
 .craft-principles-section {
   padding: 100px 0;
-  background: #14100E; /* Deep Obsidian */
+  background: #14100E;
+  /* Deep Obsidian */
   color: #FBF7F0;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -3163,6 +3207,7 @@
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -3395,7 +3440,9 @@
     r: 4.5;
     opacity: 1;
   }
-  75%, 100% {
+
+  75%,
+  100% {
     r: 16;
     opacity: 0;
   }
@@ -3548,9 +3595,20 @@
 }
 
 @keyframes pulseGreenDot {
-  0% { transform: scale(0.95); opacity: 0.8; }
-  50% { transform: scale(1.25); opacity: 1; }
-  100% { transform: scale(0.95); opacity: 0.8; }
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1.25);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
 }
 
 /* ==========================================================================
@@ -3688,7 +3746,8 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background-color: #1A1310; /* Deep Obsidian Black for instant contrast */
+  background-color: #1A1310;
+  /* Deep Obsidian Black for instant contrast */
   color: #FFFFFF !important;
   border: 1.5px solid #1A1310;
   padding: 10px 18px;

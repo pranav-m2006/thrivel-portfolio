@@ -1,6 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { Download, Printer, ArrowLeft, Mail, Phone, MapPin, Github, Linkedin, Award, ShieldCheck, FileCheck, CheckCircle2 } from 'lucide-react';
+import { Printer, ArrowLeft } from 'lucide-react';
 import PageHeroHeadline from '../components/PageHeroHeadline';
 
 export default function Resume() {
