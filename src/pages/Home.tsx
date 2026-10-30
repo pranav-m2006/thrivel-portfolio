@@ -12,24 +12,13 @@ import GsapHeroSequence from '../components/GsapHeroSequence';
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface HomeProps {
-  isPreloaderActive?: boolean;
-}
-
-export default function Home({ isPreloaderActive = false }: HomeProps) {
+export default function Home() {
   // Initialize Lenis smooth scroll synced to ScrollTrigger
   useLenisScroll();
 
   const containerRef = useRef<HTMLDivElement>(null);
   const storySceneRef = useRef<HTMLDivElement>(null);
   const [currentStep, setCurrentStep] = useState(1);
-
-  // Synchronize ScrollTrigger calculations as soon as preloader finishes upward reveal
-  useEffect(() => {
-    if (!isPreloaderActive) {
-      ScrollTrigger.refresh();
-    }
-  }, [isPreloaderActive]);
 
   useEffect(() => {
     // Respect reduced motion

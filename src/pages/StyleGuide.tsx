@@ -116,11 +116,11 @@ export default function StyleGuide() {
             <span className="editorial-stamp">No. 00, Studio Spec</span>
             <span className="sg-pill">Phase 2 Design System</span>
           </div>
-          
+
           <h1 className="editorial-h1" style={{ maxWidth: '820px' }}>
             A Sun-Faded Coastal Studio.
           </h1>
-          
+
           <p className="editorial-lead" style={{ maxWidth: '720px' }}>
             Curated design tokens, editorial typography scale, accessibility contrast audits,
             architectural arch masks, and interaction states for Pranav M’s personal portfolio.
@@ -148,14 +148,14 @@ export default function StyleGuide() {
 
           <div className="sg-token-grid">
             {tokens.map((token) => (
-              <div 
-                key={token.varName} 
+              <div
+                key={token.varName}
                 className="sg-token-card"
                 onClick={() => copyHex(token.hex)}
                 title="Click to copy hex code"
               >
-                <div 
-                  className="sg-swatch" 
+                <div
+                  className="sg-swatch"
                   style={{ backgroundColor: token.hex }}
                 >
                   <span className="sg-swatch-hex">{copiedToken === token.hex ? 'COPIED!' : token.hex}</span>
@@ -390,24 +390,24 @@ export default function StyleGuide() {
               <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', marginBottom: '16px' }}>
                 Interactive Step Counter Widget
               </h3>
-              
-              <StepCounter 
-                currentStep={activeStep} 
-                totalSteps={5} 
-                label="Storytelling Progression" 
+
+              <StepCounter
+                currentStep={activeStep}
+                totalSteps={5}
+                label="Storytelling Progression"
               />
 
               <div style={{ marginTop: '24px', display: 'flex', gap: '10px' }}>
-                <button 
-                  type="button" 
+                <button
+                  type="button"
                   className="sg-step-btn"
                   onClick={() => setActiveStep((prev) => Math.max(1, prev - 1))}
                   disabled={activeStep === 1}
                 >
                   Previous Step
                 </button>
-                <button 
-                  type="button" 
+                <button
+                  type="button"
                   className="sg-step-btn active"
                   onClick={() => setActiveStep((prev) => Math.min(5, prev + 1))}
                   disabled={activeStep === 5}

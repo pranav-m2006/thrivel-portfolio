@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useCallback } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -21,14 +21,11 @@ import Resume from './pages/Resume';
 import StyleGuide from './pages/StyleGuide';
 
 export default function App() {
-  const [isPreloaderActive, setIsPreloaderActive] = useState(true);
-
   const handleLoadingComplete = useCallback(() => {
-    setIsPreloaderActive(false);
-    // Refresh ScrollTrigger so all landing page pin coordinates are pixel-perfect
-    setTimeout(() => {
+    // Single consolidated ScrollTrigger refresh once preloader is hidden and DOM has settled
+    requestAnimationFrame(() => {
       ScrollTrigger.refresh();
-    }, 120);
+    });
   }, []);
 
   return (
@@ -48,7 +45,7 @@ export default function App() {
 
       <main className="main-content">
         <Routes>
-          <Route path="/" element={<Home isPreloaderActive={isPreloaderActive} />} />
+          <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/skills" element={<Skills />} />

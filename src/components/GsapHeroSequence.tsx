@@ -1,8 +1,14 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Sparkles, ChevronDown } from 'lucide-react';
-import { getFrameImage, TOTAL_SEQUENCE_FRAMES, preloadFrame } from '../utils/assetLoader';
+import {
+  getFrameImage,
+  TOTAL_SEQUENCE_FRAMES,
+  preloadFrame,
+  isExactFrame,
+  notifyScrollActivity,
+} from '../utils/assetLoader';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -40,9 +46,14 @@ export default function GsapHeroSequence({ onSequenceComplete }: GsapHeroSequenc
   const stageContentRef = useRef<HTMLDivElement>(null);
   const frameBadgeRef = useRef<HTMLSpanElement>(null);
 
-  const [activeStage, setActiveStage] = useState(0);
+  // Direct DOM refs to eliminate React re-renders during active scrolling
+  const stageNumeralRef = useRef<HTMLSpanElement>(null);
+  const stageTitleRef = useRef<HTMLHeadingElement>(null);
+  const stageDescRef = useRef<HTMLParagraphElement>(null);
+  const stepperDotsRef = useRef<(HTMLSpanElement | null)[]>([]);
+
   const activeStageRef = useRef(0);
-  const [reducedMotion, setReducedMotion] = useState(false);
+  const reducedMotionRef = useRef(false);
 
   // Performance tracking refs (avoiding React re-renders during high-speed scrubbing)
   const lastDrawnFrameRef = useRef(0);
@@ -54,8 +65,10 @@ export default function GsapHeroSequence({ onSequenceComplete }: GsapHeroSequenc
   // Check reduced-motion preference
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setReducedMotion(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+    reducedMotionRef.current = mq.matches;
+    const handler = (e: MediaQueryListEvent) => {
+      reducedMotionRef.current = e.matches;
+    };
     mq.addEventListener('change', handler);
     return () => mq.removeEventListener('change', handler);
   }, []);
@@ -75,7 +88,7 @@ export default function GsapHeroSequence({ onSequenceComplete }: GsapHeroSequenc
 
     const img = getFrameImage(frameNum);
     if (!img || !img.complete || img.naturalWidth === 0) {
-      // If frame is still decoding, preload immediately and redraw once ready
+      // If frame is still decoding, request immediate load and redraw once ready
       preloadFrame(frameNum).then(() => {
         if (lastTargetFrameRef.current === frameNum) {
           renderFrameToCanvas(frameNum);
@@ -87,6 +100,15 @@ export default function GsapHeroSequence({ onSequenceComplete }: GsapHeroSequenc
     const { offsetX, offsetY, drawWidth, drawHeight } = drawDimsRef.current;
     ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
     lastDrawnFrameRef.current = frameNum;
+
+    // If an adjacent fallback was rendered, ensure exact frame is preloaded and upgraded
+    if (!isExactFrame(frameNum)) {
+      preloadFrame(frameNum).then(() => {
+        if (lastTargetFrameRef.current === frameNum) {
+          renderFrameToCanvas(frameNum);
+        }
+      });
+    }
   }, []);
 
   /**
@@ -151,37 +173,25 @@ export default function GsapHeroSequence({ onSequenceComplete }: GsapHeroSequenc
     return () => window.removeEventListener('resize', resizeCanvas);
   }, [resizeCanvas]);
 
-  // Initial frame draw
+  // Initial frame draw on mount
   useEffect(() => {
     renderFrameToCanvas(1);
   }, [renderFrameToCanvas]);
 
-  // Animate stage text reveals smoothly only when the active stage actually changes
-  useEffect(() => {
-    const content = stageContentRef.current;
-    if (!content) return;
-
-    gsap.fromTo(
-      content.children,
-      { opacity: 0, y: 8 },
-      { opacity: 1, y: 0, duration: 0.35, stagger: 0.06, ease: 'power2.out' }
-    );
-  }, [activeStage]);
-
   // GSAP ScrollTrigger Sequence Setup
   useEffect(() => {
     const section = sectionRef.current;
-    if (!section || reducedMotion) return;
+    if (!section || reducedMotionRef.current) return;
 
     const ctx = gsap.context(() => {
       // Pinned Scroll-Driven Sequence using 100% of the 299 frames
-      // scrub: 0.35 pairs with Lenis to deliver instant, responsive scrubbing with zero rubber-banding delay
+      // scrub: true binds 1:1 with Lenis smooth scroll, eliminating rubber-band compound lag
       ScrollTrigger.create({
         trigger: section,
         start: 'top top',
         end: '+=4200',
         pin: true,
-        scrub: 0.35,
+        scrub: true,
         anticipatePin: 1,
         onUpdate: (self) => {
           // Precise mapping of ScrollTrigger progress (0.0 to 1.0) across all 299 frames
@@ -193,30 +203,58 @@ export default function GsapHeroSequence({ onSequenceComplete }: GsapHeroSequenc
           // Update stage index only when stage boundaries change (exactly 4 times across entire scroll)
           const stageIndex = Math.min(3, Math.floor(self.progress * 4));
           if (activeStageRef.current !== stageIndex) {
+            const prevStage = activeStageRef.current;
             activeStageRef.current = stageIndex;
-            setActiveStage(stageIndex);
+            const stageData = STAGES[stageIndex];
+
+            // 1. Direct DOM updates for text content (ZERO React component re-renders!)
+            if (stageNumeralRef.current) stageNumeralRef.current.textContent = stageData.num;
+            if (stageTitleRef.current) stageTitleRef.current.textContent = stageData.title;
+            if (stageDescRef.current) stageDescRef.current.textContent = stageData.desc;
+
+            // 2. Direct DOM stepper indicator class toggle
+            if (stepperDotsRef.current[prevStage]) {
+              stepperDotsRef.current[prevStage]?.classList.remove('is-active');
+            }
+            if (stepperDotsRef.current[stageIndex]) {
+              stepperDotsRef.current[stageIndex]?.classList.add('is-active');
+            }
+
+            // 3. Subtle GSAP text reveal
+            if (stageContentRef.current) {
+              gsap.fromTo(
+                stageContentRef.current.children,
+                { opacity: 0, y: 6 },
+                { opacity: 1, y: 0, duration: 0.32, stagger: 0.05, ease: 'power2.out', overwrite: 'auto' }
+              );
+            }
           }
 
-          // Update live frame counter via direct DOM ref (ZERO React component re-renders!)
+          // Update live frame counter via direct DOM ref
           if (frameBadgeRef.current) {
             frameBadgeRef.current.textContent = `Frame ${String(targetFrame).padStart(3, '0')} / ${TOTAL_SEQUENCE_FRAMES}`;
           }
 
-          // Lookahead preloading for upcoming frames in the direction of scroll (both forward and backward)
-          const dir = self.direction || 1;
-          if (dir > 0) {
-            for (let i = 1; i <= 4; i++) {
-              if (targetFrame + i <= TOTAL_SEQUENCE_FRAMES) preloadFrame(targetFrame + i);
-            }
-          } else {
-            for (let i = 1; i <= 4; i++) {
-              if (targetFrame - i >= 1) preloadFrame(targetFrame - i);
-            }
-          }
-
-          // Batch frame rendering via requestAnimationFrame to guarantee at most 1 draw per display refresh
-          if (targetFrame !== lastDrawnFrameRef.current) {
+          // Lookahead preloading & scroll notification only when targetFrame changes
+          if (targetFrame !== lastTargetFrameRef.current) {
             lastTargetFrameRef.current = targetFrame;
+            notifyScrollActivity(targetFrame);
+
+            // Preload upcoming frames in scroll direction
+            const dir = self.direction || 1;
+            if (dir > 0) {
+              for (let i = 1; i <= 5; i++) {
+                if (targetFrame + i <= TOTAL_SEQUENCE_FRAMES) preloadFrame(targetFrame + i);
+              }
+              if (targetFrame - 1 >= 1) preloadFrame(targetFrame - 1);
+            } else {
+              for (let i = 1; i <= 5; i++) {
+                if (targetFrame - i >= 1) preloadFrame(targetFrame - i);
+              }
+              if (targetFrame + 1 <= TOTAL_SEQUENCE_FRAMES) preloadFrame(targetFrame + 1);
+            }
+
+            // Batch frame rendering via requestAnimationFrame to guarantee at most 1 draw per display refresh
             if (!rafIdRef.current) {
               rafIdRef.current = requestAnimationFrame(() => {
                 rafIdRef.current = null;
@@ -245,9 +283,7 @@ export default function GsapHeroSequence({ onSequenceComplete }: GsapHeroSequenc
       if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
       ctx.revert();
     };
-  }, [reducedMotion, renderFrameToCanvas, onSequenceComplete]);
-
-  const currentStageData = STAGES[activeStage] || STAGES[0];
+  }, [renderFrameToCanvas, onSequenceComplete]);
 
   return (
     <section
@@ -273,25 +309,34 @@ export default function GsapHeroSequence({ onSequenceComplete }: GsapHeroSequenc
           <div ref={panelRef} className="gsap-hero-side-panel">
             <div className="side-panel-header">
               <span className="side-panel-badge">ENGINEERING PROCESS</span>
-              <div className="side-panel-stepper">
+              <div className="side-panel-stepper" aria-label="Process Steps">
                 {STAGES.map((s, idx) => (
                   <span
                     key={s.num}
-                    className={`stepper-dot ${idx === activeStage ? 'is-active' : ''}`}
+                    ref={(el) => {
+                      stepperDotsRef.current[idx] = el;
+                    }}
+                    className={`stepper-dot ${idx === 0 ? 'is-active' : ''}`}
                     title={`Stage ${s.num}: ${s.title}`}
                   />
                 ))}
               </div>
             </div>
 
-            <div ref={stageContentRef} className="side-panel-body">
+            <div ref={stageContentRef} className="side-panel-body" aria-live="polite">
               <div className="stage-numeral-row">
-                <span className="stage-numeral">{currentStageData.num}</span>
+                <span ref={stageNumeralRef} className="stage-numeral">
+                  {STAGES[0].num}
+                </span>
                 <span className="stage-divider">—</span>
-                <h2 className="stage-title">{currentStageData.title}</h2>
+                <h2 ref={stageTitleRef} className="stage-title">
+                  {STAGES[0].title}
+                </h2>
               </div>
 
-              <p className="stage-description">{currentStageData.desc}</p>
+              <p ref={stageDescRef} className="stage-description">
+                {STAGES[0].desc}
+              </p>
             </div>
           </div>
 

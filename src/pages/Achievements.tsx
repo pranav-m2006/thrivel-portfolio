@@ -134,14 +134,14 @@ export default function Achievements() {
       {/* 2. ACHIEVEMENTS LIST */}
       <section id="achievements-list" className="page-section bg-ivory">
         <div className="container-narrow">
-          
+
           <div style={{ marginBottom: '48px' }}>
             <div className="editorial-eyebrow">Consistency & Rigor</div>
             <h2 className="editorial-h2">Learning beyond the classroom.</h2>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
-            
+
             {/* Achievement 1: SIH 2025 */}
             <div className="achieve-card-item editorial-card">
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '10px', marginBottom: '14px' }}>

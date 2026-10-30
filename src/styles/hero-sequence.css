@@ -30,6 +30,7 @@
   display: block;
   object-fit: cover;
   z-index: 1;
+  transform: translateZ(0);
 }
 
 /* Subtle Vignette & Top Navigation Shield */
@@ -72,6 +73,7 @@
   align-items: flex-end;
   gap: 8px; /* Visually connected to the Gemini symbol directly beneath */
   pointer-events: none;
+  transform: translateZ(0);
 }
 
 /* Dedicated Explanation Panel */
