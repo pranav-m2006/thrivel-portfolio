@@ -1,14 +1,41 @@
-import { useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef, Fragment } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export interface DisciplineOriginProps {
-  theme?: 'light' | 'dark';
+export interface OriginLine {
+  text: string;
+  pop: string;
+  popBg?: 'crimson' | 'black';
+  isMiddle?: boolean;
 }
 
-export default function DisciplineOrigin({ theme = 'light' }: DisciplineOriginProps) {
+export interface DisciplineOriginProps {
+  theme?: 'light' | 'dark';
+  badge?: string;
+  lines?: OriginLine[];
+  flow?: string[];
+  headline?: string;
+  subtext?: string;
+}
+
+const DEFAULT_LINES: OriginLine[] = [
+  { text: 'ATHLETICS TAUGHT', pop: 'DISCIPLINE.', popBg: 'crimson' },
+  { text: 'SOFTWARE TAUGHT', pop: 'CURIOSITY.', popBg: 'black', isMiddle: true },
+  { text: 'PROBLEM-SOLVING TAUGHT', pop: 'RESPONSIBILITY.', popBg: 'crimson' },
+];
+
+const DEFAULT_FLOW = ['Discipline', 'Curiosity', 'Responsibility'];
+
+export default function DisciplineOrigin({
+  theme = 'light',
+  badge = 'ORIGIN & RIGOR',
+  lines = DEFAULT_LINES,
+  flow = DEFAULT_FLOW,
+  headline = 'EVERYTHING I BUILD.',
+  subtext = 'Whether preparing for competitive programming contests or architecting full-stack React systems, the same standard applies: show up consistently, reject complacency, and build with human respect.',
+}: DisciplineOriginProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const isDark = theme === 'dark';
 
@@ -52,34 +79,34 @@ export default function DisciplineOrigin({ theme = 'light' }: DisciplineOriginPr
       <div className="container">
         
         <div className="disc-origin-badge-wrap">
-          <span className="craft-section-badge">ORIGIN &amp; RIGOR</span>
+          <span className="craft-section-badge">{badge}</span>
         </div>
 
         <div className="disc-origin-lines-stack">
-          <p className={`disc-origin-line ${isDark ? 'line-ivory' : 'line-black'}`}>
-            ATHLETICS TAUGHT <span className="disc-badge-pop bg-crimson">DISCIPLINE.</span>
-          </p>
-          <p className="disc-origin-line line-crimson">
-            SOFTWARE TAUGHT <span className="disc-badge-pop bg-black">CURIOSITY.</span>
-          </p>
-          <p className={`disc-origin-line ${isDark ? 'line-ivory' : 'line-black'}`}>
-            PROBLEM-SOLVING TAUGHT <span className="disc-badge-pop bg-crimson">RESPONSIBILITY.</span>
-          </p>
+          {lines.map((line, idx) => {
+            const lineClass = line.isMiddle
+              ? 'line-crimson'
+              : (isDark ? 'line-ivory' : 'line-black');
+            const popClass = line.popBg === 'black' ? 'bg-black' : 'bg-crimson';
+            return (
+              <p key={idx} className={`disc-origin-line ${lineClass}`}>
+                {line.text} <span className={`disc-badge-pop ${popClass}`}>{line.pop}</span>
+              </p>
+            );
+          })}
         </div>
 
         <div className="disc-origin-payoff">
           <div className="disc-flow-indicator">
-            <span>Discipline</span>
-            <span className="disc-arrow">→</span>
-            <span>Curiosity</span>
-            <span className="disc-arrow">→</span>
-            <span>Responsibility</span>
+            {flow.map((step, idx) => (
+              <Fragment key={idx}>
+                <span>{step}</span>
+                {idx < flow.length - 1 && <span className="disc-arrow">→</span>}
+              </Fragment>
+            ))}
           </div>
-          <h2 className="disc-payoff-headline">EVERYTHING I BUILD.</h2>
-          <p className="disc-payoff-sub">
-            Whether preparing for competitive programming contests or architecting full-stack React systems,
-            the same standard applies: show up consistently, reject complacency, and build with human respect.
-          </p>
+          <h2 className="disc-payoff-headline">{headline}</h2>
+          <p className="disc-payoff-sub">{subtext}</p>
         </div>
 
       </div>

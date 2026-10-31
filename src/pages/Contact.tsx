@@ -77,8 +77,19 @@ export default function Contact() {
         ]}
       />
 
-      {/* 3. CATCHY EDITORIAL MANIFESTO (Discipline, Curiosity, Responsibility) */}
-      <DisciplineOrigin theme="dark" />
+      {/* 3. CATCHY COLLABORATION MANIFESTO (Connection, Collaboration, Trust) */}
+      <DisciplineOrigin
+        theme="dark"
+        badge="COMMUNICATION &amp; COLLABORATION"
+        lines={[
+          { text: 'CURIOSITY SPARKS', pop: 'CONNECTION.', popBg: 'crimson' },
+          { text: 'CLARITY DRIVES', pop: 'COLLABORATION.', popBg: 'black', isMiddle: true },
+          { text: 'CONSISTENCY EARNS', pop: 'TRUST.', popBg: 'crimson' },
+        ]}
+        flow={['Connection', 'Collaboration', 'Trust']}
+        headline="HOW WE BUILD TOGETHER."
+        subtext="Whether discussing an engineering internship, architecting an applied AI system, or building a responsive web experience—the standard remains: communicate with clarity, execute with discipline, and deliver real human value."
+      />
 
       {/* 4. DIRECT CONTACT METHODS */}
       <section id="direct-channels" className="page-section bg-ivory">
