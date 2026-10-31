@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Briefcase, GraduationCap, CheckCircle2, Check, X } from 'lucide-react';
+import { ArrowRight, Briefcase, GraduationCap, CheckCircle2, Check, Layers, Code, ShieldCheck, GitBranch, Terminal } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import PageHeroHeadline from '../components/PageHeroHeadline';
@@ -78,60 +78,60 @@ export default function Experience() {
 
       {/* Dark Theme Explanation Section: Workplace Standards & Collaboration Integrity */}
       <DarkExplanationSection
-        badge="WORKPLACE STANDARDS & INTEGRITY"
-        title="What I Bring to Engineering Teams."
-        quote="“Showing up with curiosity, taking full responsibility for assigned tickets, and communicating clearly across pull requests.”"
+        badge="PROFESSIONAL APPLICATION"
+        title="Translating Engineering Theory Into Team Delivery."
+        quote="“Real-world engineering is measured by predictability, clean PR workflows, and components that teams can depend on.”"
         leftColumn={{
-          title: 'TEAMWORK & COLLABORATIVE BOUNDARIES',
-          pillText: 'DISCIPLINE',
-          variant: 'blocked',
+          title: 'INTERNSHIP CONTRIBUTIONS',
+          pillText: 'EXPERIENCE',
+          variant: 'pillar',
           items: [
             {
-              title: 'Silent assumptions & scope creep',
-              desc: 'Refuse guessing requirements silently; ask clarifying questions early to prevent wasted sprint cycles.',
-              icon: <X size={15} strokeWidth={2.8} />,
+              title: 'CodSoft Frontend Engineering',
+              desc: 'Built responsive web interfaces, optimized client-side layout trees, and collaborated on clean modular UI specifications.',
+              icon: <Code size={15} strokeWidth={2.4} />,
             },
             {
-              title: 'Monolithic messy pull requests',
-              desc: 'Refuse multi-thousand-line PRs; structure commits with atomic, bisectable, and documented intent.',
-              icon: <X size={15} strokeWidth={2.8} />,
+              title: 'InternPe Web Engineering',
+              desc: 'Developed cross-browser web components, integrated client-side form validation, and adhered to tight development timelines.',
+              icon: <Terminal size={15} strokeWidth={2.4} />,
             },
             {
-              title: 'Skipping cross-browser checks',
-              desc: 'Refuse testing on only one viewport; verify across Chrome, Firefox, Safari, and mobile breakpoints.',
-              icon: <X size={15} strokeWidth={2.8} />,
+              title: 'Sprint Collaboration & PR Cadence',
+              desc: 'Conducted structured git branching, authored clear pull request documentation, and participated in constructive code reviews.',
+              icon: <GitBranch size={15} strokeWidth={2.4} />,
             },
             {
-              title: 'Defensiveness during review',
-              desc: 'Welcome peer feedback, code reviews, and critiques as the fastest mechanism for engineering growth.',
-              icon: <X size={15} strokeWidth={2.8} />,
+              title: 'Academic Research Collaboration',
+              desc: 'Co-authored engineering research and presented at technical symposium with university faculty peer reviews.',
+              icon: <Briefcase size={15} strokeWidth={2.4} />,
             },
           ],
         }}
         rightColumn={{
-          title: 'VERIFIED INTERNSHIP DELIVERABLES',
-          pillText: 'VERIFIED',
-          variant: 'verified',
+          title: 'ENGINEERING PRINCIPLES APPLIED',
+          pillText: 'STANDARDS',
+          variant: 'standard',
           items: [
             {
-              title: 'CodSoft Web Development Internship',
-              desc: 'Engineered responsive layouts, resolved cross-device bugs, and honed vanilla CSS & JavaScript craft.',
-              icon: <Check size={15} strokeWidth={2.8} />,
+              title: 'Component Reusability',
+              desc: 'Refactored redundant page markup into parameter-driven, composable React modules that reduced duplication.',
+              icon: <Layers size={15} strokeWidth={2.4} />,
             },
             {
-              title: 'InternPe Software Engineering Internship',
-              desc: 'Delivered frontend features under agile sprints and maintained collaborative Git version control.',
-              icon: <Check size={15} strokeWidth={2.8} />,
+              title: 'Deterministic State Boundaries',
+              desc: 'Isolated asynchronous API fetching and error states to maintain application resilience under network latency.',
+              icon: <ShieldCheck size={15} strokeWidth={2.4} />,
             },
             {
-              title: 'Clean Pull Request Hygiene',
-              desc: 'Practiced daily branching, clear PR descriptions, descriptive commit logs, and clean squash-merge workflows.',
-              icon: <Check size={15} strokeWidth={2.8} />,
+              title: 'Cross-Browser Accessibility',
+              desc: 'Verified layouts across Chrome, Firefox, Safari, and mobile viewports with WCAG AA compliance.',
+              icon: <Check size={15} strokeWidth={2.4} />,
             },
             {
-              title: 'Academic Research Collaboration',
-              desc: 'Co-authored research presented at technical symposium with university faculty peer reviews.',
-              icon: <Check size={15} strokeWidth={2.8} />,
+              title: 'Continuous Delivery & Growth',
+              desc: 'Welcomed peer feedback, code reviews, and critiques as the fastest mechanism for engineering craft.',
+              icon: <Check size={15} strokeWidth={2.4} />,
             },
           ],
         }}

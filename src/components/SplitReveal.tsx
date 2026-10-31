@@ -1,11 +1,11 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect, type ReactNode } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
 interface SplitRevealProps {
-  children: React.ReactNode;
+  children: ReactNode;
   as?: 'h1' | 'h2' | 'h3' | 'p' | 'div';
   className?: string;
   delay?: number;

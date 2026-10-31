@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useState, useCallback, type ChangeEvent } from 'react';
 import { Play, Pause, RotateCcw, Sparkles } from 'lucide-react';
 import { getFrameImage, TOTAL_SEQUENCE_FRAMES, formatFrameUrl, loadImage } from '../utils/assetLoader';
 
@@ -157,7 +157,7 @@ export default function GoogleFlowSequence({
   }, [drawFrame, resizeCanvas]);
 
   // Handle manual scrub bar
-  const handleScrub = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleScrub = (e: ChangeEvent<HTMLInputElement>) => {
     const val = parseInt(e.target.value, 10);
     setCurrentFrame(val);
     drawFrame(val);

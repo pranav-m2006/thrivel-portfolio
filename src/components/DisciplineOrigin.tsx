@@ -4,8 +4,13 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function DisciplineOrigin() {
+export interface DisciplineOriginProps {
+  theme?: 'light' | 'dark';
+}
+
+export default function DisciplineOrigin({ theme = 'light' }: DisciplineOriginProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const isDark = theme === 'dark';
 
   useLayoutEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -40,21 +45,24 @@ export default function DisciplineOrigin() {
   }, []);
 
   return (
-    <section className="discipline-origin-section" ref={containerRef}>
+    <section 
+      className={`discipline-origin-section ${isDark ? 'theme-dark' : ''}`} 
+      ref={containerRef}
+    >
       <div className="container">
         
         <div className="disc-origin-badge-wrap">
-          <span className="craft-section-badge">ORIGIN & RIGOR</span>
+          <span className="craft-section-badge">ORIGIN &amp; RIGOR</span>
         </div>
 
         <div className="disc-origin-lines-stack">
-          <p className="disc-origin-line line-black">
+          <p className={`disc-origin-line ${isDark ? 'line-ivory' : 'line-black'}`}>
             ATHLETICS TAUGHT <span className="disc-badge-pop bg-crimson">DISCIPLINE.</span>
           </p>
           <p className="disc-origin-line line-crimson">
             SOFTWARE TAUGHT <span className="disc-badge-pop bg-black">CURIOSITY.</span>
           </p>
-          <p className="disc-origin-line line-black">
+          <p className={`disc-origin-line ${isDark ? 'line-ivory' : 'line-black'}`}>
             PROBLEM-SOLVING TAUGHT <span className="disc-badge-pop bg-crimson">RESPONSIBILITY.</span>
           </p>
         </div>

@@ -1,12 +1,11 @@
 import { useLayoutEffect, useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowLeft, Code, Layout, Cpu, Database, GitBranch, Sparkles, CheckCircle2, Check, X } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Code, Layout, Cpu, Database, GitBranch, Sparkles, CheckCircle2 } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import PageHeroHeadline from '../components/PageHeroHeadline';
 import LuxuryMarquee from '../components/LuxuryMarquee';
 import ProcessLifecycle from '../components/ProcessLifecycle';
-import DarkExplanationSection from '../components/DarkExplanationSection';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -119,198 +118,210 @@ export default function Skills() {
           application: 'Core UI framework across Learning Zone, Disaster Advisory, and Portfolio',
         },
         {
-          name: 'HTML5',
-          tag: 'Semantic Accessibility',
-          desc: 'Document landmarks, accessible ARIA roles, SEO meta hierarchy, cross-device responsiveness, and screen-reader compliant structural markup.',
-          application: 'Strict semantic hierarchy with accessible tap targets',
+          name: 'HTML5 & Semantic A11y',
+          tag: 'Accessible Document Foundation',
+          desc: 'Strict document structure, ARIA landmarks, keyboard navigation compliance, and high-readability semantic layouts that honor all users.',
+          application: 'Applied across 100% of production web applications and interfaces',
         },
         {
-          name: 'CSS3 / Modern CSS',
-          tag: 'Layout & Fluid Typography',
-          desc: 'CSS Grid, Flexbox, custom CSS tokens, zero-dependency responsive rules, smooth micro-interactions, and high-contrast color harmonies.',
-          application: 'Custom design systems with tailored HSL palettes and zero CSS bloat',
+          name: 'Modern CSS3 & Tokens',
+          tag: 'Responsive Visual Craft',
+          desc: 'CSS Grid, Flexbox, custom property tokens, fluid typography with clamp(), and clean responsive breakpoints without external CSS framework bloat.',
+          application: 'Pure vanilla token architecture powering ultra-fast, bespoke designs',
         },
         {
-          name: 'GSAP Motion',
-          tag: 'Kinetic Motion & ScrollTrigger',
-          desc: 'ScrollTrigger choreographed timelines, hardware-accelerated transforms, kinetic typography reveals, and fluid viewport transitions.',
-          application: 'Drives all interactive scroll sequences, reveals, and card motions',
+          name: 'GSAP Animation Platform',
+          tag: 'Kinetic Motion Design',
+          desc: 'ScrollTrigger orchestrations, frame canvas sequences, staggered reveals, and silky smooth easing curves that respect reduced motion settings.',
+          application: 'Scroll-linked hero animations, page transitions, and interactive viewports',
         },
       ],
     },
     {
       id: 'backend',
       numeral: '03',
-      category: 'Backend & Systems',
-      title: 'Connecting Ideas to Scalable Applications',
-      headline: 'Connecting user experiences to reliable computation.',
-      leadDesc: 'Architecting dependable server environments, RESTful communication layers, and rapid multi-platform prototypes that handle real-world data.',
-      quote: 'Connecting user experiences to reliable computation and resilient data pipelines.',
+      category: 'Backend & Data',
+      title: 'Reliable Data Pipelines',
+      headline: 'Building the durable spine behind dynamic interfaces.',
+      leadDesc: 'Connecting responsive frontend applications to reliable backend APIs, structured relational schemas, and asynchronous data fetching layers.',
+      quote: 'Clean API boundaries and predictable, structured state synchronization.',
       coreCapabilities: [
-        'Node.js & Express Middleware',
-        'RESTful API Endpoint Design',
-        'JSON Data Serialization',
-        'Cross-Platform Prototyping',
-        'Asynchronous Request Pipelines',
-        'Error Boundary Handling',
+        'RESTful API Integration',
+        'Relational Schema Design (SQL)',
+        'Node.js Server Fundamentals',
+        'Asynchronous Error Handling',
+        'JSON Schema Validation',
+        'Client-Side Caching Protocols',
       ],
       deliverables: [
-        'Clean API Response Contracts',
-        'Predictive Model Endpoints',
-        'FlutterFlow Multiplatform UI',
-        'Modular Route Controllers',
-        'Resilient Network Fallbacks',
-        'Lightweight Backend Servers',
+        'Predictable API Contract Adherence',
+        'Relational Data Normalization',
+        'Fault-Tolerant Fetch Wrappers',
+        'Sanitized Client Input Streams',
+        'Consistent Response Serialization',
+        'Robust Network Retry Handlers',
       ],
       skills: [
         {
-          name: 'Node.js & Express',
-          tag: 'Backend Runtime',
-          desc: 'Event-driven server runtime powering modular API routing, middleware pipelines, data serialization, and build tooling integration.',
-          application: 'Powers backend services and data ingestion routes',
+          name: 'Node.js',
+          tag: 'Server-Side Runtime',
+          desc: 'Building lightweight runtime servers, handling asynchronous I/O streams, managing package dependencies, and serving modular endpoints.',
+          application: 'Backend tooling, build configurations, and local API mock services',
         },
         {
-          name: 'RESTful APIs',
-          tag: 'System Integration',
-          desc: 'Structured JSON communication, endpoint status conventions, query parameter handling, and resilient error recovery between client and server.',
-          application: 'Connects UI dashboards to real-time predictive services',
+          name: 'SQL & Relational DBs',
+          tag: 'Structured Data Storage',
+          desc: 'Relational data modeling, primary/foreign key normalization, schema indexing, and structured SQL queries across databases.',
+          application: 'Academic coursework and disaster telemetry historical databases',
         },
         {
-          name: 'FlutterFlow',
-          tag: 'Rapid Multi-Platform',
-          desc: 'Low-code cross-platform prototyping for mobile and web, facilitating rapid user testing, UI iteration, and verification during hackathon sprints.',
-          application: 'Rapid prototyping validated during national hackathons',
+          name: 'RESTful API Architecture',
+          tag: 'Data Exchange Protocols',
+          desc: 'Designing and consuming predictable HTTP methods (GET, POST, PUT, DELETE), JSON serialization, and structured status code handling.',
+          application: 'Third-party meteorological APIs and backend communication channels',
         },
       ],
     },
     {
       id: 'applied-ai',
       numeral: '04',
-      category: 'Applied Intelligence',
-      title: 'Predictive & Assistive Intelligence',
-      headline: 'Introducing practical AI where it genuinely serves a purpose.',
-      leadDesc: 'Harnessing machine learning methodologies to solve real-world predictive and assistive problems without superficial gimmicks or invented claims.',
-      quote: 'Practical predictive intelligence that solves real-world human problems.',
+      category: 'Applied AI & ML',
+      title: 'Machine Learning Where It Serves Purpose',
+      headline: 'Practical intelligence applied to real-world mitigation.',
+      leadDesc: 'Applying machine learning models and conversational AI pipelines to practical problems: weather-driven disaster risk mitigation and intelligent pedagogical tutoring.',
+      quote: 'No hollow hype — just applied prediction that provides tangible human utility.',
       coreCapabilities: [
-        'Supervised Machine Learning',
-        'Meteorological Signal Processing',
-        'Context-Aware AI Tutoring',
-        'NLP Tokenization & Embeddings',
-        'Feature Scaling & Normalization',
-        'Real-World Anomaly Detection',
+        'Predictive Classification Models',
+        'Geospatial Telemetry Processing',
+        'Conversational Tutoring Logic',
+        'Real-Time Inference Integration',
+        'Weather Data Feature Engineering',
+        'Model Evaluation & Confusion Matrices',
       ],
       deliverables: [
-        'Disaster Advisory Prediction Engine',
-        'Interactive Learning Zone Assistant',
-        'Automated Weather Bulletin Feed',
-        'Model Accuracy Evaluation',
-        'Certified NLP Workshop Credentials',
-        'Production ML UI Integration',
+        'SIH 2025 National Finalist Prototype',
+        'Multi-Metric Risk Scoring Pipeline',
+        'Modular Quiz Generation Logic',
+        'Adaptive Learner Feedback Trees',
+        'Real-Time Alert Threshold Rules',
+        'Documented Research Methodologies',
       ],
       skills: [
         {
-          name: 'Applied Machine Learning',
+          name: 'Machine Learning & Python',
           tag: 'Predictive Modeling',
-          desc: 'Supervised learning paradigms, feature extraction, data pre-processing, regression modeling, and performance evaluation metrics.',
-          application: 'Applied in academic coursework, workshops, and production projects',
+          desc: 'Supervised predictive classification, feature engineering, and data preprocessing for meteorological risk forecasting.',
+          application: 'Automated Weather-Driven Disaster Management System (SIH 2025)',
         },
         {
-          name: 'Disaster Risk Forecasting',
-          tag: 'Meteorological Signals',
-          desc: 'Trained weather anomaly prediction model that translates raw sensor probabilities into plain-language precautionary bulletins.',
-          application: 'Core engine of the Disaster Management & Advisory System',
+          name: 'Conversational AI Systems',
+          tag: 'Pedagogical Interfaces',
+          desc: 'Context-aware interactive tutoring loops, prompt-engineered question guidance, and adaptive student response evaluations.',
+          application: 'The Learning Zone AI-powered tutoring and concept clarification modules',
         },
         {
-          name: 'Interactive AI Tutor Module',
-          tag: 'Context-Aware Assistant',
-          desc: 'On-demand conversational study assistant providing structured walkthroughs for complex coding problems without distracting from study flow.',
-          application: 'Embedded directly into the Learning Zone education portal',
-        },
-        {
-          name: 'NLP Workshop Foundations',
-          tag: 'Natural Language Processing',
-          desc: 'Hands-on training in text preprocessing, tokenization, semantic embeddings, and language model fundamentals.',
-          application: 'Certified through specialized technical departmental workshops',
+          name: 'Data Analysis & Visuals',
+          tag: 'Empirical Interpretation',
+          desc: 'Translating complex model predictions into clear visual indicators, severity gauges, and actionable human safety warnings.',
+          application: 'Disaster advisory UI and weather trend mapping charts',
         },
       ],
     },
     {
       id: 'workflow',
       numeral: '05',
-      category: 'Workflow & Agility',
-      title: 'Team Agility & Engineering Integrity',
-      headline: 'Version control, code review discipline, and team execution.',
-      leadDesc: 'Rigorous version control, collaborative code reviews, and structured problem decomposition tested under intense deadlines in national competitions.',
-      quote: 'Rigorous version control, co-invented patents, and national hackathon execution.',
+      category: 'Engineering Workflow',
+      title: 'Professional Delivery & Collaboration',
+      headline: 'Tools and disciplines that turn concepts into shipped code.',
+      leadDesc: 'Disciplined version control, team collaboration habits, agile sprint participation, and intellectual property documentation honed across internships and national hackathons.',
+      quote: 'Collaborative clarity, dependable versioning, and continuous delivery.',
       coreCapabilities: [
-        'Git Branching & Collaborative PRs',
-        'National Hackathon Sprints',
-        'Intellectual Property & Patents',
-        'Semantic Commit Versioning',
-        'Code Review & Team Agility',
-        'Systematic Problem Decomposition',
+        'Git Branching & PR Cadence',
+        'Agile Sprint Participation',
+        'Cross-Browser Diagnostic Auditing',
+        'Vite Production Bundling',
+        'Intellectual Property Filing',
+        'Technical Architecture Defense',
       ],
       deliverables: [
-        'Smart India Hackathon Finalist Status',
-        '2 Registered Product Patents',
-        'Daily GitHub Track Record',
-        'Verified Co-Inventor Documentation',
-        'Rigorous Code Review Pass',
-        'Tested Team Deliverables',
+        'Clean GitHub Commit Histories',
+        '2 Formally Registered Patents',
+        'SIH 2025 National Stage Delivery',
+        'Production Internship Shipments',
+        'Zero-Warning TypeScript Builds',
+        'Documented Component Runbooks',
       ],
       skills: [
         {
           name: 'Git & GitHub',
-          tag: 'Version Control Craft',
-          desc: 'Branching strategies, pull requests, merge conflict resolution, semantic commit history, and collaborative code reviews.',
-          application: 'Active daily GitHub repository management (github.com/pranav-m2006)',
+          tag: 'Version Control Rigor',
+          desc: 'Branch workflows, pull requests, resolving merge conflicts, semantic commit messages, and collaborative open-source contributions.',
+          application: 'All personal, team hackathon, and internship code repositories',
         },
         {
-          name: 'Smart India Hackathon 2025',
-          tag: 'National Finalist',
-          desc: 'Demonstrated rapid debugging, agile teamwork, and resilient architecture under high-pressure competitive sprint conditions.',
-          application: 'Selected as national finalist at Smart India Hackathon 2025',
+          name: 'Vite & Modern Tooling',
+          tag: 'Build & Bundling Engine',
+          desc: 'Sub-second Hot Module Replacement (HMR), tree-shaking production chunk optimization, and lightning-fast developer feedback loops.',
+          application: 'Development and production build pipeline for all current web applications',
         },
         {
-          name: 'Systematic Problem Solving',
-          tag: 'Algorithmic Discipline',
-          desc: 'Decomposing ambiguous, complex challenges into testable milestones, clean commits, and verified modular deployments.',
-          application: '150+ LeetCode problems solved across a 100-day consecutive streak',
-        },
-        {
-          name: '2 Product Patents',
-          tag: 'Intellectual Property',
-          desc: 'Officially registered co-inventor on two certified technological product innovations.',
-          application: 'Government certified and filed product patents',
+          name: 'Patents & Technical Defense',
+          tag: 'Intellectual Property Craft',
+          desc: 'Drafting formal patent claims, documenting hardware-software integration diagrams, and defending architectural solutions before technical juries.',
+          application: '2 registered technological product patents and SIH 2025 national finals',
         },
       ],
     },
   ];
 
-
-  // GSAP Entrance Animation on initial load
   useLayoutEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mediaQuery.matches) return;
+
     const ctx = gsap.context(() => {
-      gsap.from('.skills-interactive-heading', {
+      gsap.from('.skills-hero-reveal', {
         y: 28,
         opacity: 0,
         duration: 0.8,
+        stagger: 0.12,
         ease: 'power3.out',
       });
 
-      gsap.from('.skills-sentence-card', {
-        y: 24,
-        opacity: 0,
-        duration: 0.7,
-        delay: 0.2,
-        ease: 'power2.out',
-      });
-
       gsap.from('.skills-showcase-controls-bar', {
+        scrollTrigger: {
+          trigger: '#skills-showcase',
+          start: 'top 85%',
+        },
         y: 20,
         opacity: 0,
         duration: 0.6,
-        delay: 0.35,
+        ease: 'power2.out',
+      });
+
+      // ScrollTrigger reveals for Technical Index cards
+      gsap.utils.toArray<HTMLElement>('.skills-index-grid .editorial-card').forEach((card) => {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 88%',
+          },
+          y: 28,
+          opacity: 0,
+          duration: 0.7,
+          ease: 'power2.out',
+        });
+      });
+
+      // ScrollTrigger reveals for Bridge metrics
+      gsap.from('.bridge-metric-card', {
+        scrollTrigger: {
+          trigger: '.bridge-metrics-grid',
+          start: 'top 85%',
+        },
+        y: 25,
+        opacity: 0,
+        duration: 0.65,
+        stagger: 0.12,
         ease: 'power2.out',
       });
     }, containerRef);
@@ -323,7 +334,7 @@ export default function Skills() {
     if (nextIndex === activeStageIndex || !showcaseRef.current) return;
 
     const currentScreen = showcaseRef.current;
-    
+
     // Smooth transition: fade out old content, update index, reveal new details one after another
     gsap.to(currentScreen, {
       opacity: 0.3,
@@ -332,7 +343,7 @@ export default function Skills() {
       ease: 'power2.in',
       onComplete: () => {
         setActiveStageIndex(nextIndex);
-        
+
         // Next view enters in red-accented grandeur
         gsap.fromTo(
           currentScreen,
@@ -398,12 +409,12 @@ export default function Skills() {
 
   return (
     <div ref={containerRef} className="page-wrapper">
-      
+
       {/* =====================================================================
           1. HERO: Big Bold Black-to-Red Interactive Transition Heading
           ===================================================================== */}
       <PageHeroHeadline
-        eyebrow="04 / TECHNICAL ARCHITECTURE & CRAFT"
+        eyebrow="04 / TECHNICAL ARCHITECTURE &amp; CRAFT"
         blackText="A disciplined toolkit."
         accentText="Built for craft."
         arrowHref="#skills-showcase"
@@ -439,81 +450,20 @@ export default function Skills() {
         ]}
       />
 
-      {/* Dark Theme Explanation Section: Technical Methodology & Computational Rigor */}
-      <DarkExplanationSection
-        badge="TECHNICAL METHODOLOGY & RIGOR"
-        title="How I Master Technical Systems."
-        quote="“Languages and frameworks change rapidly. Algorithmic fundamentals, memory awareness, and architectural discipline remain constant.”"
-        leftColumn={{
-          title: 'CORE TECHNICAL BOUNDARIES',
-          pillText: 'DISCIPLINE',
-          variant: 'blocked',
-          items: [
-            {
-              title: 'Memory awareness & pointers',
-              desc: 'Refuse treating compute resources as infinite; understand stack vs heap allocation in C and C++.',
-              icon: <X size={15} strokeWidth={2.8} />,
-            },
-            {
-              title: 'Asynchronous event loop comprehension',
-              desc: 'Refuse copying async/await snippets without deep awareness of macro-tasks, micro-tasks, and call stacks.',
-              icon: <X size={15} strokeWidth={2.8} />,
-            },
-            {
-              title: 'Typed data boundaries',
-              desc: 'Enforce clean interfaces and robust type boundaries to eliminate runtime undefined errors.',
-              icon: <X size={15} strokeWidth={2.8} />,
-            },
-            {
-              title: 'Algorithmic optimization O(N log N)',
-              desc: 'Analyze time and space complexity before committing any sorting, searching, or recursion routines.',
-              icon: <X size={15} strokeWidth={2.8} />,
-            },
-          ],
-        }}
-        rightColumn={{
-          title: 'DEMONSTRABLE PROOF & EXECUTION',
-          pillText: 'VERIFIED',
-          variant: 'verified',
-          items: [
-            {
-              title: '150+ LeetCode Solutions',
-              desc: '100-day active streak solving algorithmic challenges across Java, C++, and Python.',
-              icon: <Check size={15} strokeWidth={2.8} />,
-            },
-            {
-              title: '2 Registered Product Patents',
-              desc: 'Co-invented hardware-software integrated systems with certified intellectual property documentation.',
-              icon: <Check size={15} strokeWidth={2.8} />,
-            },
-            {
-              title: 'Smart India Hackathon Finalist',
-              desc: 'Competed in SIH 2025 at the national level developing predictive meteorological solutions.',
-              icon: <Check size={15} strokeWidth={2.8} />,
-            },
-            {
-              title: 'Production Internship Systems',
-              desc: 'Shipped modular components and responsive features during internships at CodSoft and InternPe.',
-              icon: <Check size={15} strokeWidth={2.8} />,
-            },
-          ],
-        }}
-      />
-
       {/* =====================================================================
-          2. GSAP INTERACTIVE NEXT-NEXT SKILLS VIEW SHOWCASE
+          2. GSAP INTERACTIVE NEXT-NEXT SKILLS VIEW SHOWCASE (Black Theme)
           - Active category highlighted in Vivid Crimson Red
           - Giant Watermark Numeral
           - Italic Editorial Quote
           - Core Capabilities (▸) & Verified Deliverables (✓) Architectural Spec
           - Details shown one after another with smooth GSAP sequence
           ===================================================================== */}
-      <section id="skills-showcase" className="skills-showcase-section bg-ivory">
+      <section id="skills-showcase" className="skills-showcase-section">
         <div className="container">
-          
+
           {/* Navigation Controls: Categories + Next/Prev Buttons */}
           <div className="skills-showcase-controls-bar">
-            
+
             {/* Stage Tabs (Active highlighted in RED) */}
             <div className="skills-stage-tabs-row" role="tablist" aria-label="Skill Categories">
               {skillStages.map((stage, idx) => {
@@ -563,23 +513,23 @@ export default function Skills() {
 
           {/* Kinetic Progress Bar Track */}
           <div className="skills-stage-progress-bar-track" aria-hidden="true">
-            <div 
-              className="skills-stage-progress-bar-fill" 
+            <div
+              className="skills-stage-progress-bar-fill"
               style={{ width: `${((activeStageIndex + 1) / skillStages.length) * 100}%` }}
             />
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '8px', marginBottom: '18px' }}>
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--color-muted-brown)' }}>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: '#D9C2A3' }}>
               Stage {currentStage.numeral} / 05 · {currentStage.category}
             </span>
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: '#C63D2F', fontWeight: 600 }}>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: '#E25B45', fontWeight: 600 }}>
               Use ← / → keys to navigate
             </span>
           </div>
 
           {/* Main Stage Screen: Good Rich Colour Background & Big Fonts */}
-          <div 
-            ref={showcaseRef} 
+          <div
+            ref={showcaseRef}
             className="skills-showcase-stage-screen relative"
             tabIndex={0}
             aria-live="polite"
@@ -599,7 +549,7 @@ export default function Skills() {
             </div>
 
             {/* Italic Editorial Quote */}
-            <p 
+            <p
               style={{
                 fontFamily: 'var(--font-heading)',
                 fontStyle: 'italic',
@@ -632,7 +582,7 @@ export default function Skills() {
                   </div>
 
                   <div className="showcase-detail-app">
-                    <CheckCircle2 size={13} color="#C63D2F" />
+                    <CheckCircle2 size={13} color="#E25B45" />
                     <span>{item.application}</span>
                   </div>
                 </div>
@@ -685,12 +635,12 @@ export default function Skills() {
       <LuxuryMarquee theme="dark" />
 
       {/* =====================================================================
-          4. ENGINEERING PROCESS LIFECYCLE (How I Build - 6 Phases)
+          4. ENGINEERING PROCESS LIFECYCLE (How I Build - 6 Phases, High Contrast Black Theme)
           ===================================================================== */}
       <ProcessLifecycle />
 
       {/* =====================================================================
-          3. COMPLETE TECHNICAL INDEX (Full Breadth & Reference)
+          5. COMPLETE TECHNICAL INDEX (Full Breadth & Reference)
           ===================================================================== */}
       <section className="page-section bg-cream" style={{ padding: '60px 0 70px' }}>
         <div className="container">
@@ -702,8 +652,8 @@ export default function Skills() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
-            
+          <div className="skills-index-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
+
             {/* Card 1 */}
             <div className="editorial-card" style={{ borderTop: '3px solid #C63D2F' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px' }}>
@@ -742,7 +692,7 @@ export default function Skills() {
             <div className="editorial-card" style={{ borderTop: '3px solid #C63D2F' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px' }}>
                 <Cpu size={20} color="#C63D2F" />
-                <h3 style={{ fontSize: '1.25rem', color: '#1A1310' }}>Applied AI & Machine Learning</h3>
+                <h3 style={{ fontSize: '1.25rem', color: '#1A1310' }}>Applied AI &amp; Machine Learning</h3>
               </div>
               <p style={{ fontSize: '0.9rem', color: 'var(--color-warm-grey)', lineHeight: '1.65', marginBottom: '16px' }}>
                 Real-world predictive models for disaster risk forecasts and conversational AI tutoring modules.
@@ -765,7 +715,7 @@ export default function Skills() {
                 Collaborative Git workflows, SIH 2025 finalist experience, registered patents, and clean PR review habits.
               </p>
               <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                <span className="meta-tag">Git & GitHub</span>
+                <span className="meta-tag">Git &amp; GitHub</span>
                 <span className="meta-tag">SIH 2025</span>
                 <span className="meta-tag">2 Patents</span>
                 <span className="meta-tag">Agile Teams</span>
@@ -777,7 +727,7 @@ export default function Skills() {
       </section>
 
       {/* =====================================================================
-          4. APPLIED COMPETENCY & SYNTHESIS BRIDGE (Fills the awkward gap!)
+          6. APPLIED COMPETENCY & SYNTHESIS BRIDGE (Fills the awkward gap!)
           Directly bridges Skills into the Work Experience CTA
           ===================================================================== */}
       <section className="skills-experience-bridge bg-ivory">
@@ -796,7 +746,7 @@ export default function Skills() {
               <div className="bridge-metric-card">
                 <span className="bridge-metric-num">150+</span>
                 <h4 className="bridge-metric-label">LeetCode Solved</h4>
-                <p className="bridge-metric-desc">Continuous 100-day algorithmic streak in Java & C++.</p>
+                <p className="bridge-metric-desc">Continuous 100-day algorithmic streak in Java &amp; C++.</p>
                 <span className="bridge-metric-tag">Algorithmic Discipline</span>
               </div>
 
@@ -826,7 +776,7 @@ export default function Skills() {
       </section>
 
       {/* =====================================================================
-          5. CLOSING CTA (Muted Clay — Seamless Transition Directly into Experience)
+          7. CLOSING CTA (Muted Clay — Seamless Transition Directly into Experience)
           ===================================================================== */}
       <section className="page-section bg-clay" style={{ textAlign: 'center', padding: '70px 0 80px', marginTop: '0', borderTop: '1px solid var(--color-sand-border)' }}>
         <div className="container-narrow">

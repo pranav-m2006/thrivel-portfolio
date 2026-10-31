@@ -2120,8 +2120,9 @@
 
 /* --- 2. GSAP Next-Next Skills View Showcase Screen --- */
 .skills-showcase-section {
-  padding: 30px 0 60px;
-  background: var(--color-ivory);
+  padding: 40px 0 70px;
+  background: #14100E;
+  border-bottom: 1px solid rgba(217, 194, 163, 0.15);
 }
 
 .skills-showcase-controls-bar {
@@ -2145,19 +2146,20 @@
   gap: 8px;
   padding: 10px 18px;
   border-radius: 100px;
-  background: #FFFFFF;
-  border: 1px solid var(--color-sand-border);
+  background: #1E1714;
+  border: 1px solid rgba(217, 194, 163, 0.22);
   font-family: var(--font-body);
   font-size: 0.88rem;
   font-weight: 500;
-  color: #1A1310;
+  color: #FBF7F0;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .skill-tab-pill:hover {
   border-color: #C63D2F;
-  color: #C63D2F;
+  color: #FFFFFF;
+  background: #2A1D18;
   transform: translateY(-2px);
 }
 
@@ -2194,16 +2196,17 @@
   border-radius: 8px;
   font-size: 0.9rem;
   font-weight: 600;
-  border: 1px solid var(--color-sand-border);
-  background: #FFFFFF;
-  color: #1A1310;
+  border: 1px solid rgba(217, 194, 163, 0.22);
+  background: #1E1714;
+  color: #FBF7F0;
   cursor: pointer;
   transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .skills-nav-arrow-btn:hover {
-  background: #F4E9D8;
-  border-color: #1A1310;
+  background: #2A1F1A;
+  border-color: #D9C2A3;
+  color: #FFFFFF;
   transform: translateY(-2px);
 }
 
@@ -2223,7 +2226,7 @@
 .skills-stage-progress-bar-track {
   width: 100%;
   height: 4px;
-  background: rgba(48, 37, 31, 0.08);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 2px;
   margin-top: 14px;
   overflow: hidden;
@@ -2840,6 +2843,54 @@
   border-color: var(--color-sand);
 }
 
+.craft-card-pillar {
+  border-color: rgba(217, 194, 163, 0.28);
+}
+
+.craft-card-pillar:hover {
+  border-color: rgba(217, 194, 163, 0.65);
+}
+
+.craft-card-standard {
+  border-color: rgba(226, 91, 69, 0.32);
+}
+
+.craft-card-standard:hover {
+  border-color: rgba(226, 91, 69, 0.7);
+}
+
+.status-dot-pillar {
+  background: #D9C2A3;
+  box-shadow: 0 0 8px rgba(217, 194, 163, 0.8);
+}
+
+.status-dot-standard {
+  background: #E25B45;
+  box-shadow: 0 0 8px rgba(226, 91, 69, 0.8);
+}
+
+.pill-pillar {
+  background: rgba(217, 194, 163, 0.14);
+  color: #E8D7C3;
+  border: 1px solid rgba(217, 194, 163, 0.4);
+}
+
+.pill-standard {
+  background: rgba(226, 91, 69, 0.15);
+  color: #FFA194;
+  border: 1px solid rgba(226, 91, 69, 0.4);
+}
+
+.wrap-pillar {
+  background: rgba(217, 194, 163, 0.16);
+  color: #D9C2A3;
+}
+
+.wrap-standard {
+  background: rgba(226, 91, 69, 0.18);
+  color: #FF7A66;
+}
+
 .craft-card-topbar {
   display: flex;
   justify-content: space-between;
@@ -2953,8 +3004,8 @@
 
 .process-lifecycle-section {
   padding: 100px 0;
-  background: var(--color-cream);
-  border-bottom: 1px solid var(--color-border);
+  background: #120E0D;
+  border-bottom: 1px solid rgba(217, 194, 163, 0.15);
 }
 
 .process-steps-grid {
@@ -2965,11 +3016,11 @@
 }
 
 .process-step-card {
-  background: #FFFFFF;
-  border: 1px solid var(--color-border);
+  background: #1E1714;
+  border: 1px solid rgba(217, 194, 163, 0.16);
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 8px 24px rgba(48, 37, 31, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
   display: flex;
   flex-direction: column;
@@ -2977,8 +3028,8 @@
 
 .process-step-card:hover {
   transform: translateY(-4px);
-  border-color: #C63D2F;
-  box-shadow: 0 14px 32px rgba(198, 61, 47, 0.12);
+  border-color: rgba(226, 91, 69, 0.65);
+  box-shadow: 0 14px 32px rgba(226, 91, 69, 0.2);
 }
 
 .process-card-top {
@@ -2992,7 +3043,7 @@
   font-family: var(--font-mono);
   font-size: 0.9rem;
   font-weight: 800;
-  color: #C63D2F;
+  color: #E25B45;
 }
 
 .process-card-phase {
@@ -3000,31 +3051,31 @@
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.16em;
-  color: var(--color-muted-brown);
-  background: var(--color-ivory);
+  color: #D9C2A3;
+  background: rgba(255, 255, 255, 0.05);
   padding: 2px 8px;
   border-radius: 4px;
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(217, 194, 163, 0.2);
 }
 
 .process-card-title {
   font-family: var(--font-heading);
   font-size: 1.3rem;
   font-weight: 750;
-  color: var(--color-espresso);
+  color: #FBF7F0;
   margin-bottom: 8px;
 }
 
 .process-card-desc {
   font-size: 0.88rem;
   line-height: 1.55;
-  color: var(--color-muted-brown);
+  color: rgba(251, 247, 240, 0.72);
 }
 
 .process-footer-track {
   padding: 16px 20px;
-  background: var(--color-ivory);
-  border: 1px solid var(--color-border);
+  background: #1E1714;
+  border: 1px solid rgba(217, 194, 163, 0.16);
   border-radius: 8px;
   text-align: center;
 }
@@ -3034,7 +3085,7 @@
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.1em;
-  color: var(--color-muted-brown);
+  color: #D9C2A3;
   text-transform: uppercase;
 }
 
@@ -3047,6 +3098,42 @@
   background: #FFFFFF;
   border-top: 3px solid #C63D2F;
   border-bottom: 1px solid var(--color-border);
+}
+
+.discipline-origin-section.theme-dark {
+  background: #14100E;
+  border-top: 3px solid #C63D2F;
+  border-bottom: 1px solid rgba(217, 194, 163, 0.15);
+}
+
+.discipline-origin-section.theme-dark .disc-origin-line.line-ivory {
+  color: #FBF7F0;
+}
+
+.discipline-origin-section.theme-dark .disc-origin-line.line-crimson {
+  color: #E25B45;
+}
+
+.discipline-origin-section.theme-dark .disc-badge-pop.bg-black {
+  background: #251B17;
+  border: 1px solid rgba(217, 194, 163, 0.3);
+  color: #FBF7F0;
+}
+
+.discipline-origin-section.theme-dark .disc-origin-payoff {
+  border-top: 2px solid rgba(217, 194, 163, 0.2);
+}
+
+.discipline-origin-section.theme-dark .disc-flow-indicator {
+  color: #D9C2A3;
+}
+
+.discipline-origin-section.theme-dark .disc-payoff-headline {
+  color: #FFFFFF;
+}
+
+.discipline-origin-section.theme-dark .disc-payoff-sub {
+  color: rgba(251, 247, 240, 0.82);
 }
 
 .disc-origin-badge-wrap {

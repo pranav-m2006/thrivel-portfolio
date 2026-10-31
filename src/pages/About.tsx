@@ -34,7 +34,19 @@ export default function About() {
         ease: 'power3.out',
       });
 
-      // 2. ScrollTrigger reveals for timeline blocks
+      // 2. ScrollTrigger reveal for biography content block
+      gsap.from('.about-bio-reveal', {
+        scrollTrigger: {
+          trigger: '#biography',
+          start: 'top 82%',
+        },
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+      });
+
+      // 3. ScrollTrigger reveals for timeline blocks
       gsap.utils.toArray<HTMLElement>('.timeline-block').forEach((block) => {
         gsap.from(block, {
           scrollTrigger: {
@@ -46,6 +58,18 @@ export default function About() {
           duration: 0.75,
           ease: 'power2.out',
         });
+      });
+
+      // 4. ScrollTrigger for closing section
+      gsap.from('.about-closing-reveal', {
+        scrollTrigger: {
+          trigger: '.bg-espresso',
+          start: 'top 85%',
+        },
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power2.out',
       });
     }, containerRef);
 
@@ -66,14 +90,6 @@ export default function About() {
             {/* Left Column: Authentic Profile Photograph in Architectural Arch Frame */}
             <div className="about-hero-photo-col" style={{ display: 'flex', justifyContent: 'center' }}>
               <div style={{ position: 'relative', width: '100%', maxWidth: '420px' }}>
-                <div style={{ position: 'absolute', top: '-14px', right: '-10px', zIndex: 10, background: '#FFFFFF', border: '1px solid var(--color-border)', borderRadius: '999px', padding: '6px 14px', boxShadow: '0 4px 16px rgba(48, 37, 31, 0.08)', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.78rem', fontWeight: 600, color: 'var(--color-espresso)' }}>
-                  <span>🔥</span>
-                  <span>100-Day Streak · 150+ LeetCode</span>
-                </div>
-                <div style={{ position: 'absolute', bottom: '50px', left: '-12px', zIndex: 10, background: '#FFFFFF', border: '1px solid var(--color-border)', borderRadius: '999px', padding: '6px 14px', boxShadow: '0 4px 16px rgba(48, 37, 31, 0.08)', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.78rem', fontWeight: 600, color: 'var(--color-espresso)' }}>
-                  <span>🏆</span>
-                  <span>SIH '25 Finalist · 2 Patents</span>
-                </div>
                 <ArchFrame
                   imageSrc="/images/pranav.jpg"
                   altText="Pranav M — Frontend Developer & AI/ML Practitioner sitting with laptop"
@@ -132,7 +148,7 @@ export default function About() {
           ===================================================================== */}
       <section id="biography" className="page-section bg-cream" style={{ padding: '80px 0' }}>
         <div className="container">
-          <div style={{ maxWidth: '840px', margin: '0 auto' }}>
+          <div className="about-bio-reveal" style={{ maxWidth: '840px', margin: '0 auto' }}>
             <div className="editorial-eyebrow">Academic &amp; Technical Context</div>
             <h2 className="editorial-h2" style={{ marginBottom: '24px' }}>Build. Understand. Improve.</h2>
             
@@ -255,7 +271,7 @@ export default function About() {
           7. CLOSING STATEMENT (Deep Espresso Section)
           ===================================================================== */}
       <section className="page-section bg-espresso" style={{ textAlign: 'center', padding: '100px 0' }}>
-        <div className="container-narrow">
+        <div className="container-narrow about-closing-reveal">
           <div className="editorial-eyebrow" style={{ justifyContent: 'center', color: 'var(--color-rusty-orange)' }}>
             Perspective
           </div>

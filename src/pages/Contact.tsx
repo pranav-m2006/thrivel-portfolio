@@ -1,23 +1,32 @@
 import { useState, useLayoutEffect, useRef } from 'react';
-import { Mail, Phone, MapPin, Github, Linkedin, Copy, Check, ArrowUpRight, X } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, Copy, Check, ArrowUpRight } from 'lucide-react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import PageHeroHeadline from '../components/PageHeroHeadline';
 import LuxuryMarquee from '../components/LuxuryMarquee';
-import DarkExplanationSection from '../components/DarkExplanationSection';
+import DisciplineOrigin from '../components/DisciplineOrigin';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mediaQuery.matches) return;
+
     const ctx = gsap.context(() => {
       gsap.from('.contact-reveal-item', {
+        scrollTrigger: {
+          trigger: '#direct-channels',
+          start: 'top 85%',
+        },
         y: 30,
         opacity: 0,
         duration: 0.8,
-        stagger: 0.12,
+        stagger: 0.15,
         ease: 'power2.out',
-        delay: 0.25,
       });
     }, containerRef);
 
@@ -34,7 +43,7 @@ export default function Contact() {
     <div ref={containerRef} className="page-wrapper">
       {/* 1. HERO: Big Bold Black-to-Red Interactive Transition Heading */}
       <PageHeroHeadline
-        eyebrow="08 / CONNECT & COLLABORATE"
+        eyebrow="08 / CONNECT &amp; COLLABORATE"
         blackText="Have an idea"
         accentText="worth building?"
         arrowHref="#direct-channels"
@@ -68,56 +77,8 @@ export default function Contact() {
         ]}
       />
 
-      {/* 3. DARK THEME EXPLANATION SECTION */}
-      <DarkExplanationSection
-        badge="COMMUNICATION PROTOCOL & RIGOR"
-        title="Direct, Candid & High-Signal Communication."
-        quote="“Clear expectations, prompt turnaround, and high-integrity collaboration without unnecessary meetings or bureaucracy.”"
-        leftColumn={{
-          title: 'COMMUNICATION BOUNDARIES',
-          pillText: 'UNSUITABLE',
-          variant: 'blocked',
-          items: [
-            {
-              title: 'Unstructured Mass Inquiries',
-              desc: 'Generic solicitations, marketing blasts, or automated recruiter spam without relevant context.',
-              icon: <X size={15} color="#e05244" />,
-            },
-            {
-              title: 'Uncompensated Speculative Work',
-              desc: 'Requests for free proprietary architecture, unpaid test projects, or unaligned design sprints.',
-              icon: <X size={15} color="#e05244" />,
-            },
-            {
-              title: 'Vague Briefs & Ghosting',
-              desc: 'Projects lacking defined scope, decision-maker presence, or transparent accountability.',
-              icon: <X size={15} color="#e05244" />,
-            },
-          ],
-        }}
-        rightColumn={{
-          title: 'COLLABORATIONS I WELCOME',
-          pillText: 'PRIORITY',
-          variant: 'verified',
-          items: [
-            {
-              title: 'Engineering Internships & Roles',
-              desc: 'Frontend development, React/TypeScript architecture, web performance, and applied AI systems.',
-              icon: <Check size={15} color="#4ade80" />,
-            },
-            {
-              title: 'Applied Research & Open-Source',
-              desc: 'Collaborative systems, real-time analytics, and open-source contributions with clear milestones.',
-              icon: <Check size={15} color="#4ade80" />,
-            },
-            {
-              title: 'Direct Technical Discussions',
-              desc: 'Deep dives on distributed systems, modern web ergonomics, and questions on published repos.',
-              icon: <Check size={15} color="#4ade80" />,
-            },
-          ],
-        }}
-      />
+      {/* 3. CATCHY EDITORIAL MANIFESTO (Discipline, Curiosity, Responsibility) */}
+      <DisciplineOrigin theme="dark" />
 
       {/* 4. DIRECT CONTACT METHODS */}
       <section id="direct-channels" className="page-section bg-ivory">

@@ -1,7 +1,7 @@
-import React, { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, type ReactNode, type MouseEvent } from 'react';
 
 interface MagneticButtonProps {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   onClick?: () => void;
   strength?: number;
@@ -35,7 +35,7 @@ export default function MagneticButton({
     return () => mq.removeEventListener('change', handler);
   }, []);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+  const handleMouseMove = (e: MouseEvent<HTMLElement>) => {
     if (reducedMotion || !btnRef.current) return;
     const rect = btnRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;

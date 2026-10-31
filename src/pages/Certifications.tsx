@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ShieldCheck, Check, X } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Check, Layers, Code, Database, Cpu } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import PageHeroHeadline from '../components/PageHeroHeadline';
@@ -140,59 +140,59 @@ export default function Certifications() {
       {/* Dark Theme Explanation Section: Continuous Accreditation & Curriculum Standards */}
       <DarkExplanationSection
         badge="ACCREDITATION INTEGRITY & STANDARDS"
-        title="The Philosophy of Continuous Learning."
-        quote="“Certifications are not decorative trophies. They are milestones of structured curriculum completion and verified technical competency.”"
+        title="Continuous Mastery & Industry Foundations."
+        quote="“Structured coursework, rigorous assessments, and verified credentials validating both foundational theory and real engineering execution.”"
         leftColumn={{
-          title: 'REJECTED ACCREDITATION PRACTICES',
-          pillText: 'REJECTED',
-          variant: 'blocked',
+          title: 'FOUNDATIONAL COMPUTING CORE',
+          pillText: 'FOUNDATIONAL',
+          variant: 'pillar',
           items: [
             {
-              title: 'Unverified completion badges',
-              desc: 'Reject low-effort online certificates issued without authentic identity verification or proctoring.',
-              icon: <X size={15} strokeWidth={2.8} />,
+              title: 'Data Structures & Algorithms (Java)',
+              desc: 'Algorithmic problem decomposition, tree balance, graph traversal, and big-O space-time analysis.',
+              icon: <Code size={15} strokeWidth={2.4} />,
             },
             {
-              title: 'Passive video watching without labs',
-              desc: 'Refuse counting video lectures as skill acquisition without demonstrable code repositories or practical labs.',
-              icon: <X size={15} strokeWidth={2.8} />,
+              title: 'Object-Oriented Architecture',
+              desc: 'Class hierarchies, encapsulation boundaries, inheritance polymorphism, and design patterns.',
+              icon: <Layers size={15} strokeWidth={2.4} />,
             },
             {
-              title: 'Superficial multiple-choice guessing',
-              desc: 'Reject trivial surface quizzes that do not test debugging, memory tradeoffs, or architectural decisions.',
-              icon: <X size={15} strokeWidth={2.8} />,
+              title: 'Relational Database Systems',
+              desc: 'Relational data modeling, SQL queries, indexing, and transactional ACID properties.',
+              icon: <Database size={15} strokeWidth={2.4} />,
             },
             {
-              title: 'Outdated legacy curricula hoarding',
-              desc: 'Refuse retaining obsolete badges without continuous refresh against modern industry standards.',
-              icon: <X size={15} strokeWidth={2.8} />,
+              title: 'Computer Networks & Systems Logic',
+              desc: 'OSI layers, socket communication, memory pointer allocation, and systems awareness.',
+              icon: <Cpu size={15} strokeWidth={2.4} />,
             },
           ],
         }}
         rightColumn={{
-          title: 'VERIFIED INDUSTRY STANDARDS',
-          pillText: 'VERIFIED',
-          variant: 'verified',
+          title: 'VERIFIED INDUSTRY CREDENTIALS',
+          pillText: 'SPECIALIZED',
+          variant: 'standard',
           items: [
             {
               title: 'IBM Technical Foundations',
-              desc: 'Industry-standard technical foundations, developer methodologies, and enterprise architectures.',
-              icon: <Check size={15} strokeWidth={2.8} />,
+              desc: 'Enterprise developer methodologies, architectural fundamentals, and cloud concepts.',
+              icon: <Check size={15} strokeWidth={2.4} />,
             },
             {
               title: 'Oracle Programming Fundamentals',
-              desc: 'Structured programming logic, relational SQL database schemas, and algorithmic fundamentals.',
-              icon: <Check size={15} strokeWidth={2.8} />,
+              desc: 'Structured logic, enterprise programming standards, and relational data querying.',
+              icon: <Check size={15} strokeWidth={2.4} />,
             },
             {
               title: 'NASSCOM Industry Technology Standard',
-              desc: 'Recognized industry curriculum aligning computer science education with contemporary workforce needs.',
-              icon: <Check size={15} strokeWidth={2.8} />,
+              desc: 'Recognized national curriculum aligning computer science competencies with industry engineering needs.',
+              icon: <Check size={15} strokeWidth={2.4} />,
             },
             {
               title: 'Great Learning Web Architecture',
               desc: 'Comprehensive training in modern frontend technologies, client-side scripting, and responsive application design.',
-              icon: <Check size={15} strokeWidth={2.8} />,
+              icon: <Check size={15} strokeWidth={2.4} />,
             },
           ],
         }}

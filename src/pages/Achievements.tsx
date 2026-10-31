@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Trophy, Award, Flame, FileText, Zap, Check, X } from 'lucide-react';
+import { ArrowRight, Trophy, Award, Flame, FileText, Zap, Check, ShieldCheck, Target } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import PageHeroHeadline from '../components/PageHeroHeadline';
@@ -72,60 +72,60 @@ export default function Achievements() {
 
       {/* Dark Theme Explanation Section: Milestone Validation & Independent Proof */}
       <DarkExplanationSection
-        badge="VALIDATION & INTEGRITY"
-        title="Proof Over Claims."
-        quote="“Real milestones are measured by independent national juries, government patent registries, and public algorithmic platforms.”"
+        badge="VERIFIED DISTINCTIONS"
+        title="National Innovation & Algorithmic Rigor."
+        quote="“Distinctions earned through continuous daily practice, high-stakes national competition, and certified intellectual property creation.”"
         leftColumn={{
-          title: 'WHAT DOES NOT COUNT AS PROOF',
-          pillText: 'REJECTED',
-          variant: 'blocked',
+          title: 'NATIONAL & INTELLECTUAL MILESTONES',
+          pillText: 'RECOGNIZED',
+          variant: 'pillar',
           items: [
             {
-              title: 'Self-appointed vanity titles',
-              desc: 'Reject grand labels like "Founder" or "Lead Architect" without demonstrable real users or production systems.',
-              icon: <X size={15} strokeWidth={2.8} />,
+              title: 'Smart India Hackathon 2025 Finalist',
+              desc: 'Selected among top national engineering teams to develop automated meteorological disaster forecasting systems.',
+              icon: <Trophy size={15} strokeWidth={2.4} />,
             },
             {
-              title: 'Invented traffic or revenue metrics',
-              desc: 'Refuse claiming millions in client impact or hypothetical stats with zero independent audit trails.',
-              icon: <X size={15} strokeWidth={2.8} />,
+              title: '2 Registered Technological Patents',
+              desc: 'Co-inventor on two officially registered hardware-software integrated patents with verified IP certificates.',
+              icon: <Award size={15} strokeWidth={2.4} />,
             },
             {
-              title: 'Superficial participation certificates',
-              desc: 'Reject low-effort online quizzes that issue completion badges without evaluating real engineering depth.',
-              icon: <X size={15} strokeWidth={2.8} />,
+              title: '100-Day Consecutive Coding Streak',
+              desc: 'Maintained an uninterrupted hundred-day problem solving discipline across algorithmic challenges.',
+              icon: <Flame size={15} strokeWidth={2.4} />,
             },
             {
-              title: 'Sporadic bursts & ghost activity',
-              desc: 'Reject one-off coding sprints followed by months of silence; prioritize daily steady showing up.',
-              icon: <X size={15} strokeWidth={2.8} />,
+              title: 'Symposium Technical Paper Defense',
+              desc: 'Presented peer-reviewed research on automated alert systems before academic evaluation juries.',
+              icon: <FileText size={15} strokeWidth={2.4} />,
             },
           ],
         }}
         rightColumn={{
-          title: 'VERIFIED MILESTONE DELIVERABLES',
-          pillText: 'VERIFIED',
-          variant: 'verified',
+          title: 'COMPUTATIONAL RIGOR & EXECUTION',
+          pillText: 'EVALUATED',
+          variant: 'standard',
           items: [
             {
-              title: 'Smart India Hackathon 2025 Finalist',
-              desc: 'Selected as national finalist in India’s premier government-sponsored technology hackathon.',
-              icon: <Check size={15} strokeWidth={2.8} />,
+              title: '150+ LeetCode Solutions',
+              desc: 'Mastered dynamic programming, tree traversals, graph algorithms, and asymptotic complexity in Java and C++.',
+              icon: <Zap size={15} strokeWidth={2.4} />,
             },
             {
-              title: '2 Registered Product Patents',
-              desc: 'Official intellectual property registration as co-inventor for hardware-software solutions.',
-              icon: <Check size={15} strokeWidth={2.8} />,
+              title: 'Rapid Prototyping Under High Stakes',
+              desc: 'Engineered functional end-to-end prototypes during continuous 36-hour competitive hackathon sprints.',
+              icon: <Target size={15} strokeWidth={2.4} />,
             },
             {
-              title: '150+ LeetCode with 100-Day Streak',
-              desc: 'Public algorithmic verification with unbroken consecutive daily discipline in Java and C++.',
-              icon: <Check size={15} strokeWidth={2.8} />,
+              title: 'Intellectual Property Documentation',
+              desc: 'Authored formal engineering claims, block diagrams, and algorithmic specs for registered patent offices.',
+              icon: <ShieldCheck size={15} strokeWidth={2.4} />,
             },
             {
-              title: 'Symposium Technical Paper Presentation',
-              desc: 'Peer-reviewed academic research presented before university evaluation panels in Coimbatore.',
-              icon: <Check size={15} strokeWidth={2.8} />,
+              title: 'Daily Engineering Cadence',
+              desc: 'Steady, demonstrable commitment to showing up consistently, rejecting complacency, and building with purpose.',
+              icon: <Check size={15} strokeWidth={2.4} />,
             },
           ],
         }}

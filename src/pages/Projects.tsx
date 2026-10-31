@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowUpRight, Github, Compass, Terminal, Check, X } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Github, Compass, Terminal, Layers, ShieldCheck, Code, Sparkles, Cpu, FileSpreadsheet, GitBranch } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLenisScroll } from '../hooks/useLenisScroll';
@@ -107,60 +107,60 @@ export default function Projects() {
 
       {/* Dark Theme Explanation Section: Systems Architecture & Production Standards */}
       <DarkExplanationSection
-        badge="SYSTEMS ARCHITECTURE & CRAFT"
-        title="How I Build Production Software."
-        quote="“Software is not finished when it compiles on localhost. It is finished when it handles edge cases, protects user privacy, and stays fast under pressure.”"
+        badge="ENGINEERING BENCHMARK"
+        title="Architectural Rigor & Production Delivery."
+        quote="“Every application is engineered with component isolation, declarative state management, and measurable performance standards.”"
         leftColumn={{
-          title: 'CORE ARCHITECTURAL BOUNDARIES',
-          pillText: 'REFUSE TO SHIP',
-          variant: 'blocked',
+          title: 'ARCHITECTURAL FOUNDATIONS',
+          pillText: 'ARCHITECTURE',
+          variant: 'pillar',
           items: [
             {
-              title: 'Slow interfaces & layout shifts',
-              desc: 'Refuse unoptimized asset payloads and bloated script chains exceeding sub-second LCP budgets.',
-              icon: <X size={15} strokeWidth={2.8} />,
+              title: 'Declarative State Architecture',
+              desc: 'Unidirectional data flow, isolated component boundaries, and reactive custom hooks avoiding unnecessary re-renders.',
+              icon: <Layers size={15} strokeWidth={2.4} />,
             },
             {
-              title: 'Fragile monolithic state',
-              desc: 'Reject spaghetti state mutations; enforce deterministic component isolation and strict typing.',
-              icon: <X size={15} strokeWidth={2.8} />,
+              title: 'Accessible Semantic Layouts',
+              desc: 'Strict HTML5 landmarks, ARIA live regions, and WCAG AA contrast compliance across every screen viewport.',
+              icon: <Code size={15} strokeWidth={2.4} />,
             },
             {
-              title: 'Superficial AI buzzwords',
-              desc: 'Reject superficial wrapper gimmicks lacking genuine predictive, assistive, or domain value.',
-              icon: <X size={15} strokeWidth={2.8} />,
+              title: 'Sub-Second Asset Optimization',
+              desc: 'Progressive image preloading, canvas offscreen decoding, and CSS containment ensuring responsive 60fps interaction.',
+              icon: <Sparkles size={15} strokeWidth={2.4} />,
             },
             {
-              title: 'Data leakage & invasive tracking',
-              desc: 'Enforce 100% client-side data processing for sensitive financial ledgers and personal telemetry.',
-              icon: <X size={15} strokeWidth={2.8} />,
+              title: 'Client-Side Privacy Preservation',
+              desc: 'On-device data manipulation and local serialization ensuring zero invasive tracking for user information.',
+              icon: <ShieldCheck size={15} strokeWidth={2.4} />,
             },
           ],
         }}
         rightColumn={{
-          title: 'VERIFIED PRODUCTION DELIVERABLES',
-          pillText: 'GUARANTEED SHIPPED',
-          variant: 'verified',
+          title: 'DEPLOYED APPLICATION SYSTEMS',
+          pillText: 'PRODUCTION',
+          variant: 'standard',
           items: [
             {
               title: 'Disaster Management Advisory UI',
               desc: 'Integrated Random Forest weather prediction algorithms with real-time alert dispatch.',
-              icon: <Check size={15} strokeWidth={2.8} />,
+              icon: <Cpu size={15} strokeWidth={2.4} />,
             },
             {
-              title: 'Student Certification Portal',
-              desc: 'High-throughput credential validation architecture with verified institutional audit trails.',
-              icon: <Check size={15} strokeWidth={2.8} />,
+              title: 'The Learning Zone & Student Portal',
+              desc: 'Interactive educational interface with modular curriculum paths and persistent student progress.',
+              icon: <Layers size={15} strokeWidth={2.4} />,
             },
             {
               title: 'Personal Finance Tracker',
               desc: 'Engineered client-side CSV export serializer with private on-device financial privacy.',
-              icon: <Check size={15} strokeWidth={2.8} />,
+              icon: <FileSpreadsheet size={15} strokeWidth={2.4} />,
             },
             {
-              title: 'Public Version Control Transparency',
+              title: 'Public Git Transparency',
               desc: 'Clean atomic Git commit history with verified GitHub repositories for all three deployed systems.',
-              icon: <Check size={15} strokeWidth={2.8} />,
+              icon: <GitBranch size={15} strokeWidth={2.4} />,
             },
           ],
         }}
