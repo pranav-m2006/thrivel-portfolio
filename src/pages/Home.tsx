@@ -1,352 +1,72 @@
-import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowRight, Linkedin, Mail } from 'lucide-react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect } from 'react';
 import { useLenisScroll } from '../hooks/useLenisScroll';
-import StepCounter from '../components/StepCounter';
-
-import MagneticButton from '../components/MagneticButton';
-import EngineeringGrowthCard from '../components/EngineeringGrowthCard';
-import GsapHeroSequence from '../components/GsapHeroSequence';
-
-gsap.registerPlugin(ScrollTrigger);
+import HeroSection from '../components/HeroSection';
+import AboutSection from '../components/AboutSection';
+import SkillsSection from '../components/SkillsSection';
+import ProjectsSection from '../components/ProjectsSection';
+import ExperienceSection from '../components/ExperienceSection';
+import AchievementsSection from '../components/AchievementsSection';
+import EducationSection from '../components/EducationSection';
+import ContactSection from '../components/ContactSection';
+import LuxuryMarquee from '../components/LuxuryMarquee';
 
 export default function Home() {
-  // Initialize Lenis smooth scroll synced to ScrollTrigger
+  // Synchronize smooth scroll
   useLenisScroll();
 
-  const containerRef = useRef<HTMLDivElement>(null);
-  const storySceneRef = useRef<HTMLDivElement>(null);
-  const [currentStep, setCurrentStep] = useState(1);
-
+  // Scroll to hash on initial load if present (e.g. #projects)
   useEffect(() => {
-    // Respect reduced motion
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const isReduced = mediaQuery.matches;
-
-    const scene = storySceneRef.current;
-    if (!scene || isReduced) return;
-
-    const ctx = gsap.context(() => {
-      const stepPanels = gsap.utils.toArray<HTMLElement>('.story-step-card');
-
-      // Pinned Multi-Step Scroll Timeline for the Storytelling Scene
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: scene,
-          start: 'top top',
-          end: '+=2400',
-          pin: true,
-          scrub: 0.6,
-          snap: {
-            snapTo: [0, 0.5, 1],
-            duration: { min: 0.25, max: 0.5 },
-            ease: 'power2.inOut',
-          },
-          onUpdate: (self) => {
-            if (self.progress < 0.33) {
-              setCurrentStep(1);
-            } else if (self.progress < 0.66) {
-              setCurrentStep(2);
-            } else {
-              setCurrentStep(3);
-            }
-          },
-        },
-      });
-
-      // Step 1 -> Step 2 transition
-      tl.to(stepPanels[0], {
-        opacity: 0,
-        y: -40,
-        ease: 'power3.in',
-        duration: 0.4,
-      })
-        .fromTo(stepPanels[1],
-          { opacity: 0, y: 50 },
-          { opacity: 1, y: 0, ease: 'power3.out', duration: 0.5 },
-          '-=0.1'
-        )
-        // Step 2 -> Step 3 transition
-        .to(stepPanels[1], {
-          opacity: 0,
-          y: -40,
-          ease: 'power3.in',
-          duration: 0.4,
-        }, '+=0.3')
-        .fromTo(stepPanels[2],
-          { opacity: 0, y: 50 },
-          { opacity: 1, y: 0, ease: 'power3.out', duration: 0.5 },
-          '-=0.1'
-        );
-
-    }, containerRef);
-
-    return () => ctx.revert();
+    if (window.location.hash) {
+      const id = window.location.hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }, 150);
+      }
+    }
   }, []);
 
   return (
-    <div ref={containerRef} className="page-wrapper home-page-container">
+    <div className="home-master-container">
+      {/* 1. CINEMATIC 2-COLUMN HERO (with 3D Neural Software Lattice) */}
+      <HeroSection />
 
-      {/* =====================================================================
-          1. GSAP CINEMATIC HERO (Interactive 3D Google Flow JPG Sequence)
-          Immediately after loading, with synchronized text reveals.
-          Focused on technology, development, coding, and AI.
-          No profile photograph on this hero page.
-          ===================================================================== */}
-      <GsapHeroSequence />
+      {/* SUBTLE CONTINUOUS LUXURY MARQUEE */}
+      <LuxuryMarquee
+        theme="dark"
+        items={[
+          'FRONTEND ENGINEERING',
+          'APPLIED AI & MACHINE LEARNING',
+          'SNS COLLEGE OF ENGINEERING',
+          'SIH 2025 NATIONAL FINALIST',
+          'HACKMATRIX 3RD PLACE',
+          '2 PRODUCT PATENTS',
+          'LEETCODE 100-DAY STREAK',
+          'OPEN FOR INTERNSHIPS',
+        ]}
+      />
 
-      {/* =====================================================================
-          2. PINNED SCROLL STORYTELLING SCENE (3 Core Steps)
-          Engineering Growth Dashboard & Development Narrative
-          ===================================================================== */}
-      <section
-        id="story-pin"
-        ref={storySceneRef}
-        className="home-pinned-story bg-cream"
-        aria-label="Interactive Portfolio Storytelling Sequence"
-      >
-        <div className="container pinned-story-container">
+      {/* 2. ABOUT ME & DEVELOPMENT JOURNEY */}
+      <AboutSection />
 
-          <div className="pinned-story-grid">
+      {/* 3. TECHNICAL COMPETENCIES & STACK */}
+      <SkillsSection />
 
-            {/* Left: Dynamic Step Content Container */}
-            <div className="pinned-story-stage">
+      {/* 4. FEATURED PROJECTS: AI SKILL TWIN & DISASTER MANAGEMENT SYSTEM */}
+      <ProjectsSection />
 
-              {/* Step 1: What I build */}
-              <div className={`story-step-card ${currentStep === 1 ? 'is-active' : ''}`}>
-                <div className="story-step-header">
-                  <span className="outlined-numeral">01</span>
-                  <span className="section-step-indicator">WHAT I BUILD</span>
-                </div>
+      {/* 5. PROFESSIONAL EXPERIENCE TIMELINE */}
+      <ExperienceSection />
 
-                <h2 className="editorial-h2" style={{ maxWidth: '620px' }}>
-                  I build the part of the web you actually touch.
-                </h2>
+      {/* 6. VERIFIED ACHIEVEMENTS & MILESTONES */}
+      <AchievementsSection />
 
-                <p className="editorial-lead" style={{ maxWidth: '580px' }}>
-                  I craft calm, responsive interfaces with HTML, CSS, JavaScript, and React.js — pairing
-                  clean front-end architecture with practical AI modules where they genuinely serve a purpose.
-                </p>
+      {/* 7. EDUCATION & SCHOLASTIC BACKGROUND */}
+      <EducationSection />
 
-                <div className="story-step-tags">
-                  <span className="meta-tag">HTML5 / Modern CSS</span>
-                  <span className="meta-tag">JavaScript (ES6+)</span>
-                  <span className="meta-tag">React.js</span>
-                  <span className="meta-tag">Responsive Fidelity</span>
-                </div>
-              </div>
-
-              {/* Step 2: Where I am coming from */}
-              <div className={`story-step-card ${currentStep === 2 ? 'is-active' : ''}`}>
-                <div className="story-step-header">
-                  <span className="outlined-numeral">02</span>
-                  <span className="section-step-indicator">WHERE I AM COMING FROM</span>
-                </div>
-
-                <h2 className="editorial-h2" style={{ maxWidth: '620px' }}>
-                  Curious by habit, careful by craft.
-                </h2>
-
-                <p className="editorial-lead" style={{ maxWidth: '580px' }}>
-                  Studying B.E. Computer Science and Technology at SNS College of Engineering (Sept 2024 to 2028, CGPA 8.00/10).
-                  Honed front-end craft through internships at CodSoft (responsive interfaces with HTML, CSS, JavaScript; debugging
-                  front-end components) and InternPe (front-end features, JavaScript, Git).
-                </p>
-
-                <div className="story-step-tags">
-                  <span className="meta-tag">SNS College of Engineering</span>
-                  <span className="meta-tag">CGPA 8.00 / 10</span>
-                  <span className="meta-tag">CodSoft Intern</span>
-                  <span className="meta-tag">InternPe Intern</span>
-                </div>
-              </div>
-
-              {/* Step 3: What I am working toward */}
-              <div className={`story-step-card ${currentStep === 3 ? 'is-active' : ''}`}>
-                <div className="story-step-header">
-                  <span className="outlined-numeral">03</span>
-                  <span className="section-step-indicator">WHAT I AM WORKING TOWARD</span>
-                </div>
-
-                <h2 className="editorial-h2" style={{ maxWidth: '620px' }}>
-                  Intelligent systems with human restraint.
-                </h2>
-
-                <p className="editorial-lead" style={{ maxWidth: '580px' }}>
-                  Deepening applied AI/ML fundamentals and building web systems that stay fast, accessible,
-                  and human under pressure. Grounded in steady algorithmic practice through 150+ LeetCode problems
-                  with an active 100-day streak.
-                </p>
-
-                <div className="story-step-tags">
-                  <span className="meta-tag">Applied AI/ML</span>
-                  <span className="meta-tag">150+ LeetCode (100-Day Streak)</span>
-                  <span className="meta-tag">2 Certified Patents</span>
-                  <span className="meta-tag">SIH 2025 Finalist</span>
-                </div>
-              </div>
-
-              {/* Sticky Step Counter Bar */}
-              <div className="story-counter-bottom">
-                <StepCounter
-                  currentStep={currentStep}
-                  totalSteps={3}
-                  label="Scroll Journey"
-                />
-              </div>
-
-            </div>
-
-            {/* Right: Engineering Growth & Consistency Dashboard */}
-            <div className="pinned-story-visual">
-              <EngineeringGrowthCard />
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* =====================================================================
-          3. QUICK FACTS ROW (SIH 2025, 2 Patents, 150+ LeetCode, 3 Projects)
-          ===================================================================== */}
-      <section className="home-facts-section bg-ivory">
-        <div className="container">
-          <div className="facts-header">
-            <span className="section-step-indicator">VERIFIED PROOF OF SHOWING UP</span>
-            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.45rem', color: 'var(--color-espresso)' }}>
-              Concrete Milestones. Zero Invented Numbers.
-            </h3>
-          </div>
-
-          <div className="facts-grid">
-
-            <div className="fact-card">
-              <span className="fact-card-num">2025</span>
-              <h4 className="fact-card-title">Smart India Hackathon</h4>
-              <p className="fact-card-desc">National-level finalist at Smart India Hackathon (SIH) 2025.</p>
-              <span className="fact-badge">National Level</span>
-            </div>
-
-            <div className="fact-card">
-              <span className="fact-card-num">02</span>
-              <h4 className="fact-card-title">Certified Patents</h4>
-              <p className="fact-card-desc">2 certified product patents officially registered as co-inventor.</p>
-              <span className="fact-badge">Intellectual Property</span>
-            </div>
-
-            <div className="fact-card">
-              <span className="fact-card-num">150+</span>
-              <h4 className="fact-card-title">LeetCode Solved</h4>
-              <p className="fact-card-desc">Algorithmic discipline with an active 100-day consecutive streak.</p>
-              <span className="fact-badge">100-Day Streak</span>
-            </div>
-
-            <div className="fact-card">
-              <span className="fact-card-num">03</span>
-              <h4 className="fact-card-title">Deployed Systems</h4>
-              <p className="fact-card-desc">Disaster Management, Learning Zone, and Finance Tracker.</p>
-              <span className="fact-badge">AI &amp; Web Solutions</span>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* =====================================================================
-          4. DEEP CONTRAST PANEL
-          ===================================================================== */}
-      <section className="home-deep-section">
-        <div className="container">
-          <div className="deep-panel-warm-brown">
-            <span className="deep-panel-stamp">Editorial Anchor · Engineering Philosophy</span>
-            <h3 className="deep-panel-heading">
-              “A student-engineer who builds calm, polished interfaces and adds AI where it genuinely helps.”
-            </h3>
-            <p className="deep-panel-body" style={{ maxWidth: '780px', marginBottom: '24px' }}>
-              No pretending to be an agency, no invented client revenues, and no superficial template gimmicks.
-              From studying computer science fundamentals at SNSCE to building predictive disaster advisory tools,
-              my focus is clean engineering, dependable performance, and respectful design.
-            </p>
-            <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
-              <Link to="/about" className="btn-primary" style={{ backgroundColor: 'var(--color-terracotta)' }}>
-                <span>Read Full About Story</span>
-                <ArrowRight size={15} />
-              </Link>
-              <Link to="/projects" className="btn-secondary" style={{ backgroundColor: '#FBF7F0', color: '#30251F' }}>
-                <span>Inspect Selected Works</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =====================================================================
-          5. MASSIVE INTERACTIVE CLOSING STATEMENT: "Come, let's connect."
-          ===================================================================== */}
-      <section className="closing-connect-section bg-ivory">
-        <div className="container">
-          <div className="closing-connect-box">
-            <span className="editorial-stamp" style={{ marginBottom: '18px' }}>Direct Inquiry</span>
-
-            {/* Horizontal Headline */}
-            <div className="connect-heading-horizontal-track">
-              <a
-                href="mailto:pranav.m.cst.2024@snsce.ac.in"
-                className="connect-interactive-heading"
-                title="Click to email pranav.m.cst.2024@snsce.ac.in"
-              >
-                <span className="connect-text-word">Come,</span>{' '}
-                <span className="connect-text-word">let's</span>{' '}
-                <span className="connect-text-word">connect.</span>
-                <span className="connect-arrow-hover" aria-hidden="true">→</span>
-              </a>
-            </div>
-
-            {/* Horizontal Details Row: Subtitle + Direct Action Buttons */}
-            <div className="connect-horizontal-details-row">
-              <p className="connect-subline">
-                Open for frontend engineering challenges, research collaborations, and thoughtful web projects.
-                Based in Coimbatore, Tamil Nadu.
-              </p>
-
-              <div className="connect-buttons-row">
-                <MagneticButton as="a" href="mailto:pranav.m.cst.2024@snsce.ac.in" className="btn-primary">
-                  <Mail size={16} />
-                  <span>pranav.m.cst.2024@snsce.ac.in</span>
-                </MagneticButton>
-
-                <MagneticButton as="a" href="https://www.linkedin.com/in/pranav-m-23153a32b/" target="_blank" rel="noopener noreferrer" className="btn-secondary">
-                  <Linkedin size={16} />
-                  <span>LinkedIn Profile</span>
-                </MagneticButton>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =====================================================================
-          6. ROUTE CONTINUATION BANNER
-          ===================================================================== */}
-      <section className="next-route-section bg-cream">
-        <div className="container next-route-container">
-          <div className="next-route-text">
-            <span className="editorial-stamp">Next Chapter</span>
-            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.85rem', color: 'var(--color-espresso)', marginTop: '8px' }}>
-              Curious by habit, careful by craft.
-            </h3>
-          </div>
-
-          <Link to="/about" className="btn-primary next-route-btn">
-            <span>Next: About</span>
-            <ArrowRight size={18} aria-hidden="true" />
-          </Link>
-        </div>
-      </section>
-
+      {/* 8. DIRECT CONTACT & COLLABORATION MANIFESTO */}
+      <ContactSection />
     </div>
   );
 }

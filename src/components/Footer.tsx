@@ -1,45 +1,55 @@
 import { Link } from 'react-router-dom';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
 
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className="site-footer">
       <div className="container">
         <div className="footer-top">
           <div className="footer-brand">
-            <h4>Pranav M</h4>
-            <p>
-              Frontend developer & AI/ML practitioner exploring thoughtful design, modern web architecture, and applied intelligence.
+            <h4 className="footer-brand-title">Pranav M<span className="brand-dot">.</span></h4>
+            <p className="footer-brand-desc">
+              Frontend Developer | AI/ML Practitioner. Building responsive web experiences and exploring AI-powered solutions to real-world problems.
             </p>
-            <div style={{ display: 'flex', gap: '16px', marginTop: '16px' }}>
+            <div className="footer-social-row">
               <a
                 href="https://github.com/pranav-m2006"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.875rem', color: 'var(--color-espresso)' }}
+                className="footer-social-pill"
+                aria-label="GitHub Profile (opens in new tab)"
               >
-                <Github size={16} /> GitHub
+                <Github size={15} />
+                <span>GitHub</span>
               </a>
               <a
                 href="https://www.linkedin.com/in/pranav-m-23153a32b/"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.875rem', color: 'var(--color-espresso)' }}
+                className="footer-social-pill"
+                aria-label="LinkedIn Profile (opens in new tab)"
               >
-                <Linkedin size={16} /> LinkedIn
+                <Linkedin size={15} />
+                <span>LinkedIn</span>
+              </a>
+              <a
+                href="mailto:pranav.m.cst.2024@snsce.ac.in"
+                className="footer-social-pill"
+                aria-label="Send direct email"
+              >
+                <Mail size={15} />
+                <span>Email</span>
               </a>
               <Link
                 to="/resume"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.875rem', color: '#C63D2F', fontWeight: 700 }}
+                className="footer-social-pill resume-pill"
               >
-                Resume
+                <span>Resume ↗</span>
               </Link>
-              <a
-                href="mailto:pranav.m.cst.2024@snsce.ac.in"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.875rem', color: 'var(--color-espresso)' }}
-              >
-                <Mail size={16} /> Email
-              </a>
             </div>
           </div>
 
@@ -47,48 +57,37 @@ export default function Footer() {
             <div className="footer-col">
               <h5>Navigation</h5>
               <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/about">About</Link></li>
-                <li><Link to="/projects">Projects</Link></li>
-                <li><Link to="/skills">Technical Skills</Link></li>
+                <li><a href="/#home">Home</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="/#skills">Skills</a></li>
+                <li><a href="/#projects">Projects</a></li>
               </ul>
             </div>
             <div className="footer-col">
-              <h5>Credentials</h5>
+              <h5>Experience &amp; Work</h5>
               <ul>
-                <li><Link to="/experience">Experience</Link></li>
-                <li><Link to="/achievements">Achievements</Link></li>
-                <li><Link to="/certifications">Certifications</Link></li>
-                <li><Link to="/contact">Contact</Link></li>
+                <li><a href="/#experience">Experience</a></li>
+                <li><a href="/#achievements">Achievements</a></li>
+                <li><a href="/#education">Education</a></li>
+                <li><a href="/#contact">Contact</a></li>
               </ul>
             </div>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <span>© 2026 Pranav M. Coastal Editorial × Modern Developer Portfolio.</span>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
+          <span>© 2026 Pranav M · Designed &amp; Engineered with React, GSAP &amp; Three.js.</span>
+          <div className="footer-bottom-right">
+            <span className="footer-location">Coimbatore, Tamil Nadu, India</span>
             <button
               type="button"
-              onClick={() => {
-                sessionStorage.removeItem('pranav_portfolio_intro_seen');
-                window.location.reload();
-              }}
-              style={{
-                background: 'none',
-                border: 'none',
-                color: 'var(--color-rusty-orange, #C66A3D)',
-                fontFamily: 'var(--font-mono, monospace)',
-                fontSize: '0.75rem',
-                cursor: 'pointer',
-                textDecoration: 'underline',
-                textUnderlineOffset: '3px',
-              }}
-              title="Re-run the cinematic intro animation"
+              onClick={scrollToTop}
+              className="footer-back-to-top"
+              aria-label="Back to top"
             >
-              Replay Intro ↺
+              <span>Back to Top</span>
+              <ArrowUp size={13} />
             </button>
-            <span style={{ fontFamily: 'var(--font-mono)' }}>Coimbatore, Tamil Nadu, India</span>
           </div>
         </div>
       </div>

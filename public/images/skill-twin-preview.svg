@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14100E"/>
+      <stop offset="100%" stop-color="#241B17"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2B211C"/>
+      <stop offset="100%" stop-color="#1A1412"/>
+    </linearGradient>
+    <linearGradient id="crimsonGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C63D2F"/>
+      <stop offset="100%" stop-color="#E25845"/>
+    </linearGradient>
+    <linearGradient id="sandGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D9C2A3"/>
+      <stop offset="100%" stop-color="#F4E9D8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1200" height="700" fill="url(#bgGrad)"/>
+
+  <!-- Subtle Blueprint Grid -->
+  <g opacity="0.08" stroke="#D9C2A3" stroke-width="1">
+    <line x1="0" y1="140" x2="1200" y2="140"/>
+    <line x1="0" y1="280" x2="1200" y2="280"/>
+    <line x1="0" y1="420" x2="1200" y2="420"/>
+    <line x1="0" y1="560" x2="1200" y2="560"/>
+    <line x1="200" y1="0" x2="200" y2="700"/>
+    <line x1="400" y1="0" x2="400" y2="700"/>
+    <line x1="600" y1="0" x2="600" y2="700"/>
+    <line x1="800" y1="0" x2="800" y2="700"/>
+    <line x1="1000" y1="0" x2="1000" y2="700"/>
+  </g>
+
+  <!-- Top App Navigation Bar -->
+  <rect x="40" y="40" width="1120" height="64" rx="8" fill="#1C1614" stroke="#3D302A" stroke-width="1.5"/>
+  <circle cx="76" cy="72" r="7" fill="#C63D2F"/>
+  <circle cx="102" cy="72" r="7" fill="#D9C2A3"/>
+  <circle cx="128" cy="72" r="7" fill="#4A3D36"/>
+  <text x="170" y="78" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="600" fill="#FBF7F0">AI SKILL TWIN</text>
+  <text x="310" y="77" font-family="'Instrument Sans', sans-serif" font-size="13" fill="#8C7A70">/ Career Intelligence Platform</text>
+  
+  <rect x="940" y="54" width="190" height="36" rx="6" fill="#2B211C" stroke="#4A3A32" stroke-width="1"/>
+  <circle cx="960" cy="72" r="4" fill="#10B981"/>
+  <text x="975" y="76" font-family="'JetBrains Mono', monospace" font-size="12" fill="#D9C2A3">Gemini AI Active</text>
+
+  <!-- Left Card: Candidate Skill Radar & Assessment -->
+  <rect x="40" y="128" width="530" height="520" rx="10" fill="url(#cardGrad)" stroke="#3D302A" stroke-width="1.5"/>
+  <text x="76" y="174" font-family="'JetBrains Mono', monospace" font-size="12" letter-spacing="1.5" fill="#C63D2F">01 / CANDIDATE PROFILE MATRIX</text>
+  <text x="76" y="210" font-family="'Fraunces', serif" font-size="24" font-weight="600" fill="#FBF7F0">Skill Profile &amp; Gap Analysis</text>
+  <text x="76" y="238" font-family="'Instrument Sans', sans-serif" font-size="14" fill="#A8988C">Target Role: Full-Stack React &amp; AI Engineer</text>
+
+  <!-- Skill Bars -->
+  <g transform="translate(76, 275)">
+    <!-- Skill 1: React & Frontend Architecture -->
+    <text x="0" y="0" font-family="'Instrument Sans', sans-serif" font-size="14" font-weight="600" fill="#FBF7F0">React.js &amp; Frontend Architecture</text>
+    <text x="410" y="0" font-family="'JetBrains Mono', monospace" font-size="13" fill="#D9C2A3">88% Verified</text>
+    <rect x="0" y="10" width="450" height="8" rx="4" fill="#382C26"/>
+    <rect x="0" y="10" width="396" height="8" rx="4" fill="url(#crimsonGrad)"/>
+
+    <!-- Skill 2: TypeScript & Clean State -->
+    <text x="0" y="55" font-family="'Instrument Sans', sans-serif" font-size="14" font-weight="600" fill="#FBF7F0">TypeScript &amp; Declarative State</text>
+    <text x="410" y="55" font-family="'JetBrains Mono', monospace" font-size="13" fill="#D9C2A3">82% Verified</text>
+    <rect x="0" y="65" width="450" height="8" rx="4" fill="#382C26"/>
+    <rect x="0" y="65" width="369" height="8" rx="4" fill="url(#crimsonGrad)"/>
+
+    <!-- Skill 3: Node.js & Express REST APIs -->
+    <text x="0" y="110" font-family="'Instrument Sans', sans-serif" font-size="14" font-weight="600" fill="#FBF7F0">Node.js &amp; Express APIs</text>
+    <text x="410" y="110" font-family="'JetBrains Mono', monospace" font-size="13" fill="#D9C2A3">75% Verified</text>
+    <rect x="0" y="120" width="450" height="8" rx="4" fill="#382C26"/>
+    <rect x="0" y="120" width="337" height="8" rx="4" fill="url(#sandGrad)"/>
+
+    <!-- Skill 4: Prisma & Relational Schemas -->
+    <text x="0" y="165" font-family="'Instrument Sans', sans-serif" font-size="14" font-weight="600" fill="#FBF7F0">Prisma ORM &amp; SQL Schemas</text>
+    <text x="410" y="165" font-family="'JetBrains Mono', monospace" font-size="13" fill="#D9C2A3">70% Verified</text>
+    <rect x="0" y="175" width="450" height="8" rx="4" fill="#382C26"/>
+    <rect x="0" y="175" width="315" height="8" rx="4" fill="url(#sandGrad)"/>
+
+    <!-- Skill 5: Machine Learning Integration -->
+    <text x="0" y="220" font-family="'Instrument Sans', sans-serif" font-size="14" font-weight="600" fill="#FBF7F0">Gemini LLM API &amp; Predictive ML</text>
+    <text x="410" y="220" font-family="'JetBrains Mono', monospace" font-size="13" fill="#D9C2A3">78% Verified</text>
+    <rect x="0" y="230" width="450" height="8" rx="4" fill="#382C26"/>
+    <rect x="0" y="230" width="351" height="8" rx="4" fill="url(#crimsonGrad)"/>
+  </g>
+
+  <!-- Gap Analysis Insight Badge -->
+  <rect x="76" y="555" width="450" height="60" rx="8" fill="#1A1412" stroke="#4A3A32" stroke-width="1"/>
+  <circle cx="104" cy="585" r="10" fill="#C63D2F"/>
+  <text x="100" y="590" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="bold" fill="#FBF7F0">!</text>
+  <text x="126" y="580" font-family="'Instrument Sans', sans-serif" font-size="13" font-weight="600" fill="#FBF7F0">Identified Skill Gap: Advanced System Caching</text>
+  <text x="126" y="600" font-family="'Instrument Sans', sans-serif" font-size="12" fill="#A8988C">Add Redis caching module to reach 95% target role readiness.</text>
+
+  <!-- Right Card: Personalized Dynamic Learning Roadmap -->
+  <rect x="590" y="128" width="570" height="520" rx="10" fill="url(#cardGrad)" stroke="#3D302A" stroke-width="1.5"/>
+  <text x="626" y="174" font-family="'JetBrains Mono', monospace" font-size="12" letter-spacing="1.5" fill="#D9C2A3">02 / MILESTONE ROADMAP</text>
+  <text x="626" y="210" font-family="'Fraunces', serif" font-size="24" font-weight="600" fill="#FBF7F0">Dynamic Curriculum Generator</text>
+  <text x="626" y="238" font-family="'Instrument Sans', sans-serif" font-size="14" fill="#A8988C">Automated Step-by-Step Learning Timeline</text>
+
+  <!-- Roadmap Timeline Nodes -->
+  <g transform="translate(626, 270)">
+    <!-- Vertical connecting line -->
+    <line x1="24" y1="20" x2="24" y2="280" stroke="#4A3A32" stroke-width="2" stroke-dasharray="4,4"/>
+
+    <!-- Step 1 -->
+    <circle cx="24" cy="20" r="14" fill="#C63D2F"/>
+    <text x="20" y="25" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" fill="#FBF7F0">✓</text>
+    <rect x="54" y="2" width="430" height="56" rx="6" fill="#1C1614" stroke="#3D302A" stroke-width="1"/>
+    <text x="70" y="26" font-family="'Instrument Sans', sans-serif" font-size="14" font-weight="600" fill="#FBF7F0">Phase 1: React Virtual DOM &amp; Declarative Hooks</text>
+    <text x="70" y="46" font-family="'JetBrains Mono', monospace" font-size="11" fill="#10B981">COMPLETED · 100% Verified Exercises</text>
+
+    <!-- Step 2 -->
+    <circle cx="24" cy="95" r="14" fill="#C63D2F"/>
+    <text x="20" y="100" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" fill="#FBF7F0">✓</text>
+    <rect x="54" y="77" width="430" height="56" rx="6" fill="#1C1614" stroke="#3D302A" stroke-width="1"/>
+    <text x="70" y="101" font-family="'Instrument Sans', sans-serif" font-size="14" font-weight="600" fill="#FBF7F0">Phase 2: Node.js &amp; Express API Architecture</text>
+    <text x="70" y="121" font-family="'JetBrains Mono', monospace" font-size="11" fill="#10B981">COMPLETED · JWT Auth &amp; REST Routing</text>
+
+    <!-- Step 3 -->
+    <circle cx="24" cy="170" r="14" fill="#D9C2A3"/>
+    <circle cx="24" cy="170" r="6" fill="#14100E"/>
+    <rect x="54" y="152" width="430" height="56" rx="6" fill="#241B17" stroke="#D9C2A3" stroke-width="1.5"/>
+    <text x="70" y="176" font-family="'Instrument Sans', sans-serif" font-size="14" font-weight="600" fill="#FBF7F0">Phase 3: Prisma ORM Schema &amp; PostgreSQL Sync</text>
+    <text x="70" y="196" font-family="'JetBrains Mono', monospace" font-size="11" fill="#D9C2A3">CURRENT STAGE · Relational Data Modeling</text>
+
+    <!-- Step 4 -->
+    <circle cx="24" cy="245" r="14" fill="#3D302A"/>
+    <circle cx="24" cy="245" r="5" fill="#6B5950"/>
+    <rect x="54" y="227" width="430" height="56" rx="6" fill="#16110F" stroke="#332722" stroke-width="1"/>
+    <text x="70" y="251" font-family="'Instrument Sans', sans-serif" font-size="14" font-weight="600" fill="#8C7A70">Phase 4: Gemini AI Contextual Career Copilot</text>
+    <text x="70" y="271" font-family="'JetBrains Mono', monospace" font-size="11" fill="#6B5950">PLANNED · Interactive Resume Diagnostics</text>
+  </g>
+
+  <!-- Bottom Interactive Metadata Tag -->
+  <g transform="translate(626, 560)">
+    <rect x="0" y="0" width="490" height="52" rx="8" fill="#1C1614" stroke="#3D302A" stroke-width="1"/>
+    <text x="20" y="31" font-family="'JetBrains Mono', monospace" font-size="12" fill="#D9C2A3">Target Role Match: 84.6% · 12 Skills Analyzed</text>
+    <text x="360" y="31" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" fill="#C63D2F">Live Synced →</text>
+  </g>
+</svg>
+
