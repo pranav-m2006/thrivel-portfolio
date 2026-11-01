@@ -5,194 +5,169 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface SkillGroup {
-  id: string;
+interface SkillItem {
+  name: string;
   category: string;
-  subtitle: string;
-  icon: typeof Code;
-  accent: string;
-  skills: {
-    name: string;
-    tag: string;
-    desc: string;
-  }[];
+  tag: string;
+  verifiedIn: string;
 }
 
-const SKILL_GROUPS: SkillGroup[] = [
-  {
-    id: 'programming',
-    category: 'Programming Languages',
-    subtitle: 'Core systems & object-oriented programming foundations',
-    icon: Terminal,
-    accent: '#A84432',
-    skills: [
-      { name: 'Java', tag: 'OOP & DSA', desc: 'Object-oriented architecture, data structures, algorithms, and modular design patterns.' },
-      { name: 'JavaScript', tag: 'ES6+ & Web APIs', desc: 'Modern async execution, DOM APIs, event loop, functional programming, and promises.' },
-      { name: 'C', tag: 'Systems Logic', desc: 'Manual memory pointers, structural procedural logic, and low-level computing principles.' },
-      { name: 'C++', tag: 'Competitive & STL', desc: 'Standard Template Library (STL), memory management, and high-performance algorithmic execution.' },
-    ],
-  },
-  {
-    id: 'frontend',
-    category: 'Frontend Engineering',
-    subtitle: 'Modern reactive web interfaces with clean ergonomics',
-    icon: Layout,
-    accent: '#C63D2F',
-    skills: [
-      { name: 'React.js', tag: 'Component Architecture', desc: 'Declarative component design, custom hooks, virtual DOM synchronization, and unidirectional state.' },
-      { name: 'HTML5', tag: 'Semantic Structure', desc: 'Accessible document landmarks, WCAG AA compliance, and clean markup hierarchy.' },
-      { name: 'CSS3', tag: 'Layouts & Animation', desc: 'CSS Grid, Flexbox, custom design tokens, container queries, and hardware-accelerated transitions.' },
-    ],
-  },
-  {
-    id: 'backend',
-    category: 'Backend & Data',
-    subtitle: 'Server runtimes, REST APIs & data modeling',
-    icon: Server,
-    accent: '#75685D',
-    skills: [
-      { name: 'Node.js', tag: 'Runtime Environment', desc: 'Asynchronous event-driven server programming, package management, and microservice APIs.' },
-    ],
-  },
-  {
-    id: 'tools',
-    category: 'Developer Tools & Platforms',
-    subtitle: 'Version control, collaborative workflows & rapid prototyping',
-    icon: Wrench,
-    accent: '#A84432',
-    skills: [
-      { name: 'Git', tag: 'Version Control', desc: 'Branching strategies, atomic commit histories, merging, and distributed revision control.' },
-      { name: 'GitHub', tag: 'Collaboration', desc: 'Remote repositories, issue tracking, continuous integration, and open-source contributions.' },
-      { name: 'FlutterFlow', tag: 'Rapid Prototyping', desc: 'Visual mobile interface construction, state logic mapping, and rapid proof-of-concept iteration.' },
-    ],
-  },
-  {
-    id: 'interests',
-    category: 'Core Focus & Areas of Interest',
-    subtitle: 'Active intellectual exploration & applied engineering research',
-    icon: Sparkles,
-    accent: '#C66A3D',
-    skills: [
-      { name: 'Artificial Intelligence & Machine Learning', tag: 'Applied ML', desc: 'Predictive modeling (Random Forest), model evaluation, and LLM API integrations for practical user challenges.' },
-      { name: 'Data Structures & Algorithms', tag: 'Problem Solving', desc: 'Array manipulation, linked lists, trees, graphs, sorting algorithms, and space-time complexity optimization.' },
-      { name: 'Full-Stack Development', tag: 'End-to-End', desc: 'Connecting client interfaces to server APIs, database schema synchronization, and cohesive system architecture.' },
-    ],
-  },
+const ALL_SKILLS: SkillItem[] = [
+  // 1. Programming Languages
+  { name: 'Python', category: 'languages', tag: 'Core Language', verifiedIn: 'Disaster Management ML Models' },
+  { name: 'Java', category: 'languages', tag: 'Object-Oriented', verifiedIn: 'Academic Data Structures & Algorithms' },
+  { name: 'C', category: 'languages', tag: 'Systems & Memory', verifiedIn: 'Foundational Computer Science' },
+  { name: 'JavaScript (ES6+)', category: 'languages', tag: 'Web Standard', verifiedIn: 'Full-Stack React Applications' },
+  { name: 'TypeScript', category: 'languages', tag: 'Type Safety', verifiedIn: 'AI Skill Twin & Production Portfolios' },
+
+  // 2. Frontend Development
+  { name: 'React', category: 'frontend', tag: 'Component Architecture', verifiedIn: 'AI Skill Twin & Internship Projects' },
+  { name: 'Vite', category: 'frontend', tag: 'Modern Build Tool', verifiedIn: 'High-Performance Production Bundles' },
+  { name: 'HTML5 & Semantic Web', category: 'frontend', tag: 'Structure & a11y', verifiedIn: 'All Web Implementations' },
+  { name: 'CSS3 & Modern Layouts', category: 'frontend', tag: 'Flexbox, Grid & Keyframes', verifiedIn: 'Responsive Portfolios & Interfaces' },
+  { name: 'Tailwind CSS', category: 'frontend', tag: 'Utility-First Styling', verifiedIn: 'Rapid UI Component Design' },
+  { name: 'GSAP Animation', category: 'frontend', tag: 'Timeline & ScrollTrigger', verifiedIn: 'Interactive Web Animations' },
+
+  // 3. Backend Development
+  { name: 'Node.js', category: 'backend', tag: 'JavaScript Runtime', verifiedIn: 'Full-Stack API Orchestration' },
+  { name: 'Express.js', category: 'backend', tag: 'Web Framework', verifiedIn: 'RESTful Endpoint Architectures' },
+  { name: 'RESTful API Design', category: 'backend', tag: 'Client-Server Contracts', verifiedIn: 'AI Skill Twin & Data Services' },
+  { name: 'JSON Data Pipelines', category: 'backend', tag: 'State Ingestion', verifiedIn: 'Meteorological & Profile Schemas' },
+
+  // 4. AI / ML
+  { name: 'Scikit-learn', category: 'aiml', tag: 'Machine Learning', verifiedIn: 'Disaster Classification Models' },
+  { name: 'Pandas & NumPy', category: 'aiml', tag: 'Data Transformation', verifiedIn: 'Meteorological Data Cleaning' },
+  { name: 'Weather Prediction Models', category: 'aiml', tag: 'Hazard Modeling', verifiedIn: 'Rainfall & Storm Surge Analysis' },
+  { name: 'Google Gemini API', category: 'aiml', tag: 'Generative AI', verifiedIn: 'AI Skill Twin Resume Extraction' },
+  { name: 'Prompt Engineering', category: 'aiml', tag: 'Structured Output', verifiedIn: 'Skill Gap Synthesis Protocols' },
+
+  // 5. Tools & Technologies
+  { name: 'Git & GitHub', category: 'tools', tag: 'Version Control', verifiedIn: 'Open-Source Repositories & CI' },
+  { name: 'VS Code', category: 'tools', tag: 'Primary IDE', verifiedIn: 'Daily Development Workflow' },
+  { name: 'Vercel', category: 'tools', tag: 'Edge Deployment', verifiedIn: 'Live Application Hosting' },
+  { name: 'Postman', category: 'tools', tag: 'API Testing', verifiedIn: 'REST Endpoint Verification' },
+  { name: 'Figma', category: 'tools', tag: 'UI Prototyping', verifiedIn: 'Interface & Layout Ideation' },
+];
+
+const CATEGORIES = [
+  { id: 'all', label: 'All Disciplines', icon: Sparkles },
+  { id: 'languages', label: 'Programming Languages', icon: Code },
+  { id: 'frontend', label: 'Frontend Development', icon: Layout },
+  { id: 'backend', label: 'Backend Development', icon: Server },
+  { id: 'aiml', label: 'AI & Machine Learning', icon: Terminal },
+  { id: 'tools', label: 'Tools & Technologies', icon: Wrench },
 ];
 
 export default function SkillsSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [activeCategory, setActiveCategory] = useState<string>('all');
+  const [activeTab, setActiveTab] = useState('all');
+
+  const filteredSkills =
+    activeTab === 'all'
+      ? ALL_SKILLS
+      : ALL_SKILLS.filter((s) => s.category === activeTab);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     if (mediaQuery.matches) return;
 
     const ctx = gsap.context(() => {
-      gsap.from('.skill-card-item', {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-        },
-        y: 35,
-        opacity: 0,
-        stagger: 0.12,
-        duration: 0.75,
-        ease: 'power3.out',
-      });
+      gsap.fromTo(
+        '.skills-header-block',
+        { y: 35, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 80%',
+          },
+        }
+      );
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
-  const filteredGroups = activeCategory === 'all'
-    ? SKILL_GROUPS
-    : SKILL_GROUPS.filter((g) => g.id === activeCategory);
-
   return (
-    <section className="skills-master-section bg-ivory" id="skills" ref={sectionRef}>
-      <div className="container">
-        
+    <section
+      ref={sectionRef}
+      id="skills"
+      className="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden"
+      style={{
+        background: 'transparent',
+        position: 'relative',
+        zIndex: 2,
+      }}
+    >
+      <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="section-intro-header">
-          <span className="section-eyebrow-stamp">02 / TECHNICAL COMPETENCIES</span>
-          <h2 className="section-main-heading">
-            Verified Stack &amp; Architectural Tools.
+        <div className="skills-header-block mb-14 flex flex-col items-start border-b border-slate-800 pb-8">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 font-mono text-xs uppercase tracking-widest mb-4">
+            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+            03 // Technical Competencies
+          </div>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white">
+            Skills &amp; Technologies
           </h2>
-          <p className="section-lead-paragraph">
-            A grounded overview of my technical toolset. Categorized directly from demonstrated project implementations and verified coursework, without arbitrary proficiency ratings.
+          <p className="text-lg text-slate-400 max-w-2xl mt-4 leading-relaxed">
+            Technologies and frameworks verified through real-world software projects, hackathons, and web internships.
           </p>
         </div>
 
-        {/* Category Filter Pills */}
-        <div className="skills-filter-row">
-          <button
-            type="button"
-            className={`skill-filter-btn ${activeCategory === 'all' ? 'active' : ''}`}
-            onClick={() => setActiveCategory('all')}
-          >
-            <span>All Technologies</span>
-          </button>
-          {SKILL_GROUPS.map((group) => (
-            <button
-              key={group.id}
-              type="button"
-              className={`skill-filter-btn ${activeCategory === group.id ? 'active' : ''}`}
-              onClick={() => setActiveCategory(group.id)}
-            >
-              <span>{group.category}</span>
-            </button>
-          ))}
-        </div>
+        {/* Filter Pills */}
+        <div className="flex flex-wrap gap-2.5 mb-12">
+          {CATEGORIES.map((cat) => {
+            const Icon = cat.icon;
+            const isActive = activeTab === cat.id;
 
-        {/* Category Cards Grid */}
-        <div className="skills-groups-grid">
-          {filteredGroups.map((group) => {
-            const Icon = group.icon;
             return (
-              <div key={group.id} className="skill-card-item">
-                <div className="skill-group-top">
-                  <div className="skill-group-icon-wrap" style={{ color: group.accent }}>
-                    <Icon size={20} />
-                  </div>
-                  <div>
-                    <h3 className="skill-group-title">{group.category}</h3>
-                    <p className="skill-group-subtitle">{group.subtitle}</p>
-                  </div>
-                </div>
-
-                <div className="skill-items-list">
-                  {group.skills.map((skill, sIdx) => (
-                    <div key={sIdx} className="skill-tech-badge">
-                      <div className="skill-badge-header">
-                        <span className="skill-tech-name">{skill.name}</span>
-                        <span className="skill-tech-tag">{skill.tag}</span>
-                      </div>
-                      <p className="skill-tech-desc">{skill.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <button
+                key={cat.id}
+                onClick={() => setActiveTab(cat.id)}
+                className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-mono text-xs uppercase tracking-wider transition-all duration-200 ${
+                  isActive
+                    ? 'bg-gradient-to-r from-cyan-400 to-sky-400 text-slate-950 font-bold shadow-[0_0_20px_rgba(0,240,255,0.3)]'
+                    : 'bg-slate-900/80 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800'
+                }`}
+              >
+                <Icon className="w-3.5 h-3.5" />
+                <span>{cat.label}</span>
+              </button>
             );
           })}
         </div>
 
-        {/* Bottom Standards Stamp */}
-        <div className="skills-standards-banner">
-          <div className="skills-banner-item">
-            <CheckCircle2 size={16} color="var(--color-terracotta)" />
-            <span>Strictly verified skills from academic coursework &amp; repositories</span>
-          </div>
-          <div className="skills-banner-item">
-            <CheckCircle2 size={16} color="var(--color-terracotta)" />
-            <span>Active daily LeetCode practice across Java and C++</span>
-          </div>
-          <div className="skills-banner-item">
-            <CheckCircle2 size={16} color="var(--color-terracotta)" />
-            <span>Zero exaggerated percentages or arbitrary expertise claims</span>
-          </div>
-        </div>
+        {/* Skills Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {filteredSkills.map((skill, index) => (
+            <div
+              key={`${skill.name}-${index}`}
+              className="p-5 rounded-2xl bg-slate-900/70 border border-slate-800/80 hover:border-cyan-500/40 hover:bg-slate-850/90 transition-all duration-200 flex flex-col justify-between group"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="font-mono text-[11px] uppercase tracking-wider text-cyan-400 bg-cyan-950/70 border border-cyan-500/20 px-2.5 py-0.5 rounded-md">
+                    {skill.tag}
+                  </span>
+                  <CheckCircle2 className="w-4 h-4 text-slate-600 group-hover:text-cyan-400 transition-colors" />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-1 group-hover:text-cyan-300 transition-colors">
+                  {skill.name}
+                </h3>
+              </div>
 
+              <div className="pt-4 border-t border-slate-800/60 mt-3">
+                <span className="text-xs text-slate-400 flex items-center gap-1.5 font-mono">
+                  <span className="w-1.5 h-1.5 rounded-full bg-slate-500 group-hover:bg-cyan-400" />
+                  {skill.verifiedIn}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -2,9 +2,9 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
-import PaperGrain from './components/PaperGrain';
 import CursorDot from './components/CursorDot';
 import RouteTransition from './components/RouteTransition';
+import Dark3DBackground from './components/Dark3DBackground';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -20,24 +20,25 @@ import StyleGuide from './pages/StyleGuide';
 
 export default function App() {
   return (
-    <div className="site-wrapper">
-      {/* 0.6s Sand Curtain Page Wipe Transition */}
+    <div className="site-wrapper bg-[#07080B] text-slate-100 min-h-screen relative selection:bg-cyan-500 selection:text-slate-950">
+      {/* Global Atmospheric 3D Particle & Polyhedral Background */}
+      <Dark3DBackground />
+
+      {/* Cyber Route Transition Curtain */}
       <RouteTransition />
 
-      {/* Subtle Paper Grain & Desktop Magnetic Cursor */}
-      <PaperGrain />
+      {/* Custom Desktop Magnetic Cursor */}
       <CursorDot />
 
       <ScrollToTop />
       <Navbar />
 
-      <main className="main-content">
+      <main className="main-content relative z-10">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/skills" element={<Skills />} />
-          {/* Section 4 & 5 Routes & Aliases */}
           <Route path="/journey" element={<Experience />} />
           <Route path="/experience" element={<Experience />} />
           <Route path="/milestones" element={<Achievements />} />
@@ -46,7 +47,6 @@ export default function App() {
           <Route path="/certifications" element={<Certifications />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/resume" element={<Resume />} />
-          {/* Phase 2 Design System Spec */}
           <Route path="/style-guide" element={<StyleGuide />} />
         </Routes>
       </main>

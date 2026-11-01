@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Github, ExternalLink, ArrowRight, ShieldCheck, AlertTriangle, Layers, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Github, ExternalLink, AlertTriangle, Layers, CheckCircle2 } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ProjectCaseStudyModal, { type ProjectDetail } from './ProjectCaseStudyModal';
@@ -12,111 +12,134 @@ export const FEATURED_PROJECTS: ProjectDetail[] = [
     number: 'PROJECT 01',
     title: 'AI Skill Twin',
     category: 'AI-Powered Career Development Platform',
-    badge: 'CAREER INTELLIGENCE & SKILL ROADMAPS',
-    shortDesc: 'A comprehensive career-development platform designed to help students and job seekers evaluate their competencies, identify targeted skill gaps, build dynamic learning roadmaps, and discover tailored career paths.',
-    problem: 'Students and early-career job seekers frequently face information fragmentation: job descriptions use conflicting terminology, prerequisite skills are difficult to sequence without expert mentorship, and candidates fall into tutorial paralysis without verifiable milestone validation.',
-    solution: 'AI Skill Twin consolidates skill assessment, automated skill-gap analysis, customized step-by-step curricula, and career discovery into an integrated web architecture powered by modern React and contextual Gemini AI assistance.',
+    badge: 'CAREER INTELLIGENCE & GAP ANALYSIS',
+    shortDesc:
+      'A skill-development and career-support platform designed to help students and job seekers understand their current skills, identify industry skill gaps, and plan structured professional growth.',
+    problem:
+      'Students and early-stage professionals frequently struggle to navigate fragmented coursework and ambiguous job postings, lacking objective, measurable insights into what specific skills they need for their target tech careers.',
+    solution:
+      'Built an intelligent, interactive web platform that assesses student competency profiles, compares them against real-world engineering benchmarks, and generates clear, milestone-driven learning roadmaps using the Gemini API.',
     features: [
-      'Interactive skill profile creation and competency matrix analysis',
-      'Automated skill-gap identification against specific industry job profiles',
-      'Personalized, milestone-driven learning roadmaps with sequential progress tracking',
-      'AI-assisted career advisory addressing role-specific engineering requirements',
-      'Targeted job recommendations matching current and projected user scores',
-      'Resume alignment diagnostics analyzing technical keyword coverage',
+      'Interactive radar skill assessment and visual gap identification matrix',
+      'Milestone-driven career progression roadmap with checkpoint completion tracking',
+      'Gemini AI resume skill extraction and role-readiness matching',
+      'Actionable course recommendations and verified learning milestones',
     ],
     techStack: [
-      { name: 'React.js', role: 'Frontend UI', tag: 'Client' },
-      { name: 'Vite', role: 'Build Tooling & HMR', tag: 'Tooling' },
-      { name: 'Tailwind CSS', role: 'Design System & Utility Styling', tag: 'Styling' },
-      { name: 'Node.js', role: 'Server Runtime & API Dispatch', tag: 'Backend' },
-      { name: 'Express.js', role: 'RESTful API Architecture', tag: 'Backend' },
-      { name: 'Prisma ORM', role: 'Type-Safe Database Modeling', tag: 'Data' },
-      { name: 'SQLite / Postgres', role: 'Relational Persistence', tag: 'Database' },
-      { name: 'Gemini API', role: 'Contextual AI Career Diagnostics', tag: 'AI/ML' },
+      { name: 'React', role: 'Frontend Architecture', tag: 'Core UI' },
+      { name: 'TypeScript', role: 'Type Safety & State Contracts', tag: 'Language' },
+      { name: 'Tailwind CSS', role: 'Modern Responsive Design', tag: 'Styling' },
+      { name: 'Gemini API', role: 'Resume Extraction & Gap Analysis', tag: 'AI Engine' },
+      { name: 'Node.js', role: 'API Orchestration & Parsing', tag: 'Backend' },
+      { name: 'Vercel', role: 'Continuous Deployment & CDN', tag: 'Cloud' },
     ],
     myContribution: [
-      'Architected the declarative React frontend component hierarchy, ensuring clean separation of state and presentation.',
-      'Constructed the dynamic learning roadmap visualization displaying sequential phase milestones and completion indicators.',
-      'Engineered responsive skill-gap radar and progress cards with accessible typography and clean color semantics.',
-      'Integrated backend REST endpoints connecting user assessment inputs to structured roadmap payloads.',
+      'Architected the modern responsive frontend in React & TypeScript with zero layout shift',
+      'Designed and coded the interactive skill radar visualization and gap identification panels',
+      'Integrated the Google Gemini API for automated resume parsing and intelligent curriculum matching',
+      'Configured automated CI/CD deployment pipelines on Vercel',
     ],
     workflowSteps: [
-      { step: '01', title: 'Competency Intake', desc: 'User completes a structured technical questionnaire or uploads resume details covering frameworks, languages, and project history.' },
-      { step: '02', title: 'Target Role Benchmark', desc: 'System parses selected target job descriptions and extracts required competency thresholds across frontend, backend, and systems logic.' },
-      { step: '03', title: 'Skill-Gap Computation', desc: 'Algorithms calculate variance between candidate capabilities and role benchmarks, highlighting critical prerequisites.' },
-      { step: '04', title: 'Dynamic Roadmap Synthesis', desc: 'Generates a personalized, phased curriculum with verifiable milestone exercises and contextual Gemini AI guidance.' },
+      { step: '01', title: 'Profile Ingestion', desc: 'User inputs current technical skills, coursework, and target engineering roles.' },
+      { step: '02', title: 'AI Gap Analysis', desc: 'Gemini AI evaluates profile against industry benchmarks to detect specific missing competencies.' },
+      { step: '03', title: 'Roadmap Synthesis', desc: 'Generates a phased milestone roadmap prioritized by urgency and prerequisite dependencies.' },
+      { step: '04', title: 'Progress Tracking', desc: 'Real-time dashboard tracks milestone completions and updates verified job-readiness scores.' },
     ],
     githubUrl: 'https://github.com/pranav-m2006/AI-skill-twin',
-    liveDemoStatus: 'Repository Verified · Local Development & Docker Stack',
+    liveDemoUrl: 'https://ai-skill-twin.vercel.app/login',
+    liveDemoStatus: 'LIVE APPLICATION (VERIFIED DEPLOYMENT)',
     imageSrc: '/images/skill-twin-preview.svg',
-    imageAlt: 'AI Skill Twin — Career Intelligence & Dynamic Roadmap Dashboard',
-    limitations: 'Live deployment requires configured Gemini API credentials and PostgreSQL connection string. The current repository implementation focuses on local Docker/Vite execution; cloud deployment is planned for production release.',
+    imageAlt: 'AI Skill Twin Career Development Platform Interface Preview',
+    limitations: 'Continuous updates underway to expand specialized role tracks and enhance multi-language code assessment.',
   },
   {
     id: 'disaster-management',
     number: 'PROJECT 02',
     title: 'Disaster Management System',
-    category: 'AI/ML-Based Weather Prediction & Disaster Preparedness',
-    badge: 'OFFLINE-FIRST DECISION SUPPORT & PREDICTION',
-    shortDesc: 'An offline-first decision-support architecture applying machine learning to meteorological prediction, translating weather models into actionable safety recommendations, road risk assessments, and shelter logistics.',
-    problem: 'During extreme meteorological disasters and flash floods, critical cellular infrastructure frequently collapses. First responders and displaced communities are left without real-time flood predictions, road impassability warnings, or shelter capacity telemetry.',
-    solution: 'Engineered an offline-resilient flood response and decision-support application combining a predictive Random Forest weather model with client-side IndexedDB caching (Dexie.js) and Leaflet GIS mapping to ensure continuous operation without internet connectivity.',
+    category: 'AI/ML Weather Prediction & Disaster Preparedness',
+    badge: 'WEATHER INTELLIGENCE & HAZARD MODELING',
+    shortDesc:
+      'An AI/ML-based disaster management and mitigation platform focused on predictive meteorological modeling and precautionary guidance to help reduce the human and infrastructure impact of severe weather events.',
+    problem:
+      'Traditional regional disaster alert mechanisms frequently suffer from delayed dissemination and broad generalizations, leaving vulnerable communities without granular, actionable warning before floods and severe storms escalate.',
+    solution:
+      'Engineered an integrated AI/ML weather intelligence application combining historical storm telemetry with predictive classification algorithms to visualize localized hazard zones and deliver rapid precautionary advisories.',
     features: [
-      'Predictive weather and localized flood-risk assessment using Random Forest algorithms',
-      'Plain-language precautionary safety recommendations translated from probability models',
-      'Road-condition-aware routing identifying flooded transit corridors and safe relief paths',
-      'Relief camp occupancy and logistics tracking with capacity constraint alerts',
-      'Offline-first data storage and local sync via Dexie.js (IndexedDB) for severed cellular grids',
-      'Interactive spatial risk maps with Leaflet.js flood zone polygon overlays',
+      'Predictive machine learning classifiers for rainfall and flood surge probability',
+      'Interactive geospatial risk mapping indicating hazard severity and safe zones',
+      'Automated, threshold-triggered precautionary guidance protocols for emergency responders',
+      'Local meteorological telemetry dashboard with historical weather pattern comparisons',
     ],
     techStack: [
-      { name: 'Python', role: 'Machine Learning & Predictive Engine', tag: 'ML/AI' },
-      { name: 'Scikit-Learn', role: 'Random Forest Prediction Model', tag: 'ML/AI' },
-      { name: 'SQLAlchemy', role: 'Database ORM & Event Persistence', tag: 'Backend' },
-      { name: 'Alembic', role: 'Database Migration Management', tag: 'Data' },
-      { name: 'TypeScript', role: 'Type-Safe Frontend Application', tag: 'Client' },
-      { name: 'Dexie.js', role: 'Offline-First Client IndexedDB', tag: 'Storage' },
-      { name: 'Leaflet.js', role: 'Interactive GIS Spatial Risk Mapping', tag: 'Mapping' },
+      { name: 'Python', role: 'Data Processing & Model Training', tag: 'Core Language' },
+      { name: 'Scikit-learn', role: 'Predictive Classifier Algorithms', tag: 'Machine Learning' },
+      { name: 'Pandas & NumPy', role: 'Meteorological Data Cleaning & Ingestion', tag: 'Data Pipeline' },
+      { name: 'React', role: 'Interactive Dashboard & Maps UI', tag: 'Frontend' },
+      { name: 'Leaflet / Maps', role: 'Geospatial Vulnerability Visualization', tag: 'Geospatial' },
+      { name: 'FastAPI / Flask', role: 'Local Inference API & Dispatch', tag: 'Backend API' },
     ],
     myContribution: [
-      'Engineered the decision-support frontend interface, ensuring immediate visual clarity for high-stress emergency operators.',
-      'Integrated Leaflet.js interactive maps to render real-time flood risk overlays and dynamic evacuation routes.',
-      'Implemented offline client-side caching with Dexie.js (IndexedDB), guaranteeing full access to cached safety protocols during network outages.',
-      'Mapped raw Random Forest prediction probability scores into distinct, color-coded precautionary warning stages.',
+      'Trained and validated predictive classification models on historical meteorological disaster datasets',
+      'Designed the real-time geospatial hazard map and severity threshold visualization interface',
+      'Built data ingestion pipelines for environmental parameters (rainfall intensity, atmospheric pressure)',
+      'Engineered rule-based advisory generators for automated disaster precautionary guidance',
     ],
     workflowSteps: [
-      { step: '01', title: 'Environmental Data Intake', desc: 'Collects rainfall intensity, river flow gauge levels, and upstream soil saturation sensor readings.' },
-      { step: '02', title: 'Random Forest Inference', desc: 'Machine learning model evaluates meteorological inputs against historical flood telemetry to calculate localized probability scores.' },
-      { step: '03', title: 'Constraint & Risk Routing', desc: 'Rule engine checks road elevations and flood boundaries, flagging impassable transit routes to emergency shelters.' },
-      { step: '04', title: 'Offline-First Dispatch', desc: 'Syncs emergency guidelines, shelter vacancies, and maps to local device storage via IndexedDB for uninterrupted response.' },
+      { step: '01', title: 'Data Ingestion', desc: 'Streams atmospheric sensor inputs (precipitation, pressure, wind velocity).' },
+      { step: '02', title: 'ML Hazard Inference', desc: 'Trained Scikit-learn models evaluate probability of extreme flood/cyclone events.' },
+      { step: '03', title: 'Geospatial Mapping', desc: 'Projects predicted threat levels onto interactive regional map layers.' },
+      { step: '04', title: 'Actionable Guidance', desc: 'Dispatches targeted evacuation advisories and precautionary checklists to responders.' },
     ],
     githubUrl: 'https://github.com/pranav-m2006/Disaster-management',
-    liveDemoStatus: 'National SIH Finalist Architecture · Python/TS Stack',
-    imageSrc: '/images/project-disaster.jpg',
-    imageAlt: 'Disaster Management System — Flood Risk Prediction & Offline Decision Interface',
-    limitations: 'Offline synchronization requires periodic network reconnect to merge upstream relief-camp supply changes. Spatial GIS precision depends on open-source OpenStreetMap elevation contour accuracy.',
+    liveDemoUrl: undefined, // Hosted locally per explicit requirement!
+    liveDemoStatus: 'HOSTED LOCALLY (OFFLINE PIPELINE)',
+    imageSrc: '/images/disaster-screen.jpg',
+    imageAlt: 'Disaster Management System Weather Intelligence & Hazard Prediction Dashboard',
+    limitations: 'Currently runs on local environment with mock/sample sensor feeds; live external API integration in active development.',
   },
 ];
 
 export default function ProjectsSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [selectedProject, setSelectedProject] = useState<ProjectDetail | null>(null);
+  const [activeModalProject, setActiveModalProject] = useState<ProjectDetail | null>(null);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     if (mediaQuery.matches) return;
 
     const ctx = gsap.context(() => {
-      gsap.from('.project-showcase-card', {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 78%',
-        },
-        y: 40,
-        opacity: 0,
-        stagger: 0.25,
-        duration: 0.9,
-        ease: 'power3.out',
+      // Header reveal
+      gsap.fromTo(
+        '.projects-header-block',
+        { y: 40, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.projects-header-block',
+            start: 'top 85%',
+          },
+        }
+      );
+
+      // Card reveals
+      gsap.utils.toArray<HTMLElement>('.project-case-card').forEach((card) => {
+        gsap.fromTo(
+          card,
+          { y: 50, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.9,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 82%',
+            },
+          }
+        );
       });
     }, sectionRef);
 
@@ -124,173 +147,210 @@ export default function ProjectsSection() {
   }, []);
 
   return (
-    <section className="projects-master-section bg-cream" id="projects" ref={sectionRef}>
-      <div className="container">
-        
-        {/* Section Header */}
-        <div className="section-intro-header">
-          <span className="section-eyebrow-stamp">03 / VERIFIED FEATURED SYSTEMS</span>
-          <h2 className="section-main-heading">
-            Engineering Case Studies &amp; Architecture.
-          </h2>
-          <p className="section-lead-paragraph">
-            Two substantial software systems engineered to address complex challenges in career progression and environmental disaster response. Explore problem definitions, technical solutions, verified codebases, and architectural decisions below.
-          </p>
+    <section
+      ref={sectionRef}
+      id="projects"
+      className="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden"
+      style={{
+        background: 'transparent',
+        position: 'relative',
+        zIndex: 2,
+      }}
+    >
+      {/* Background Soft Neon Light */}
+      <div
+        className="absolute top-1/2 right-10 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none opacity-15 blur-[140px]"
+        style={{
+          background: 'radial-gradient(circle, #8b5cf6 0%, #00f0ff 60%, transparent 100%)',
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto">
+        {/* Section Header: Prominent & Impossible to Miss */}
+        <div className="projects-header-block mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-800 pb-8">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 font-mono text-xs uppercase tracking-widest mb-4">
+              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+              01 // Selected Projects
+            </div>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white">
+              Featured Case Studies
+            </h2>
+            <p className="text-lg text-slate-400 max-w-2xl mt-4 leading-relaxed">
+              Deep dive into my primary development projects—engineered for practical utility, clean architecture, and real-world impact.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <span className="font-mono text-xs uppercase tracking-wider text-slate-500">
+              [ 02 Verified Productions ]
+            </span>
+          </div>
         </div>
 
-        {/* Featured Projects Stack */}
-        <div className="projects-showcase-stack">
-          {FEATURED_PROJECTS.map((project, idx) => {
-            const isReversed = idx % 2 !== 0;
+        {/* Alternating Project Cards */}
+        <div className="space-y-24 md:space-y-32">
+          {FEATURED_PROJECTS.map((project, index) => {
+            const isEven = index % 2 === 0;
+
             return (
-              <article key={project.id} className={`project-showcase-card ${isReversed ? 'layout-reversed' : ''}`}>
-                
-                {/* Visual Media Column */}
-                <div className="project-media-col">
-                  <div
-                    className="project-image-box"
-                    onClick={() => setSelectedProject(project)}
-                    title="Click to open full case study"
-                  >
-                    <img
-                      src={project.imageSrc}
-                      alt={project.imageAlt}
-                      className="project-screenshot"
-                      loading="lazy"
-                    />
-                    <div className="project-media-overlay">
-                      <span className="project-open-pill">
-                        <Sparkles size={14} />
-                        <span>Explore Engineering Case Study</span>
+              <article
+                key={project.id}
+                className="project-case-card relative rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/40 backdrop-blur-xl p-8 md:p-12 lg:p-14 shadow-[0_10px_40px_rgba(0,0,0,0.5)] transition-all duration-300"
+              >
+                <div
+                  className={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center ${
+                    isEven ? '' : 'lg:flex-row-reverse'
+                  }`}
+                >
+                  {/* Visual Preview Column (6 cols) */}
+                  <div className={`lg:col-span-6 ${isEven ? 'order-1' : 'order-1 lg:order-2'}`}>
+                    <div className="group relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-950/90 shadow-2xl transition-transform duration-300 group-hover:scale-[1.01]">
+                      {/* Top Browser Header Bar */}
+                      <div className="px-4 py-3 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
+                          <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
+                          <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
+                          <span className="ml-2 font-mono text-xs text-slate-500 hidden sm:inline">
+                            {project.title.toLowerCase().replace(/\s+/g, '-')}.local
+                          </span>
+                        </div>
+                        {project.liveDemoUrl ? (
+                          <span className="font-mono text-[11px] px-2.5 py-0.5 rounded-full bg-emerald-950/80 text-emerald-400 border border-emerald-500/30 flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                            Live App
+                          </span>
+                        ) : (
+                          <span className="font-mono text-[11px] px-2.5 py-0.5 rounded-full bg-amber-950/80 text-amber-400 border border-amber-500/30 flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                            Local Deployment
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Image / Graphic Container */}
+                      <div className="relative aspect-[16/10] overflow-hidden bg-slate-950 flex items-center justify-center p-2">
+                        <img
+                          src={project.imageSrc}
+                          alt={project.imageAlt}
+                          className="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:scale-105"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent pointer-events-none" />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Content & Case Study Details (6 cols) */}
+                  <div className={`lg:col-span-6 flex flex-col justify-center ${isEven ? 'order-2' : 'order-2 lg:order-1'}`}>
+                    {/* Project Number & Category Pill */}
+                    <div className="flex flex-wrap items-center gap-3 mb-4">
+                      <span className="font-mono text-xs uppercase tracking-widest text-cyan-400 font-semibold">
+                        {project.number}
+                      </span>
+                      <span className="text-slate-600">//</span>
+                      <span className="font-mono text-xs uppercase tracking-wider text-slate-400">
+                        {project.category}
                       </span>
                     </div>
-                  </div>
-                  <div className="project-media-status-bar">
-                    <span className="media-status-tag">
-                      <ShieldCheck size={13} />
-                      <span>{project.liveDemoStatus}</span>
-                    </span>
-                  </div>
-                </div>
 
-                {/* Content & Case Study Column */}
-                <div className="project-content-col">
-                  
-                  {/* Top Meta */}
-                  <div className="project-meta-row">
-                    <span className="project-number-badge">{project.number}</span>
-                    <span className="project-category-tag">{project.category}</span>
-                  </div>
+                    {/* Title */}
+                    <h3 className="text-3xl sm:text-4xl font-bold text-white mb-4 tracking-tight">
+                      {project.title}
+                    </h3>
 
-                  {/* Title & Short Description */}
-                  <h3 className="project-card-title">{project.title}</h3>
-                  <p className="project-card-summary">{project.shortDesc}</p>
+                    {/* Short Description */}
+                    <p className="text-slate-300 text-base sm:text-lg leading-relaxed mb-6">
+                      {project.shortDesc}
+                    </p>
 
-                  {/* Problem & Solution Callout Box */}
-                  <div className="project-problem-solution-box">
-                    <div className="ps-row">
-                      <div className="ps-icon-wrap text-crimson">
-                        <AlertTriangle size={15} />
-                      </div>
-                      <div>
-                        <strong className="ps-label">The Problem:</strong>
-                        <p className="ps-text">{project.problem}</p>
-                      </div>
+                    {/* Problem Solved Callout */}
+                    <div className="p-4 rounded-xl bg-slate-950/70 border border-slate-800/80 mb-6">
+                      <h4 className="font-mono text-xs uppercase tracking-wider text-slate-400 mb-1 flex items-center gap-2">
+                        <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
+                        The Problem It Solves
+                      </h4>
+                      <p className="text-sm text-slate-300 leading-normal">
+                        {project.problem}
+                      </p>
                     </div>
 
-                    <div className="ps-row">
-                      <div className="ps-icon-wrap text-sandstone">
-                        <ShieldCheck size={15} />
-                      </div>
-                      <div>
-                        <strong className="ps-label">The Solution:</strong>
-                        <p className="ps-text">{project.solution}</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Key Features Bullet List */}
-                  <div className="project-highlights-wrap">
-                    <h4 className="project-sub-label">Key Implemented Capabilities:</h4>
-                    <ul className="project-features-list">
-                      {project.features.slice(0, 4).map((feat, fIdx) => (
-                        <li key={fIdx} className="project-feature-item">
-                          <CheckCircle2 size={14} className="feature-check" />
+                    {/* Implemented Features Checklist */}
+                    <div className="mb-6 space-y-2">
+                      <h4 className="font-mono text-xs uppercase tracking-wider text-cyan-400 mb-2.5">
+                        Key Implemented Features
+                      </h4>
+                      {project.features.map((feat, i) => (
+                        <div key={i} className="flex items-start gap-2.5 text-sm text-slate-300">
+                          <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
                           <span>{feat}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Verified Tech Chips */}
-                  <div className="project-tech-chips-wrap">
-                    <h4 className="project-sub-label">Technologies Used:</h4>
-                    <div className="project-tech-chips">
-                      {project.techStack.map((tech, tIdx) => (
-                        <span key={tIdx} className="tech-badge-chip">
-                          <strong>{tech.name}</strong>
-                          <small>({tech.tag})</small>
-                        </span>
+                        </div>
                       ))}
                     </div>
+
+                    {/* Tech Stack Chips */}
+                    <div className="mb-8">
+                      <div className="flex flex-wrap gap-2">
+                        {project.techStack.map((tech) => (
+                          <span
+                            key={tech.name}
+                            className="inline-flex items-center px-3 py-1 rounded-lg bg-slate-950 border border-slate-800 text-xs font-mono text-slate-300"
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mr-2" />
+                            {tech.name}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Action Buttons Row */}
+                    <div className="flex flex-wrap items-center gap-3 pt-2">
+                      {/* Live Demo Button (ONLY if liveDemoUrl is present) */}
+                      {project.liveDemoUrl && (
+                        <a
+                          href={project.liveDemoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-medium text-slate-950 bg-gradient-to-r from-cyan-400 to-sky-400 hover:from-cyan-300 hover:to-sky-300 shadow-[0_0_20px_rgba(0,240,255,0.3)] transition-all duration-200"
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                          <span className="font-semibold text-sm">Live Demo</span>
+                        </a>
+                      )}
+
+                      {/* GitHub Repository Link */}
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-medium text-slate-200 bg-slate-950 hover:bg-slate-850 border border-slate-800 hover:border-slate-700 transition-all duration-200"
+                      >
+                        <Github className="w-4 h-4 text-cyan-400" />
+                        <span className="text-sm">View on GitHub</span>
+                      </a>
+
+                      {/* Case Study Details Modal Button */}
+                      <button
+                        onClick={() => setActiveModalProject(project)}
+                        className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-medium text-slate-300 hover:text-white bg-slate-900/60 hover:bg-slate-800/80 border border-slate-800/80 hover:border-cyan-500/30 transition-all duration-200"
+                      >
+                        <Layers className="w-4 h-4 text-violet-400" />
+                        <span className="text-sm">Case Study</span>
+                      </button>
+                    </div>
                   </div>
-
-                  {/* Action Buttons */}
-                  <div className="project-actions-row">
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-primary"
-                      title="View Source Code on GitHub"
-                    >
-                      <Github size={16} />
-                      <span>GitHub Repository</span>
-                      <ExternalLink size={14} />
-                    </a>
-
-                    <button
-                      type="button"
-                      className="btn-secondary"
-                      onClick={() => setSelectedProject(project)}
-                      title="Inspect System Architecture & Case Study"
-                    >
-                      <Layers size={15} />
-                      <span>Full Case Study &amp; Architecture</span>
-                      <ArrowRight size={14} />
-                    </button>
-                  </div>
-
                 </div>
-
               </article>
             );
           })}
         </div>
-
-        {/* Global Git Verification Banner */}
-        <div className="projects-bottom-banner">
-          <div className="pbb-text">
-            <h4 className="pbb-title">Looking for commit histories and technical documentation?</h4>
-            <p className="pbb-sub">Every project listed above has an active, verifiable GitHub repository with documented commit logs.</p>
-          </div>
-          <a
-            href="https://github.com/pranav-m2006"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-secondary"
-          >
-            <Github size={16} />
-            <span>Browse All Repositories (@pranav-m2006)</span>
-          </a>
-        </div>
-
       </div>
 
-      {/* Deep-Dive Case Study Modal */}
+      {/* Case Study Full Deep Dive Modal */}
       <ProjectCaseStudyModal
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
+        project={activeModalProject}
+        onClose={() => setActiveModalProject(null)}
       />
     </section>
   );

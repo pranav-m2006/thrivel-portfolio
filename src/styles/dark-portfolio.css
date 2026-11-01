@@ -1,0 +1,338 @@
+/* ==========================================================================
+   PRANAV M — DARK 3D DEVELOPER PORTFOLIO MASTER STYLESHEET
+   ========================================================================== */
+
+/* 1. Global Reset & Body */
+html {
+  background-color: #07080b;
+  color: #f8fafc;
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #07080b;
+  color: #f8fafc;
+  overflow-x: hidden;
+  font-family: var(--font-body, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+}
+
+::selection {
+  background-color: rgba(0, 240, 255, 0.35);
+  color: #ffffff;
+}
+
+/* Custom Cyber Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #07080b;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00f0ff;
+}
+
+/* 2. Custom Cursor Dot */
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: #00f0ff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 0 12px #00f0ff;
+}
+
+.custom-cursor-dot.cursor-hover {
+  width: 28px;
+  height: 28px;
+  background-color: rgba(0, 240, 255, 0.15);
+  border: 1px solid #00f0ff;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+}
+
+/* 3. Page Hero & Dedicated Route Headers */
+.page-hero,
+.bg-ivory,
+.bg-cream {
+  background-color: transparent !important;
+  color: #f8fafc !important;
+}
+
+.page-hero-eyebrow {
+  color: #00f0ff !important;
+  font-family: var(--font-mono, monospace);
+  letter-spacing: 0.15em;
+}
+
+.page-hero-interactive-heading {
+  color: #ffffff !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.page-hero-interactive-heading:hover {
+  transform: translateX(4px);
+}
+
+.page-hero-word-black {
+  color: #ffffff !important;
+}
+
+.page-hero-word-accent {
+  background: linear-gradient(90deg, #00f0ff, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.page-hero-arrow {
+  color: #00f0ff !important;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.page-hero-interactive-heading:hover .page-hero-arrow {
+  transform: translateX(6px);
+}
+
+.page-hero-lead-text,
+.editorial-lead {
+  color: #94a3b8 !important;
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+.meta-tag,
+.page-hero-tag-item {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background-color: rgba(13, 15, 22, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.meta-tag:hover,
+.page-hero-tag-item:hover {
+  border-color: rgba(0, 240, 255, 0.4);
+  color: #00f0ff;
+}
+
+/* 4. Project Case Study Modal (Dark Theme Overrides) */
+.case-study-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 5, 8, 0.88);
+  backdrop-filter: blur(16px);
+}
+
+.modal-container-card {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 980px;
+  max-height: 88vh;
+  overflow-y: auto;
+  border-radius: 24px;
+  background: #0d111a;
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 240, 255, 0.15);
+  padding: 32px;
+  color: #f8fafc;
+}
+
+.modal-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 24px;
+}
+
+.modal-number-tag {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  color: #00f0ff;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  margin-right: 12px;
+}
+
+.modal-category-pill {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  color: #94a3b8;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.modal-close-btn {
+  padding: 8px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: #00f0ff;
+}
+
+.modal-hero-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.modal-short-desc {
+  font-size: 1.1rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.modal-section-title {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #00f0ff;
+  margin-bottom: 12px;
+}
+
+.modal-split-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+@media (min-width: 768px) {
+  .modal-split-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.modal-problem-card,
+.modal-solution-card {
+  padding: 20px;
+  border-radius: 16px;
+  background: rgba(7, 8, 11, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.modal-problem-card h4 {
+  color: #f59e0b;
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.modal-solution-card h4 {
+  color: #00f0ff;
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.modal-workflow-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.modal-workflow-step {
+  padding: 16px;
+  border-radius: 14px;
+  background: rgba(7, 8, 11, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.workflow-step-num {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  color: #8b5cf6;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.workflow-step-title {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+
+.workflow-step-desc {
+  color: #94a3b8;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.modal-actions-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 28px;
+}
+
+/* 5. Luxury Marquee Dark Tuning */
+.luxury-marquee {
+  background: #040508 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.marquee-item {
+  color: #64748b !important;
+  font-family: var(--font-mono, monospace) !important;
+}
+
+.marquee-item:hover {
+  color: #00f0ff !important;
+}
+
+.marquee-separator {
+  color: #00f0ff !important;
+}
+

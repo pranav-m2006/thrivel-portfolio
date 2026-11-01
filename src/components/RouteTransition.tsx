@@ -50,7 +50,8 @@ export default function RouteTransition() {
       style={{
         position: 'fixed',
         inset: 0,
-        backgroundColor: '#D9C2A3', // Sunlit Sand
+        backgroundColor: '#07080B', // Deep Obsidian Black
+        boxShadow: '0 0 50px rgba(0, 240, 255, 0.4)',
         zIndex: 99999,
         display: 'none',
         pointerEvents: 'none',
