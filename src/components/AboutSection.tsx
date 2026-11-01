@@ -67,24 +67,30 @@ export default function AboutSection() {
               <div className="absolute -top-3 -left-3 w-8 h-8 border-t-2 border-l-2 border-cyan-400 z-20 pointer-events-none" />
               <div className="absolute -bottom-3 -right-3 w-8 h-8 border-b-2 border-r-2 border-violet-400 z-20 pointer-events-none" />
 
-              {/* Portrait Container */}
-              <div className="relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 shadow-[0_0_50px_rgba(0,240,255,0.12)]">
-                <img
-                  src="/images/pranav.jpg"
-                  alt="Pranav M. - Frontend Developer & AI/ML Practitioner"
-                  className="w-full aspect-[4/5] object-cover object-top transition-transform duration-500 hover:scale-105"
-                  loading="lazy"
-                />
-
-                {/* Subtle Overlay Badge */}
-                <div className="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-slate-950/85 backdrop-blur-md border border-slate-800 flex items-center justify-between">
-                  <div>
-                    <p className="text-white text-sm font-semibold">Pranav M.</p>
-                    <p className="text-slate-400 text-xs font-mono">B.E. CST @ SNSCE</p>
-                  </div>
-                  <span className="px-2.5 py-1 rounded-md bg-cyan-950/90 border border-cyan-500/30 font-mono text-[11px] text-cyan-300">
-                    CGPA 8.00
+              {/* Technical Identity Badge (NO PROFILE PHOTO) */}
+              <div className="relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/90 p-8 shadow-[0_0_50px_rgba(0,240,255,0.12)] space-y-6">
+                <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+                  <span className="font-mono text-xs uppercase tracking-widest text-cyan-400">
+                    SYS_ID // PRANAV M.
                   </span>
+                  <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                </div>
+
+                <div className="space-y-2">
+                  <h3 className="text-2xl font-bold text-white">Pranav M.</h3>
+                  <p className="text-sm font-mono text-cyan-300">Frontend Developer &amp; AI/ML Practitioner</p>
+                  <p className="text-xs text-slate-400 font-mono">B.E. Computer Science &amp; Technology @ SNSCE</p>
+                </div>
+
+                <div className="pt-4 border-t border-slate-800 grid grid-cols-2 gap-3 text-xs font-mono">
+                  <div className="p-2.5 rounded-lg bg-slate-950 border border-slate-800">
+                    <span className="text-slate-500 block text-[10px]">CGPA</span>
+                    <span className="text-white font-bold text-sm">8.00 / 10.0</span>
+                  </div>
+                  <div className="p-2.5 rounded-lg bg-slate-950 border border-slate-800">
+                    <span className="text-slate-500 block text-[10px]">STATUS</span>
+                    <span className="text-emerald-400 font-bold text-sm">OPEN FOR ROLES</span>
+                  </div>
                 </div>
               </div>
             </div>
